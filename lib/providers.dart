@@ -1,75 +1,118 @@
+import 'dart:math';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'data/repositorios.dart';
-import 'logic/regras_trilha.dart';
-import 'models/curriculo.dart';
-import 'models/perfil.dart';
-import 'models/progresso.dart';
+import 'dados/repositorios.dart';
+import 'logica/regras.dart';
+import 'modelos/conteudo.dart';
+import 'modelos/perfil.dart';
+import 'modelos/progresso.dart';
 
 /// Preenchido em main() com `overrideWithValue`.
 final prefsProvider = Provider<SharedPreferences>(
     (ref) => throw UnimplementedError('prefsProvider precisa de override'));
 
-/// Relógio injetável (os testes trocam a data de "hoje").
+/// Relógio e sorteio injetáveis (os testes fixam a data e a sorte).
 final relogioProvider = Provider<DateTime Function()>((ref) => DateTime.now);
+final aleatorioProvider = Provider<Random>((ref) => Random());
 
 final repositorioPerfisProvider = Provider<RepositorioPerfis>(
     (ref) => RepositorioPerfisLocal(ref.watch(prefsProvider)));
-
 final repositorioProgressoProvider = Provider<RepositorioProgresso>(
     (ref) => RepositorioProgressoLocal(ref.watch(prefsProvider)));
-
-final repositorioCurriculoProvider = Provider<RepositorioCurriculo>(
-    (ref) => RepositorioCurriculoAssets(rootBundle));
+final repositorioConteudoProvider = Provider<RepositorioConteudo>(
+    (ref) => RepositorioConteudoAssets(rootBundle));
 
 final perfisProvider = FutureProvider<List<PerfilCrianca>>(
     (ref) => ref.watch(repositorioPerfisProvider).listar());
 
-final perfilProvider =
-    FutureProvider.family<PerfilCrianca?, String>((ref, id) async {
-  final perfis = await ref.watch(perfisProvider.future);
-  for (final p in perfis) {
-    if (p.id == id) return p;
-  }
-  return null;
-});
+final niveisProvider = FutureProvider<List<Nivel>>(
+    (ref) => ref.watch(repositorioConteudoProvider).niveis());
 
-final trilhaProvider = FutureProvider.family<TrilhaAno, int>(
-    (ref, ano) => ref.watch(repositorioCurriculoProvider).trilha(ano));
+final conteudoProvider = FutureProvider.family<ConteudoAno, int>(
+    (ref, ano) => ref.watch(repositorioConteudoProvider).ano(ano));
 
 final progressoProvider = FutureProvider.family<Progresso, String>(
-    (ref, perfilId) =>
-        ref.watch(repositorioProgressoProvider).carregar(perfilId));
+    (ref, id) => ref.watch(repositorioProgressoProvider).carregar(id));
 
-/// Tudo que a tela da trilha precisa de uma vez.
-class EstadoTrilha {
-  final PerfilCrianca perfil;
-  final TrilhaAno trilha;
-  final RegrasTrilha regras;
-
-  EstadoTrilha(this.perfil, this.trilha, this.regras);
-
-  Progresso get progresso => regras.progresso;
+/// Bimestre que a criança está vendo (começa no do calendário).
+class BimestreEscolhido extends Notifier<int?> {
+  @override
+  int? build() => null;
+  void escolher(int b) => state = b;
+  void limpar() => state = null;
 }
 
-final estadoTrilhaProvider =
-    FutureProvider.family<EstadoTrilha?, String>((ref, perfilId) async {
-  final perfil = await ref.watch(perfilProvider(perfilId).future);
+final bimestreEscolhidoProvider =
+    NotifierProvider<BimestreEscolhido, int?>(BimestreEscolhido.new);
+
+/// Tudo que as telas de uma criança precisam.
+class Sessao {
+  final PerfilCrianca perfil;
+  final ConteudoAno conteudo;
+  final Progresso progresso;
+  final List<Nivel> niveis;
+  final DateTime hoje;
+  final int bimestreVisto;
+
+  Sessao({
+    required this.perfil,
+    required this.conteudo,
+    required this.progresso,
+    required this.niveis,
+    required this.hoje,
+    required this.bimestreVisto,
+  });
+
+  Nivel get nivel =>
+      niveis.firstWhere((n) => n.id == perfil.nivel, orElse: () => niveis.first);
+  int get bimestreAtual => bimestreDoCalendario(hoje);
+  bool bimestreAberto(int n) => n <= bimestreAtual;
+  BimestreConteudo get bimestre =>
+      conteudo.bimestre(bimestreVisto) ?? conteudo.bimestres.first;
+  int get xpHoje => progresso.xpPorDia[chaveDia(hoje)] ?? 0;
+  int get sequencia => sequenciaDias(progresso.xpPorDia, hoje);
+
+  Planeta? planeta(String id) {
+    for (final b in conteudo.bimestres) {
+      for (final p in b.planetas) {
+        if (p.id == id) return p;
+      }
+    }
+    return null;
+  }
+
+  RegrasPlaneta regras(Planeta p) => RegrasPlaneta(p, progresso, perfil.nivel);
+
+  List<MissaoDoDia> get missoesHoje => missoesDoDia(
+        conteudo: conteudo,
+        bimestre: bimestre,
+        progresso: progresso,
+        nivel: perfil.nivel,
+        hoje: hoje,
+      );
+}
+
+final sessaoProvider =
+    FutureProvider.family<Sessao?, String>((ref, perfilId) async {
+  final perfis = await ref.watch(perfisProvider.future);
+  final perfil = perfis.where((p) => p.id == perfilId).firstOrNull;
   if (perfil == null) return null;
-  final trilha = await ref.watch(trilhaProvider(perfil.ano).future);
-  final progresso = await ref.watch(progressoProvider(perfilId).future);
   final hoje = ref.watch(relogioProvider)();
-  return EstadoTrilha(
-    perfil,
-    trilha,
-    RegrasTrilha(trilha: trilha, progresso: progresso, hoje: hoje),
+  final escolhido = ref.watch(bimestreEscolhidoProvider);
+  return Sessao(
+    perfil: perfil,
+    conteudo: await ref.watch(conteudoProvider(perfil.ano).future),
+    progresso: await ref.watch(progressoProvider(perfilId).future),
+    niveis: await ref.watch(niveisProvider.future),
+    hoje: hoje,
+    bimestreVisto: escolhido ?? bimestreDoCalendario(hoje),
   );
 });
 
-/// Ações que alteram dados. Depois de gravar, invalidam os providers
-/// para as telas recarregarem.
+/// Ações que gravam dados e avisam as telas.
 class Acoes {
   final Ref ref;
   Acoes(this.ref);
@@ -85,28 +128,48 @@ class Acoes {
     ref.invalidate(progressoProvider(id));
   }
 
-  /// Registra o resultado de uma missão. Na primeira vez guarda a data
-  /// (que conta para a missão do dia e a sequência). Ao refazer, só
-  /// melhora as estrelas.
-  Future<void> concluirMissao({
-    required String perfilId,
-    required String missaoId,
-    required int estrelas,
-  }) async {
+  Future<Progresso> _alterar(
+      String perfilId, Progresso Function(Progresso) f) async {
     final repo = ref.read(repositorioProgressoProvider);
-    final atual = await repo.carregar(perfilId);
-    final anterior = atual.concluidas[missaoId];
-    final novo = MissaoConcluida(
-      missaoId: missaoId,
-      data: anterior?.data ?? ref.read(relogioProvider)(),
-      estrelas: anterior == null
-          ? estrelas
-          : (estrelas > anterior.estrelas ? estrelas : anterior.estrelas),
-    );
-    await repo.salvar(
-        perfilId, Progresso({...atual.concluidas, missaoId: novo}));
+    final novo = f(await repo.carregar(perfilId));
+    await repo.salvar(perfilId, novo);
     ref.invalidate(progressoProvider(perfilId));
+    return novo;
   }
+
+  /// Registra o fim de uma partida e devolve o progresso novo.
+  Future<Progresso> concluirPartida({
+    required String perfilId,
+    required String nivel,
+    required String noId,
+    required int estrelas,
+    required int xp,
+    required int peixinhos,
+  }) =>
+      _alterar(perfilId, (p) {
+        final k = Progresso.chave(nivel, noId);
+        final dia = chaveDia(ref.read(relogioProvider)());
+        return p.copyWith(
+          xp: p.xp + xp,
+          peixinhos: p.peixinhos + peixinhos,
+          xpPorDia: {...p.xpPorDia, dia: (p.xpPorDia[dia] ?? 0) + xp},
+          estrelas: {...p.estrelas, k: max(p.estrelas[k] ?? 0, estrelas)},
+          jogadas: {...p.jogadas, k: (p.jogadas[k] ?? 0) + 1},
+        );
+      });
+
+  Future<void> abrirCapsula({
+    required String perfilId,
+    required String nivel,
+    required String noId,
+    required int peixinhos,
+  }) =>
+      _alterar(
+          perfilId,
+          (p) => p.copyWith(
+                peixinhos: p.peixinhos + peixinhos,
+                capsulas: {...p.capsulas, Progresso.chave(nivel, noId)},
+              ));
 }
 
 final acoesProvider = Provider<Acoes>((ref) => Acoes(ref));

@@ -1,10 +1,12 @@
-# Trilha do Saber
+# Galáxia do Saber
 
-App educacional (iOS e Android) para o Ensino Fundamental 1 (1º ao 5º ano).
-Cada criança tem um perfil ligado ao seu ano escolar e segue uma trilha
-dividida em 4 bimestres, com uma missão nova por dia.
+App educacional (iOS e Android) para o Ensino Fundamental 1 (1º ao 5º ano),
+baseado no material interativo "Galáxia do Saber" feito para o Bernardo.
 
-> "Trilha do Saber" é um nome provisório.
+Cada criança tem um perfil (nome, ano e um gatinho capitão da tripulação) e
+entra no bimestre atual do seu ano. As matérias são **planetas**, as unidades
+são **setores**, e cada setor tem missões, revisão 🏆 e cápsula de peixinhos 📦.
+No fim de cada planeta há um **chefão**.
 
 ## Rodando
 
@@ -12,27 +14,35 @@ Requer Flutter 3.50 ou mais novo.
 
 ```bash
 flutter pub get
-flutter run          # com um emulador ou celular conectado
-flutter test         # testes de regras e do fluxo principal
+flutter run
+flutter test
 ```
 
-## Arquitetura
+## Como funciona
 
-| Parte | Escolha |
+- **Missão:** cartões de briefing (com 🔊 Ouvir) e depois perguntas de 6 tipos:
+  múltipla escolha, verdadeiro ou falso, completar, ordenar, ligar pares e separar em grupos.
+  Errou? Aparece a explicação e a pergunta volta no fim.
+- **Níveis:** Fácil, Difícil, Expert e Gênio do Universo (30 s por pergunta). Cada nível tem estrelas próprias.
+- **Recompensas:** XP com nível e patente (Cadete → Lenda da Galáxia), peixinhos, sequência de dias e meta de 30 XP por dia.
+- **Missões de hoje:** seguem o rodízio da BNCC (Português e Matemática todo dia, mais Ciências, História ou Geografia).
+- **Bimestre:** o do calendário escolar (fev–abr 1º, mai–jul 2º, ago–set 3º, out–dez 4º). Os anteriores ficam abertos.
+- **Dados:** só no aparelho (shared_preferences), atrás de interfaces em `lib/dados/` para trocar por nuvem depois.
+
+## Conteúdo
+
+- 4º ano, 4º bimestre: conteúdo completo da Galáxia (6 planetas, 44 missões, mais de 500 perguntas).
+- Demais anos e bimestres: estrutura da BNCC, com missões "em construção" até o conteúdo ser escrito.
+
+Formato e como regerar: [docs/formato_conteudo.md](docs/formato_conteudo.md).
+
+## Código
+
+| Pasta | O que tem |
 |---|---|
-| Estado | Riverpod (`lib/providers.dart`) |
-| Navegação | go_router (`lib/app.dart`) |
-| Dados da criança e progresso | Só no aparelho, com shared_preferences, atrás das interfaces em `lib/data/repositorios.dart` (para trocar por nuvem depois) |
-| Conteúdo pedagógico | JSON por ano em `assets/curriculo/` ([formato](docs/formato_curriculo.md)) |
-| Regras da trilha | `lib/logic/regras_trilha.dart` (bimestre do calendário, missão do dia, sequência de dias, estrelas) |
-
-### Telas
-- `features/profiles`: "Quem vai jogar?" e cadastro da criança (nome, ano, avatar). Segurar o cartão remove o perfil.
-- `features/track`: trilha do ano com estrelas, dias seguidos, missão do dia e os 4 bimestres.
-- `features/mission`: perguntas de múltipla escolha com retorno imediato e 1 a 3 estrelas.
-
-### Regras da missão diária
-- Bimestre pelo calendário: fev–abr 1º, mai–jul 2º, ago–set 3º, out–dez 4º (janeiro conta como 1º).
-- Bimestres futuros ficam fechados; anteriores ficam abertos para recuperar.
-- Dentro do bimestre as missões seguem em ordem, e a criança libera 1 missão nova por dia (`missoesNovasPorDia`).
-- Missões concluídas podem ser refeitas para melhorar as estrelas.
+| `lib/modelos` | conteúdo, perfil e progresso |
+| `lib/logica/regras.dart` | caminho do planeta, bloqueios, missões do dia, montagem da partida, XP |
+| `lib/dados` | repositórios (local) |
+| `lib/telas` | perfis, cadastro, galáxia, planeta, partida |
+| `lib/componentes` | tema, HUD, gatos, textos com frações, visuais e os 6 exercícios |
+| `tool/` | extração da Galáxia e montagem do conteúdo |

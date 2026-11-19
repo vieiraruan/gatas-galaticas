@@ -1,53 +1,69 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 
-import 'features/mission/tela_missao.dart';
-import 'features/profiles/tela_novo_perfil.dart';
-import 'features/profiles/tela_perfis.dart';
-import 'features/track/tela_trilha.dart';
-import 'ui/tema.dart';
+import 'componentes/tema.dart';
+import 'telas/tela_galaxia.dart';
+import 'telas/tela_novo_perfil.dart';
+import 'telas/tela_partida.dart';
+import 'telas/tela_perfis.dart';
+import 'telas/tela_planeta.dart';
 
-final roteador = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const TelaPerfis(),
-      routes: [
-        GoRoute(
-          path: 'novo-perfil',
-          builder: (context, state) => const TelaNovoPerfil(),
-        ),
-        GoRoute(
-          path: 'perfil/:perfilId',
-          builder: (context, state) =>
-              TelaTrilha(perfilId: state.pathParameters['perfilId']!),
-          routes: [
-            GoRoute(
-              path: 'missao/:missaoId',
-              builder: (context, state) => TelaMissao(
-                perfilId: state.pathParameters['perfilId']!,
-                missaoId: state.pathParameters['missaoId']!,
+GoRouter criarRoteador() => GoRouter(routes: [
+      GoRoute(
+        path: '/',
+        builder: (_, _) => const TelaPerfis(),
+        routes: [
+          GoRoute(
+            path: 'novo-perfil',
+            builder: (_, _) => const TelaNovoPerfil(),
+          ),
+          GoRoute(
+            path: 'c/:perfilId',
+            builder: (_, s) => TelaGalaxia(perfilId: s.pathParameters['perfilId']!),
+            routes: [
+              GoRoute(
+                path: 'editar',
+                builder: (_, s) =>
+                    TelaNovoPerfil(perfilId: s.pathParameters['perfilId']),
               ),
-            ),
-          ],
-        ),
-      ],
-    ),
-  ],
-);
+              GoRoute(
+                path: 'p/:planetaId',
+                builder: (_, s) => TelaPlaneta(
+                  perfilId: s.pathParameters['perfilId']!,
+                  planetaId: s.pathParameters['planetaId']!,
+                ),
+                routes: [
+                  GoRoute(
+                    path: 'no/:indice',
+                    builder: (_, s) => TelaPartida(
+                      perfilId: s.pathParameters['perfilId']!,
+                      planetaId: s.pathParameters['planetaId']!,
+                      indice: int.parse(s.pathParameters['indice']!),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    ]);
 
-class AppAprender extends StatelessWidget {
-  final GoRouter? router;
-
-  const AppAprender({super.key, this.router});
+class AppGalaxia extends StatefulWidget {
+  const AppGalaxia({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Trilha do Saber',
-      debugShowCheckedModeBanner: false,
-      theme: temaApp(),
-      routerConfig: router ?? roteador,
-    );
-  }
+  State<AppGalaxia> createState() => _AppGalaxiaState();
+}
+
+class _AppGalaxiaState extends State<AppGalaxia> {
+  final _roteador = criarRoteador();
+
+  @override
+  Widget build(BuildContext context) => MaterialApp.router(
+        title: 'Galáxia do Saber',
+        debugShowCheckedModeBanner: false,
+        theme: temaGalaxia(),
+        routerConfig: _roteador,
+      );
 }
