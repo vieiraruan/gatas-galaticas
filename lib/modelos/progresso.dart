@@ -7,6 +7,7 @@ class Progresso {
   final Map<String, int> estrelas;
   final Map<String, int> jogadas;
   final Set<String> capsulas;
+  final Map<String, int> labirintosPorDia; // "2026-11-23" → labirintos feitos
 
   const Progresso({
     this.xp = 0,
@@ -15,6 +16,7 @@ class Progresso {
     this.estrelas = const {},
     this.jogadas = const {},
     this.capsulas = const {},
+    this.labirintosPorDia = const {},
   });
 
   static const vazio = Progresso();
@@ -33,6 +35,7 @@ class Progresso {
     Map<String, int>? estrelas,
     Map<String, int>? jogadas,
     Set<String>? capsulas,
+    Map<String, int>? labirintosPorDia,
   }) =>
       Progresso(
         xp: xp ?? this.xp,
@@ -41,6 +44,7 @@ class Progresso {
         estrelas: estrelas ?? this.estrelas,
         jogadas: jogadas ?? this.jogadas,
         capsulas: capsulas ?? this.capsulas,
+        labirintosPorDia: labirintosPorDia ?? this.labirintosPorDia,
       );
 
   factory Progresso.fromJson(Map<String, dynamic> j) => Progresso(
@@ -50,6 +54,8 @@ class Progresso {
         estrelas: Map<String, int>.from((j['estrelas'] as Map?) ?? const {}),
         jogadas: Map<String, int>.from((j['jogadas'] as Map?) ?? const {}),
         capsulas: ((j['capsulas'] as List?) ?? const []).cast<String>().toSet(),
+        labirintosPorDia:
+            Map<String, int>.from((j['labirintosPorDia'] as Map?) ?? const {}),
       );
 
   Map<String, dynamic> toJson() => {
@@ -59,5 +65,6 @@ class Progresso {
         'estrelas': estrelas,
         'jogadas': jogadas,
         'capsulas': capsulas.toList(),
+        'labirintosPorDia': labirintosPorDia,
       };
 }

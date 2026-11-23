@@ -3,6 +3,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'componentes/tema.dart';
 import 'telas/tela_galaxia.dart';
+import 'telas/tela_labirinto.dart';
 import 'telas/tela_novo_perfil.dart';
 import 'telas/tela_partida.dart';
 import 'telas/tela_perfis.dart';
@@ -36,6 +37,14 @@ GoRouter criarRoteador() => GoRouter(routes: [
                   GoRoute(
                     path: 'no/:indice',
                     builder: (_, s) => TelaPartida(
+                      perfilId: s.pathParameters['perfilId']!,
+                      planetaId: s.pathParameters['planetaId']!,
+                      indice: int.parse(s.pathParameters['indice']!),
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'labirinto/:indice',
+                    builder: (_, s) => TelaLabirinto(
                       perfilId: s.pathParameters['perfilId']!,
                       planetaId: s.pathParameters['planetaId']!,
                       indice: int.parse(s.pathParameters['indice']!),

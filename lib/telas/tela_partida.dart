@@ -602,6 +602,16 @@ class _PartidaState extends ConsumerState<_Partida> {
           Text('⏱️ ${seg ~/ 60}:${(seg % 60).toString().padLeft(2, '0')} · ${nivel.emoji} ${nivel.nome}',
               textAlign: TextAlign.center, style: const TextStyle(color: Cores.textoClaro)),
           const SizedBox(height: 22),
+          if (!chefao) ...[
+            const Text('Quer dar uma pausa antes da próxima missão?',
+                textAlign: TextAlign.center, style: TextStyle(color: Color(0xFFC9CFF5))),
+            const SizedBox(height: 8),
+            Botao3D.ouro(
+                texto: '🌌 LABIRINTO ORBITAL',
+                onPressed: () => context.go(
+                    '/c/${s.perfil.id}/p/${widget.planeta.id}/labirinto/${widget.indice}')),
+            const SizedBox(height: 10),
+          ],
           Botao3D(cor: p.cor, corSombra: p.corEscura, texto: 'VOLTAR PARA A NAVE', onPressed: _voltar),
           if (f.estrelas < 3) ...[
             const SizedBox(height: 10),

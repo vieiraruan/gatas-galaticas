@@ -112,7 +112,16 @@ void main() {
     expect(progresso['xp'], greaterThan(0));
     expect((progresso['estrelas'] as Map).keys.single, 'f:a4b4-m11');
 
-    await tester.tap(find.text('VOLTAR PARA A NAVE'));
+    // Pausa opcional no Labirinto Orbital, e pular volta ao mapa.
+    await tester.ensureVisible(find.text('🌌 LABIRINTO ORBITAL'));
+    await tester.tap(find.text('🌌 LABIRINTO ORBITAL'));
+    await tester.pumpAndSettle();
+    expect(find.text('🌌 LABIRINTO ORBITAL'), findsOneWidget);
+    expect(find.text('Invasão Rápida'), findsOneWidget); // poder da Nala
+    await tester.tap(find.byTooltip('Direita'));
+    await tester.tap(find.byTooltip('Baixo'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Pular o labirinto'));
     await tester.pumpAndSettle();
     expect(find.text('Divisão com 2 algarismos'), findsOneWidget);
   });

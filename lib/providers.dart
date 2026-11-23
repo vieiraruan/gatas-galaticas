@@ -73,6 +73,7 @@ class Sessao {
   BimestreConteudo get bimestre =>
       conteudo.bimestre(bimestreVisto) ?? conteudo.bimestres.first;
   int get xpHoje => progresso.xpPorDia[chaveDia(hoje)] ?? 0;
+  int get labirintosHoje => progresso.labirintosPorDia[chaveDia(hoje)] ?? 0;
   int get sequencia => sequenciaDias(progresso.xpPorDia, hoje);
 
   Planeta? planeta(String id) {
@@ -155,6 +156,25 @@ class Acoes {
           xpPorDia: {...p.xpPorDia, dia: (p.xpPorDia[dia] ?? 0) + xp},
           estrelas: {...p.estrelas, k: max(p.estrelas[k] ?? 0, estrelas)},
           jogadas: {...p.jogadas, k: (p.jogadas[k] ?? 0) + 1},
+        );
+      });
+
+  /// Registra um Labirinto Orbital concluído (não mexe nas estrelas).
+  Future<void> concluirLabirinto({
+    required String perfilId,
+    required int xp,
+    required int peixinhos,
+  }) =>
+      _alterar(perfilId, (p) {
+        final dia = chaveDia(ref.read(relogioProvider)());
+        return p.copyWith(
+          xp: p.xp + xp,
+          peixinhos: p.peixinhos + peixinhos,
+          xpPorDia: {...p.xpPorDia, dia: (p.xpPorDia[dia] ?? 0) + xp},
+          labirintosPorDia: {
+            ...p.labirintosPorDia,
+            dia: (p.labirintosPorDia[dia] ?? 0) + 1
+          },
         );
       });
 
