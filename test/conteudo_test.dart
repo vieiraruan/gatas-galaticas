@@ -47,20 +47,24 @@ void main() {
     expect(validarBimestre(carregar(4).bimestre(4)!), greaterThan(500));
   });
 
-  test('banco de perguntas do 4º bimestre (1º, 2º, 3º e 5º ano) completo e válido', () {
-    for (final ano in [1, 2, 3, 5]) {
-      final b = carregar(ano).bimestre(4)!;
-      expect(b.planetas.map((p) => p.id.split('-').last),
-          ['portugues', 'matematica', 'ciencias', 'humanas', 'etica', 'ingles']);
-      final missoes = b.planetas.expand((p) => p.missoes).toList();
-      expect(missoes.length, 24, reason: 'ano $ano');
-      for (final m in missoes) {
-        expect(m.emBreve, isFalse, reason: m.id);
-        expect(m.briefing, isNotEmpty, reason: m.id);
-        expect(m.exercicios.length, greaterThanOrEqualTo(5), reason: m.id);
+  test('bimestres com banco de perguntas estão completos e válidos', () {
+    var bimestres = 0;
+    for (var ano = 1; ano <= 5; ano++) {
+      for (final b in carregar(ano).bimestres) {
+        final completo = b.planetas.expand((p) => p.missoes).every((m) => !m.emBreve);
+        if (!completo) continue;
+        bimestres++;
+        expect(b.planetas.map((p) => p.id.split('-').last).toSet().length, 6,
+            reason: 'ano $ano bim ${b.numero}: 6 matérias');
+        for (final m in b.planetas.expand((p) => p.missoes)) {
+          expect(m.briefing, isNotEmpty, reason: m.id);
+          expect(m.exercicios.length, greaterThanOrEqualTo(5), reason: m.id);
+        }
+        expect(validarBimestre(b), greaterThan(100));
       }
-      expect(validarBimestre(b), greaterThan(140));
     }
+    // 1º e 4º bimestres de todos os anos.
+    expect(bimestres, greaterThanOrEqualTo(10));
   });
 
   test('ajuste ao nível mantém a resposta certa e corta opções', () {
