@@ -13,7 +13,7 @@ Para regerar:
 
 ```bash
 node tool/extrair_galaxia.js <galaxia.html> /tmp/galaxia.json
-python3 tool/montar_conteudo.py <trilhas_ef1_bncc.json> /tmp/galaxia.json assets/conteudo
+python3 tool/montar_conteudo.py docs/trilhas/trilhas_ef1_bncc.json /tmp/galaxia.json assets/conteudo
 ```
 
 ## Estrutura
