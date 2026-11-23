@@ -44,34 +44,23 @@ void main() {
   });
 
   test('todas as perguntas da Galáxia são válidas', () {
-    final b = carregar(4).bimestre(4)!;
-    var total = 0;
-    final ids = <String>{};
-    for (final p in b.planetas) {
-      for (final m in p.missoes) {
-        expect(ids.add(m.id), isTrue, reason: 'id repetido ${m.id}');
-        for (final e in [...m.exercicios, ...m.exerciciosDesafio]) {
-          total++;
-          switch (e) {
-            case Escolha():
-              expect(e.correta, inInclusiveRange(0, e.opcoes.length - 1));
-              expect(e.opcoes.toSet().length, e.opcoes.length, reason: e.pergunta);
-            case Completar():
-              expect(e.pergunta, contains('___'));
-              expect(e.opcoes.length, greaterThan(1));
-            case Ordenar():
-              expect(e.itens.length, greaterThan(1));
-            case Ligar():
-              expect(e.pares.length, greaterThan(1));
-            case Separar():
-              expect(e.itens.every((i) => i.grupo < e.grupos.length), isTrue);
-            case VerdadeiroFalso():
-              break;
-          }
-        }
+    expect(validarBimestre(carregar(4).bimestre(4)!), greaterThan(500));
+  });
+
+  test('banco de perguntas do 4º bimestre (1º, 2º, 3º e 5º ano) completo e válido', () {
+    for (final ano in [1, 2, 3, 5]) {
+      final b = carregar(ano).bimestre(4)!;
+      expect(b.planetas.map((p) => p.id.split('-').last),
+          ['portugues', 'matematica', 'ciencias', 'humanas', 'etica', 'ingles']);
+      final missoes = b.planetas.expand((p) => p.missoes).toList();
+      expect(missoes.length, 24, reason: 'ano $ano');
+      for (final m in missoes) {
+        expect(m.emBreve, isFalse, reason: m.id);
+        expect(m.briefing, isNotEmpty, reason: m.id);
+        expect(m.exercicios.length, greaterThanOrEqualTo(5), reason: m.id);
       }
+      expect(validarBimestre(b), greaterThan(140));
     }
-    expect(total, greaterThan(500));
   });
 
   test('ajuste ao nível mantém a resposta certa e corta opções', () {
@@ -97,4 +86,38 @@ void main() {
       expect(montarPartida(nos.last, n, Random(2)).length, n.perguntasChefao);
     }
   });
+}
+
+/// Confere cada pergunta do bimestre e devolve quantas são.
+int validarBimestre(BimestreConteudo b) {
+  var total = 0;
+  final ids = <String>{};
+  for (final p in b.planetas) {
+    for (final m in p.missoes) {
+      expect(ids.add(m.id), isTrue, reason: 'id repetido ${m.id}');
+      for (final e in [...m.exercicios, ...m.exerciciosDesafio]) {
+        total++;
+        switch (e) {
+          case Escolha():
+            expect(e.correta, inInclusiveRange(0, e.opcoes.length - 1));
+            expect(e.opcoes.toSet().length, e.opcoes.length, reason: e.pergunta);
+          case Completar():
+            expect(e.pergunta, contains('___'));
+            expect(e.opcoes.length, greaterThan(1));
+            expect(e.opcoes.toSet().length, e.opcoes.length, reason: e.pergunta);
+          case Ordenar():
+            expect(e.itens.length, greaterThan(1));
+          case Ligar():
+            expect(e.pares.length, greaterThan(1));
+            expect(e.pares.map((x) => x.$1).toSet().length, e.pares.length, reason: e.pergunta);
+            expect(e.pares.map((x) => x.$2).toSet().length, e.pares.length, reason: e.pergunta);
+          case Separar():
+            expect(e.itens.every((i) => i.grupo < e.grupos.length), isTrue);
+          case VerdadeiroFalso():
+            break;
+        }
+      }
+    }
+  }
+  return total;
 }

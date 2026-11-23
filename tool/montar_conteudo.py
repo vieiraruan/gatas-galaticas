@@ -3,16 +3,33 @@
 Fontes:
 - trilhas/trilhas_ef1_bncc.json: estrutura da BNCC (bimestre, disciplina,
   unidade e modelos de missão). Missões sem perguntas aparecem como "em breve".
+- tool/perguntas/anoN_bB.py: banco de perguntas (briefing + exercícios) por
+  id de missão da trilha. Missões que não estão no banco ficam "em breve".
 - galaxia.json (gerado por tool/extrair_galaxia.js a partir da Galáxia do
   Saber): conteúdo completo, usado no 4º bimestre do 4º ano.
 
 Uso: python3 tool/montar_conteudo.py <trilhas_ef1_bncc.json> <galaxia.json> assets/conteudo
 """
+import importlib.util
 import json
 import os
 import sys
 
-# Planetas das disciplinas da BNCC, no estilo da Galáxia.
+PERGUNTAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "perguntas")
+sys.path.insert(0, PERGUNTAS)
+
+
+def banco(ano, bim):
+    """Missões escritas em tool/perguntas/anoN_bB.py (id da BNCC -> briefing + exercícios)."""
+    caminho = os.path.join(PERGUNTAS, f"ano{ano}_b{bim}.py")
+    if not os.path.exists(caminho):
+        return {}
+    spec = importlib.util.spec_from_file_location(f"ano{ano}_b{bim}", caminho)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.MISSOES
+
+# Planetas das disciplinas da escola, os mesmos da Galáxia do Saber.
 PLANETAS = {
     "portugues": dict(nome="Planeta Letrônico", nomeCurto="Português", emoji="📚",
                       cor="#1C8FE0", corEscura="#136DB0", corClara="#E3F2FF",
@@ -23,12 +40,15 @@ PLANETAS = {
     "ciencias": dict(nome="Planeta Cosmociência", nomeCurto="Ciências", emoji="🔬",
                      cor="#19B394", corEscura="#0E8A70", corClara="#E3F8F2",
                      chefao={"emoji": "👽", "nome": "Alien Curioso"}, decoracao=["🪐", "⭐", "🌙", "🔭"]),
-    "historia": dict(nome="Planeta Memória", nomeCurto="História", emoji="🏛️",
-                     cor="#E0802B", corEscura="#B05F17", corClara="#FFF0E0",
-                     chefao={"emoji": "🦖", "nome": "Dino do Tempo"}, decoracao=["⏳", "📜", "🏺", "🛰️"]),
-    "geografia": dict(nome="Planeta Gaia", nomeCurto="Geografia", emoji="🌎",
-                      cor="#2E9E4F", corEscura="#1F7438", corClara="#E6F6EA",
-                      chefao={"emoji": "🌋", "nome": "Vulcão Bagunçado"}, decoracao=["🗺️", "🧭", "🌾", "🛰️"]),
+    "humanas": dict(nome="Planeta Gaia", nomeCurto="Humanas", emoji="🌎",
+                    cor="#FF9F1C", corEscura="#D97F00", corClara="#FFF3E0",
+                    chefao={"emoji": "☄️", "nome": "Cometa Gigante"}, decoracao=["🌾", "🏭", "📡", "🛰️"]),
+    "etica": dict(nome="Nebulosa da Gentileza", nomeCurto="Ética", emoji="💗",
+                  cor="#E85D9E", corEscura="#C03C7C", corClara="#FDE8F2",
+                  chefao={"emoji": "👾", "nome": "Monstro do Silêncio"}, decoracao=["🌸", "🤝", "💗", "✨"]),
+    "ingles": dict(nome="Planeta Big Ben", nomeCurto="Inglês", emoji="🇬🇧",
+                   cor="#E5484D", corEscura="#B32D33", corClara="#FFE8E8",
+                   chefao={"emoji": "⏰", "nome": "Relógio Maluco"}, decoracao=["🇬🇧", "⏰", "🍳", "🛰️"]),
 }
 EMOJI_TIPO = {
     "quiz": "❓", "arrastar_soltar": "🧲", "ligar_pares": "🔗", "ordenar": "🔢",
@@ -37,7 +57,7 @@ EMOJI_TIPO = {
 }
 
 
-def planeta_bncc(ano, bim, disc, nomes):
+def planeta_bncc(ano, bim, disc, nomes, perguntas):
     meta = PLANETAS[disc["disciplina_id"]]
     pid = f"a{ano}b{bim}-{disc['disciplina_id']}"
     return {
@@ -58,8 +78,8 @@ def planeta_bncc(ano, bim, disc, nomes):
                         "descricao": m.get("descricao"),
                         "tipoBncc": m["tipo"],
                         "requerAdulto": m.get("requer_adulto", False),
-                        "briefing": [],
-                        "exercicios": [],
+                        "briefing": perguntas.get(m["id"], {}).get("briefing", []),
+                        "exercicios": perguntas.get(m["id"], {}).get("exercicios", []),
                     }
                     for m in u["missoes"]
                 ],
@@ -102,8 +122,12 @@ def main(bncc_path, galaxia_path, destino):
                 planetas = planetas_galaxia(galaxia, ano, 4)
                 origem = "Galáxia do Saber"
             else:
-                planetas = [planeta_bncc(ano, b["numero"], d, nomes) for d in b["disciplinas"]]
-                origem = "BNCC (estrutura)"
+                perguntas = banco(ano, b["numero"])
+                planetas = [planeta_bncc(ano, b["numero"], d, nomes, perguntas) for d in b["disciplinas"]]
+                ids = {m["id"] for p in planetas for s in p["setores"] for m in s["missoes"]}
+                sobra = sorted(set(perguntas) - ids)
+                assert not sobra, f"ids sem missão na trilha: {sobra}"
+                origem = "BNCC + banco de perguntas" if perguntas else "BNCC (estrutura)"
             conteudo["bimestres"].append({
                 "numero": b["numero"],
                 "titulo": f"{b['numero']}º bimestre",

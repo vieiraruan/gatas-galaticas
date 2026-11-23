@@ -64,7 +64,7 @@ void main() {
   test('missões do dia seguem o rodízio', () {
     final port = planeta('a1b1-portugues', [Setor('p', 'P', '', [m('p1')])]);
     final cien = planeta('a1b1-ciencias', [Setor('c', 'C', '', [m('c1')])]);
-    final hist = planeta('a1b1-historia', [Setor('h', 'H', '', [m('h1')])]);
+    final hist = planeta('a1b1-humanas', [Setor('h', 'H', '', [m('h1')])]);
     final b = BimestreConteudo(1, '1º', [hist, cien, p, port]);
     final c = ConteudoAno(1, '1º ano', [b], {
       4: ['portugues', 'matematica', 'ciencias'],

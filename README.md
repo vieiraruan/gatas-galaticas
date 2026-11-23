@@ -25,7 +25,7 @@ flutter test
   Errou? Aparece a explicação e a pergunta volta no fim.
 - **Níveis:** Fácil, Difícil, Expert e Gênio do Universo (30 s por pergunta). Cada nível tem estrelas próprias.
 - **Recompensas:** XP com nível e patente (Cadete → Lenda da Galáxia), peixinhos, sequência de dias e meta de 30 XP por dia.
-- **Missões de hoje:** seguem o rodízio da BNCC (Português e Matemática todo dia, mais Ciências, História ou Geografia).
+- **Missões de hoje:** seguem o rodízio da BNCC (Português e Matemática todo dia, mais Ciências Naturais, Ciências Humanas, Inglês ou Ética).
 - **Bimestre:** o do calendário escolar (fev–abr 1º, mai–jul 2º, ago–set 3º, out–dez 4º). Os anteriores ficam abertos.
 - **Dados:** só no aparelho (shared_preferences), atrás de interfaces em `lib/dados/` para trocar por nuvem depois.
 

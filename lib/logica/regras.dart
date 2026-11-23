@@ -186,8 +186,12 @@ const _apelidos = {
   'portugues': ['portugues', 'por'],
   'matematica': ['matematica', 'mat'],
   'ciencias': ['ciencias', 'cie'],
-  'historia': ['historia', 'hum'],
-  'geografia': ['geografia', 'hum'],
+  'humanas': ['humanas', 'hum'],
+  'etica': ['etica', 'eti'],
+  'ingles': ['ingles', 'ing'],
+  // Trilha v1 (antes de Ciências Humanas).
+  'historia': ['historia', 'humanas', 'hum'],
+  'geografia': ['geografia', 'humanas', 'hum'],
 };
 
 Planeta? planetaDaDisciplina(BimestreConteudo b, String disciplina) {
