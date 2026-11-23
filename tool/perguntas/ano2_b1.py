@@ -28,7 +28,7 @@ MISSOES = {
         [
             ordem("Forme a palavra 🐴", ["CA", "VA", "LO"], "**CAVALO**."),
             ordem("Forme a palavra 🦋", ["BOR", "BO", "LE", "TA"], "**BORBOLETA**."),
-            ordem("Forme a palavra 🍌", ["BA", "NA", "NA"], "**BANANA**."),
+            ordem("Forme a palavra 🍿", ["PI", "PO", "CA"], "**PIPOCA**."),
             ordem("Forme a palavra 🐢", ["TAR", "TA", "RU", "GA"], "**TARTARUGA**."),
             ordem("Forme a palavra 🎈", ["BA", "LÃO"], "**BALÃO**."),
             mc("Quantas sílabas tem **SAPATO**?", ["3", "2", "4"], "SA-PA-TO: **3 sílabas**.", "👞"),

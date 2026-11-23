@@ -64,7 +64,7 @@ void main() {
       }
     }
     // 1º e 4º bimestres de todos os anos.
-    expect(bimestres, greaterThanOrEqualTo(10));
+    expect(bimestres, greaterThanOrEqualTo(20));
   });
 
   test('ajuste ao nível mantém a resposta certa e corta opções', () {
@@ -111,6 +111,7 @@ int validarBimestre(BimestreConteudo b) {
             expect(e.opcoes.toSet().length, e.opcoes.length, reason: e.pergunta);
           case Ordenar():
             expect(e.itens.length, greaterThan(1));
+            expect(e.itens.toSet().length, e.itens.length, reason: e.pergunta);
           case Ligar():
             expect(e.pares.length, greaterThan(1));
             expect(e.pares.map((x) => x.$1).toSet().length, e.pares.length, reason: e.pergunta);

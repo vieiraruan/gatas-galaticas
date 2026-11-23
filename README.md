@@ -32,7 +32,7 @@ flutter test
 ## Conteúdo
 
 - 4º ano, 4º bimestre: conteúdo completo da Galáxia (6 planetas, 44 missões, mais de 500 perguntas).
-- Demais anos e bimestres: estrutura da BNCC, com missões "em construção" até o conteúdo ser escrito.
+- Todos os outros bimestres do 1º ao 5º ano: banco de perguntas próprio em `tool/perguntas/` (mais de 400 missões e 2.500 perguntas), seguindo a trilha da BNCC.
 
 Formato e como regerar: [docs/formato_conteudo.md](docs/formato_conteudo.md).
 
