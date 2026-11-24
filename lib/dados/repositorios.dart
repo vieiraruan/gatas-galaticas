@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../modelos/conteudo.dart';
 import '../modelos/perfil.dart';
 import '../modelos/progresso.dart';
+import '../modelos/rotina.dart';
 
 /// Camada de dados. As telas só conhecem estas interfaces: trocar o
 /// armazenamento local por nuvem no futuro é escrever outra implementação.
@@ -19,6 +20,14 @@ abstract class RepositorioPerfis {
 abstract class RepositorioProgresso {
   Future<Progresso> carregar(String perfilId);
   Future<void> salvar(String perfilId, Progresso progresso);
+}
+
+/// Horário das aulas e provas de cada criança, e o PIN da área dos pais.
+abstract class RepositorioPais {
+  Future<Rotina> rotina(String perfilId);
+  Future<void> salvarRotina(String perfilId, Rotina rotina);
+  Future<String?> pin();
+  Future<void> salvarPin(String? pin);
 }
 
 abstract class RepositorioConteudo {
@@ -60,6 +69,7 @@ class RepositorioPerfisLocal implements RepositorioPerfis {
     await prefs.setString(
         _chave, jsonEncode(lista.map((p) => p.toJson()).toList()));
     await prefs.remove('progresso_$id');
+    await prefs.remove('rotina_$id');
   }
 }
 
@@ -77,6 +87,34 @@ class RepositorioProgressoLocal implements RepositorioProgresso {
   @override
   Future<void> salvar(String perfilId, Progresso progresso) =>
       prefs.setString('progresso_$perfilId', jsonEncode(progresso.toJson()));
+}
+
+class RepositorioPaisLocal implements RepositorioPais {
+  final SharedPreferences prefs;
+  RepositorioPaisLocal(this.prefs);
+
+  @override
+  Future<Rotina> rotina(String perfilId) async {
+    final t = prefs.getString('rotina_$perfilId');
+    if (t == null) return Rotina.vazia;
+    return Rotina.fromJson(jsonDecode(t) as Map<String, dynamic>);
+  }
+
+  @override
+  Future<void> salvarRotina(String perfilId, Rotina rotina) =>
+      prefs.setString('rotina_$perfilId', jsonEncode(rotina.toJson()));
+
+  @override
+  Future<String?> pin() async => prefs.getString('pais_pin');
+
+  @override
+  Future<void> salvarPin(String? pin) async {
+    if (pin == null) {
+      await prefs.remove('pais_pin');
+    } else {
+      await prefs.setString('pais_pin', pin);
+    }
+  }
 }
 
 class RepositorioConteudoAssets implements RepositorioConteudo {

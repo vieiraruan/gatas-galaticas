@@ -5,10 +5,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dados/repositorios.dart';
+import 'logica/nave.dart';
 import 'logica/regras.dart';
 import 'modelos/conteudo.dart';
 import 'modelos/perfil.dart';
 import 'modelos/progresso.dart';
+import 'modelos/rotina.dart';
 
 /// Preenchido em main() com `overrideWithValue`.
 final prefsProvider = Provider<SharedPreferences>(
@@ -22,6 +24,8 @@ final repositorioPerfisProvider = Provider<RepositorioPerfis>(
     (ref) => RepositorioPerfisLocal(ref.watch(prefsProvider)));
 final repositorioProgressoProvider = Provider<RepositorioProgresso>(
     (ref) => RepositorioProgressoLocal(ref.watch(prefsProvider)));
+final repositorioPaisProvider = Provider<RepositorioPais>(
+    (ref) => RepositorioPaisLocal(ref.watch(prefsProvider)));
 final repositorioConteudoProvider = Provider<RepositorioConteudo>(
     (ref) => RepositorioConteudoAssets(rootBundle));
 
@@ -36,6 +40,22 @@ final conteudoProvider = FutureProvider.family<ConteudoAno, int>(
 
 final progressoProvider = FutureProvider.family<Progresso, String>(
     (ref, id) => ref.watch(repositorioProgressoProvider).carregar(id));
+
+final rotinaProvider = FutureProvider.family<Rotina, String>(
+    (ref, id) => ref.watch(repositorioPaisProvider).rotina(id));
+
+final pinProvider =
+    FutureProvider<String?>((ref) => ref.watch(repositorioPaisProvider).pin());
+
+/// Área dos pais destrancada (vale até sair dela ou fechar o app).
+class PaisLiberado extends Notifier<bool> {
+  @override
+  bool build() => false;
+  void liberar() => state = true;
+  void trancar() => state = false;
+}
+
+final paisLiberadoProvider = NotifierProvider<PaisLiberado, bool>(PaisLiberado.new);
 
 /// Bimestre que a criança está vendo (começa no do calendário).
 class BimestreEscolhido extends Notifier<int?> {
@@ -56,6 +76,7 @@ class Sessao {
   final List<Nivel> niveis;
   final DateTime hoje;
   final int bimestreVisto;
+  final Rotina rotina;
 
   Sessao({
     required this.perfil,
@@ -64,6 +85,7 @@ class Sessao {
     required this.niveis,
     required this.hoje,
     required this.bimestreVisto,
+    this.rotina = Rotina.vazia,
   });
 
   Nivel get nivel =>
@@ -93,7 +115,50 @@ class Sessao {
         progresso: progresso,
         nivel: perfil.nivel,
         hoje: hoje,
+        rotina: rotina,
+        bimestreAtual: bimestreAtual,
       );
+
+  /// Provas dos próximos 21 dias.
+  List<Prova> get provasProximas => rotina.proximas(hoje, dentroDeDias: 21);
+
+  /// Planetas (do conteúdo) dos bimestres já abertos.
+  Iterable<Planeta> get planetasAbertos => conteudo.bimestres
+      .where((b) => bimestreAberto(b.numero))
+      .expand((b) => b.planetas);
+
+  /// Setor (assunto) pelo id, em qualquer bimestre.
+  ({Planeta planeta, int setor, int bimestre})? setorPorId(String id) {
+    for (final b in conteudo.bimestres) {
+      for (final p in b.planetas) {
+        for (var i = 0; i < p.setores.length; i++) {
+          if (p.setores[i].id == id) return (planeta: p, setor: i, bimestre: b.numero);
+        }
+      }
+    }
+    return null;
+  }
+
+  Prova? prova(String id) => rotina.provas.where((p) => p.id == id).firstOrNull;
+
+  /// Nó de treino de uma prova (assuntos da matéria, ou o bimestre todo).
+  NoTreino? treino(Prova prova) {
+    final setores = <Setor>[];
+    Planeta? planeta;
+    for (final a in prova.assuntos) {
+      final x = setorPorId(a);
+      if (x == null) continue;
+      planeta ??= x.planeta;
+      setores.add(x.planeta.setores[x.setor]);
+    }
+    if (planeta == null) {
+      planeta = planetaDaDisciplina(bimestre, prova.materia);
+      if (planeta == null) return null;
+      setores.addAll(planeta.setores);
+    }
+    final no = NoTreino(planeta, setores, prova.id);
+    return emBreve(no) ? null : no;
+  }
 }
 
 final sessaoProvider =
@@ -110,6 +175,7 @@ final sessaoProvider =
     niveis: await ref.watch(niveisProvider.future),
     hoje: hoje,
     bimestreVisto: escolhido ?? bimestreDoCalendario(hoje),
+    rotina: await ref.watch(rotinaProvider(perfilId).future),
   );
 });
 
@@ -127,7 +193,36 @@ class Acoes {
     await ref.read(repositorioPerfisProvider).remover(id);
     ref.invalidate(perfisProvider);
     ref.invalidate(progressoProvider(id));
+    ref.invalidate(rotinaProvider(id));
   }
+
+  Future<void> salvarRotina(String perfilId, Rotina rotina) async {
+    await ref.read(repositorioPaisProvider).salvarRotina(perfilId, rotina);
+    ref.invalidate(rotinaProvider(perfilId));
+  }
+
+  Future<void> salvarPin(String? pin) async {
+    await ref.read(repositorioPaisProvider).salvarPin(pin);
+    ref.invalidate(pinProvider);
+  }
+
+  /// Constrói uma peça da nave. Devolve false se não deu.
+  Future<bool> construirPeca(String perfilId, PecaNave peca) async {
+    var ok = false;
+    await _alterar(perfilId, (p) {
+      final novo = comPecaConstruida(p, peca);
+      ok = novo != null;
+      return novo ?? p;
+    });
+    return ok;
+  }
+
+  /// Marca que a prova surpresa do dia já foi oferecida.
+  Future<void> marcarSurpresa(String perfilId) => _alterar(perfilId, (p) {
+        final dia = chaveDia(ref.read(relogioProvider)());
+        return p.copyWith(
+            surpresasPorDia: {...p.surpresasPorDia, dia: (p.surpresasPorDia[dia] ?? 0) + 1});
+      });
 
   Future<Progresso> _alterar(
       String perfilId, Progresso Function(Progresso) f) async {
@@ -146,6 +241,9 @@ class Acoes {
     required int estrelas,
     required int xp,
     required int peixinhos,
+    Map<String, int> suprimentos = const {},
+    Map<String, int> acertos = const {},
+    Map<String, int> respostas = const {},
   }) =>
       _alterar(perfilId, (p) {
         final k = Progresso.chave(nivel, noId);
@@ -156,6 +254,9 @@ class Acoes {
           xpPorDia: {...p.xpPorDia, dia: (p.xpPorDia[dia] ?? 0) + xp},
           estrelas: {...p.estrelas, k: max(p.estrelas[k] ?? 0, estrelas)},
           jogadas: {...p.jogadas, k: (p.jogadas[k] ?? 0) + 1},
+          suprimentos: somar(p.suprimentos, suprimentos),
+          acertosPorMateria: somar(p.acertosPorMateria, acertos),
+          respostasPorMateria: somar(p.respostasPorMateria, respostas),
         );
       });
 

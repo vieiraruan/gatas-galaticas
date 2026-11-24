@@ -9,6 +9,19 @@ class Progresso {
   final Set<String> capsulas;
   final Map<String, int> labirintosPorDia; // "2026-11-23" → labirintos feitos
 
+  /// Suprimentos da Nave Gatística por matéria (ex.: 'matematica' → 7).
+  final Map<String, int> suprimentos;
+
+  /// Peças da Nave Gatística já construídas.
+  final Set<String> pecas;
+
+  /// Respostas por matéria, para o acompanhamento dos pais.
+  final Map<String, int> acertosPorMateria;
+  final Map<String, int> respostasPorMateria;
+
+  /// "2026-11-24" → provas surpresa oferecidas no dia.
+  final Map<String, int> surpresasPorDia;
+
   const Progresso({
     this.xp = 0,
     this.peixinhos = 0,
@@ -17,6 +30,11 @@ class Progresso {
     this.jogadas = const {},
     this.capsulas = const {},
     this.labirintosPorDia = const {},
+    this.suprimentos = const {},
+    this.pecas = const {},
+    this.acertosPorMateria = const {},
+    this.respostasPorMateria = const {},
+    this.surpresasPorDia = const {},
   });
 
   static const vazio = Progresso();
@@ -28,6 +46,15 @@ class Progresso {
   bool capsulaAberta(String nivel, String no) =>
       capsulas.contains(chave(nivel, no));
 
+  /// Maior número de estrelas de um nó em qualquer nível.
+  int melhorEstrela(String no) {
+    var m = 0;
+    for (final e in estrelas.entries) {
+      if (e.key.endsWith(':$no') && e.value > m) m = e.value;
+    }
+    return m;
+  }
+
   Progresso copyWith({
     int? xp,
     int? peixinhos,
@@ -36,6 +63,11 @@ class Progresso {
     Map<String, int>? jogadas,
     Set<String>? capsulas,
     Map<String, int>? labirintosPorDia,
+    Map<String, int>? suprimentos,
+    Set<String>? pecas,
+    Map<String, int>? acertosPorMateria,
+    Map<String, int>? respostasPorMateria,
+    Map<String, int>? surpresasPorDia,
   }) =>
       Progresso(
         xp: xp ?? this.xp,
@@ -45,17 +77,29 @@ class Progresso {
         jogadas: jogadas ?? this.jogadas,
         capsulas: capsulas ?? this.capsulas,
         labirintosPorDia: labirintosPorDia ?? this.labirintosPorDia,
+        suprimentos: suprimentos ?? this.suprimentos,
+        pecas: pecas ?? this.pecas,
+        acertosPorMateria: acertosPorMateria ?? this.acertosPorMateria,
+        respostasPorMateria: respostasPorMateria ?? this.respostasPorMateria,
+        surpresasPorDia: surpresasPorDia ?? this.surpresasPorDia,
       );
+
+  static Map<String, int> _mapa(Object? j) =>
+      Map<String, int>.from((j as Map?) ?? const {});
 
   factory Progresso.fromJson(Map<String, dynamic> j) => Progresso(
         xp: (j['xp'] as int?) ?? 0,
         peixinhos: (j['peixinhos'] as int?) ?? 0,
-        xpPorDia: Map<String, int>.from((j['xpPorDia'] as Map?) ?? const {}),
-        estrelas: Map<String, int>.from((j['estrelas'] as Map?) ?? const {}),
-        jogadas: Map<String, int>.from((j['jogadas'] as Map?) ?? const {}),
+        xpPorDia: _mapa(j['xpPorDia']),
+        estrelas: _mapa(j['estrelas']),
+        jogadas: _mapa(j['jogadas']),
         capsulas: ((j['capsulas'] as List?) ?? const []).cast<String>().toSet(),
-        labirintosPorDia:
-            Map<String, int>.from((j['labirintosPorDia'] as Map?) ?? const {}),
+        labirintosPorDia: _mapa(j['labirintosPorDia']),
+        suprimentos: _mapa(j['suprimentos']),
+        pecas: ((j['pecas'] as List?) ?? const []).cast<String>().toSet(),
+        acertosPorMateria: _mapa(j['acertosPorMateria']),
+        respostasPorMateria: _mapa(j['respostasPorMateria']),
+        surpresasPorDia: _mapa(j['surpresasPorDia']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -66,5 +110,10 @@ class Progresso {
         'jogadas': jogadas,
         'capsulas': capsulas.toList(),
         'labirintosPorDia': labirintosPorDia,
+        'suprimentos': suprimentos,
+        'pecas': pecas.toList(),
+        'acertosPorMateria': acertosPorMateria,
+        'respostasPorMateria': respostasPorMateria,
+        'surpresasPorDia': surpresasPorDia,
       };
 }

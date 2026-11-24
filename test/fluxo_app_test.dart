@@ -58,24 +58,48 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Quem vai decolar hoje?'), findsOneWidget);
-    await tester.tap(find.text('Novo astronauta'));
+    await tester.tap(find.textContaining('Novo astronauta'));
     await tester.pumpAndSettle();
+
+    // Os pais criam o PIN (duas vezes) antes de cadastrar.
+    expect(find.text('Crie um PIN de 4 números'), findsOneWidget);
+    for (var vez = 0; vez < 2; vez++) {
+      for (final t in ['1', '9', '8', '4']) {
+        await tester.tap(find.byKey(Key('tecla$t')));
+        await tester.pumpAndSettle();
+      }
+    }
+    expect(prefs.getString('pais_pin'), '1984');
+
     await tester.enterText(find.byKey(const Key('campoNome')), 'bernardo');
     await tester.tap(find.text('4º'));
     await tester.tap(find.text('Nala Pudinzinha'));
     await tester.pump();
-    await tester.tap(find.text('🚀 DECOLAR!'));
+    await tester.tap(find.text('🚀 CADASTRAR'));
+    await tester.pumpAndSettle();
+    expect(find.text('Bernardo · 4º ano'), findsOneWidget); // lista dos pais
+    await tester.tap(find.byTooltip('Sair da área dos pais'));
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('Bernardo'));
     await tester.pumpAndSettle();
-    expect(find.text('Galáxia do Saber'), findsOneWidget);
+    expect(find.text('Universo do 4º ano'), findsOneWidget);
     expect(find.text('MISSÕES DE HOJE'), findsOneWidget);
 
-    await tester.scrollUntilVisible(find.text('Planeta Numerópolis'), 300,
+    // Matéria = galáxia, assunto = planeta.
+    await tester.scrollUntilVisible(find.text('Galáxia dos Números'), 300,
         scrollable: find.byType(Scrollable).first);
-    await tester.tap(find.text('Planeta Numerópolis'));
+    await tester.ensureVisible(find.text('Galáxia dos Números'));
     await tester.pumpAndSettle();
+    await tester.tap(find.text('Galáxia dos Números'));
+    await tester.pumpAndSettle();
+    expect(find.text('Frações'), findsOneWidget);
+    await tester.ensureVisible(find.text('Divisão'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Divisão'));
+    await tester.pumpAndSettle();
+    expect(find.text('Problemas de divisão'), findsOneWidget);
+    expect(find.text('Noção de fração'), findsNothing); // outro planeta
     await tester.tap(find.text('Exata ou não exata'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('🚀 DECOLAR'));
@@ -93,24 +117,36 @@ void main() {
     await tester.pumpAndSettle();
 
     // Responde sempre a primeira opção até acabar (erros voltam no fim).
+    var reacoes = 0;
     for (var rodada = 0; rodada < 20; rodada++) {
       if (find.text('Missão cumprida!').evaluate().isNotEmpty) break;
+      if (find.text('💪 ACEITO O DESAFIO!').evaluate().isNotEmpty) {
+        await tester.tap(find.text('💪 ACEITO O DESAFIO!'));
+        await tester.pumpAndSettle();
+      }
       final opcao = find.byWidgetPredicate(
           (w) => w.key is ValueKey && '${(w.key as ValueKey).value}'.startsWith('opcao'));
       await tester.tap(opcao.first);
       await tester.pump();
       await tester.tap(find.text('VERIFICAR'));
+      await tester.pump(const Duration(milliseconds: 200));
+      // Carinha de gato pulando na tela a cada resposta.
+      if (find.byKey(const Key('reacaoGato')).evaluate().isNotEmpty) reacoes++;
       await tester.pumpAndSettle();
       await tester.tap(find.text('CONTINUAR'));
       await tester.pumpAndSettle();
     }
     expect(find.text('Missão cumprida!'), findsOneWidget);
+    expect(reacoes, greaterThan(0));
+    expect(find.text('SUPRIMENTOS PARA A NAVE GATÍSTICA'), findsOneWidget);
 
     final progresso = jsonDecode(prefs.getString(
             'progresso_${jsonDecode(prefs.getString('perfis')!)[0]['id']}')!)
         as Map<String, dynamic>;
     expect(progresso['xp'], greaterThan(0));
     expect((progresso['estrelas'] as Map).keys.single, 'f:a4b4-m11');
+    expect((progresso['suprimentos'] as Map)['matematica'], greaterThan(0));
+    expect((progresso['respostasPorMateria'] as Map)['matematica'], greaterThan(0));
 
     // Pausa opcional no Labirinto Orbital, e pular volta ao mapa.
     await tester.ensureVisible(find.text('🌌 LABIRINTO ORBITAL'));

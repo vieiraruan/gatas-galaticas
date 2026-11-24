@@ -19,7 +19,7 @@ class Hud extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(14, MediaQuery.paddingOf(context).top + 8, 14, 10),
       child: Row(children: [
         GestureDetector(
-          onTap: () => context.go('/c/${sessao.perfil.id}/editar'),
+          onTap: () => context.go('/c/${sessao.perfil.id}/nave'),
           child: Stack(clipBehavior: Clip.none, children: [
             Container(
               width: 48,

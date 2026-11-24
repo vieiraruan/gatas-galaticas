@@ -2,6 +2,7 @@ import 'dart:math';
 
 import '../modelos/conteudo.dart';
 import '../modelos/progresso.dart';
+import '../modelos/rotina.dart';
 
 /// Regras do jogo, no mesmo espírito da Galáxia do Saber.
 /// Tudo aqui é puro (sem I/O) para facilitar os testes.
@@ -108,6 +109,35 @@ class NoChefao extends No {
   String get emoji => planeta.chefaoEmoji;
 }
 
+/// Treino para uma prova marcada pelos pais: mistura os assuntos da prova.
+class NoTreino extends No {
+  final Planeta planeta;
+  final List<Setor> setores;
+  NoTreino(this.planeta, this.setores, String provaId) : super('treino-$provaId');
+  @override
+  String get rotulo => 'Treino para a prova';
+  @override
+  String get emoji => '📝';
+}
+
+/// Prova surpresa: uma pergunta de cada missão já feita.
+class NoSurpresa extends No {
+  final List<Missao> missoes;
+  NoSurpresa(this.missoes) : super('surpresa');
+  @override
+  String get rotulo => 'Prova surpresa';
+  @override
+  String get emoji => '🚨';
+}
+
+/// Setor (planeta) de um nó; -1 para o chefão e nós especiais.
+int setorDoNo(No no) => switch (no) {
+      NoMissao(:final indiceSetor) => indiceSetor,
+      NoRevisao(:final indiceSetor) => indiceSetor,
+      NoCapsula(:final indiceSetor) => indiceSetor,
+      _ => -1,
+    };
+
 List<No> nosDoPlaneta(Planeta p) => [
       for (var i = 0; i < p.setores.length; i++) ...[
         for (final m in p.setores[i].missoes) NoMissao(m, p.setores[i], i),
@@ -123,6 +153,8 @@ List<Missao> missoesDoNo(No no) => switch (no) {
       NoRevisao(:final setor) => setor.missoes,
       NoCapsula() => const <Missao>[],
       NoChefao(:final planeta) => planeta.missoes.toList(),
+      NoTreino(:final setores) => setores.expand((x) => x.missoes).toList(),
+      NoSurpresa(:final missoes) => missoes,
     }
         .where((m) => !m.emBreve)
         .toList();
@@ -141,10 +173,13 @@ class RegrasPlaneta {
   int estrelas(No no) => progresso.estrelasDe(nivel, no.id);
   bool capsulaAberta(No no) => progresso.capsulaAberta(nivel, no.id);
 
-  /// Bloqueado se algum nó jogável anterior ainda não tem estrelas.
+  /// Bloqueado se algum nó jogável anterior do mesmo setor (planeta) ainda
+  /// não tem estrelas. Os planetas são livres; o chefão pede todos.
   bool bloqueado(int i) {
+    final setor = setorDoNo(nos[i]);
     for (var j = 0; j < i; j++) {
       final n = nos[j];
+      if (setor >= 0 && setorDoNo(n) != setor) continue;
       if (n is NoCapsula || emBreve(n)) continue;
       if (estrelas(n) == 0) return true;
     }
@@ -161,6 +196,34 @@ class RegrasPlaneta {
     if (n is! NoCapsula || capsulaAberta(n)) return false;
     final rev = nos[i - 1];
     return emBreve(rev) ? false : estrelas(rev) > 0;
+  }
+
+  /// Índices dos nós de um setor (planeta), em ordem.
+  List<int> indicesDoSetor(int setor) =>
+      [for (var i = 0; i < nos.length; i++) if (setorDoNo(nos[i]) == setor) i];
+
+  int get indiceChefao => nos.length - 1;
+
+  /// Próximo nó a jogar dentro de um setor (ou -1 se terminou).
+  int atualDoSetor(int setor) {
+    for (final i in indicesDoSetor(setor)) {
+      final n = nos[i];
+      if (n is! NoCapsula && !emBreve(n) && estrelas(n) == 0) return i;
+    }
+    return -1;
+  }
+
+  ({int ganhas, int maximo, int feitas, int total}) resumoDoSetor(int setor) {
+    final jogaveis = [
+      for (final i in indicesDoSetor(setor))
+        if (nos[i] is! NoCapsula && !emBreve(nos[i])) nos[i]
+    ];
+    return (
+      ganhas: jogaveis.fold(0, (s, n) => s + estrelas(n)),
+      maximo: jogaveis.length * 3,
+      feitas: jogaveis.where((n) => estrelas(n) > 0).length,
+      total: jogaveis.length,
+    );
   }
 
   bool get temConteudo => nos.any((n) => !emBreve(n) && n is! NoCapsula);
@@ -207,38 +270,125 @@ class MissaoDoDia {
   final No no;
   final int indice;
   final bool feita;
-  const MissaoDoDia(this.planeta, this.no, this.indice, this.feita);
+
+  /// Por que foi sugerida (ex.: '📝 Prova em 3 dias'), ou null.
+  final String? motivo;
+  const MissaoDoDia(this.planeta, this.no, this.indice, this.feita, {this.motivo});
 }
 
-/// Até 3 sugestões para hoje: o próximo nó de cada disciplina do rodízio.
-/// Na sexta (revisão) e no fim de semana, sugere os planetas com mais
-/// coisa pendente.
+/// Até 3 sugestões para hoje:
+/// 1. assuntos de provas marcadas pelos pais para os próximos 14 dias;
+/// 2. as matérias que têm aula hoje (horário dos pais) ou o rodízio da BNCC;
+/// 3. os outros planetas com coisa pendente.
 List<MissaoDoDia> missoesDoDia({
   required ConteudoAno conteudo,
   required BimestreConteudo bimestre,
   required Progresso progresso,
   required String nivel,
   required DateTime hoje,
+  Rotina rotina = Rotina.vazia,
+  int? bimestreAtual,
 }) {
-  final rodizio = conteudo.rodizio[hoje.weekday] ?? const [];
+  final out = <MissaoDoDia>[];
+  final usados = <String>{};
+  void add(Planeta p, RegrasPlaneta r, int i, {String? motivo}) {
+    if (i < 0 || out.length >= 3 || usados.contains('${p.id}#$i')) return;
+    usados.add('${p.id}#$i');
+    out.add(MissaoDoDia(p, r.nos[i], i, false, motivo: motivo));
+  }
+
+  // 1. Provas chegando.
+  final abertos = bimestreAtual ?? bimestre.numero;
+  for (final prova in rotina.proximas(hoje, dentroDeDias: 14)) {
+    final dias = prova.diasAte(hoje);
+    final motivo = dias == 0
+        ? '📝 Prova hoje!'
+        : dias == 1
+            ? '📝 Prova amanhã'
+            : '📝 Prova em $dias dias';
+    for (final b in conteudo.bimestres.where((b) => b.numero <= abertos)) {
+      for (final p in b.planetas) {
+        if (materiaDoPlaneta(p) != prova.materia) continue;
+        final r = RegrasPlaneta(p, progresso, nivel);
+        for (var s = 0; s < p.setores.length; s++) {
+          if (prova.assuntos.contains(p.setores[s].id)) {
+            add(p, r, r.atualDoSetor(s), motivo: motivo);
+          }
+        }
+      }
+    }
+  }
+
+  // 2. Aulas de hoje (ou rodízio) e 3. o resto do bimestre.
+  final doDia = rotina.temHorario
+      ? (rotina.horario[hoje.weekday] ?? const <String>[])
+      : (conteudo.rodizio[hoje.weekday] ?? const <String>[]);
   final ordem = <Planeta>[];
-  for (final d in rodizio) {
+  for (final d in doDia) {
     final p = planetaDaDisciplina(bimestre, d);
     if (p != null && !ordem.contains(p)) ordem.add(p);
   }
+  final comAula = ordem.length;
   for (final p in bimestre.planetas) {
     if (!ordem.contains(p)) ordem.add(p);
   }
-  final out = <MissaoDoDia>[];
-  for (final p in ordem) {
+  for (var k = 0; k < ordem.length && out.length < 3; k++) {
+    final p = ordem[k];
     final r = RegrasPlaneta(p, progresso, nivel);
-    final i = r.atual;
-    if (i < 0) continue;
-    out.add(MissaoDoDia(p, r.nos[i], i, false));
-    if (out.length == 3) break;
+    add(p, r, r.atual,
+        motivo: rotina.temHorario && k < comAula ? '🏫 Teve aula hoje' : null);
   }
   return out;
 }
+
+// ---------------------------------------------------------------------------
+// Galáxias (matérias) e planetas (assuntos)
+
+class InfoGalaxia {
+  final String materia;
+  final String nome;
+  final String emoji;
+  const InfoGalaxia(this.materia, this.nome, this.emoji);
+}
+
+const galaxias = [
+  InfoGalaxia('portugues', 'Galáxia das Letras', '📚'),
+  InfoGalaxia('matematica', 'Galáxia dos Números', '🔢'),
+  InfoGalaxia('ciencias', 'Galáxia da Natureza', '🔬'),
+  InfoGalaxia('humanas', 'Galáxia dos Povos', '🌎'),
+  InfoGalaxia('etica', 'Galáxia da Gentileza', '💗'),
+  InfoGalaxia('ingles', 'Galáxia Hello', '🗣️'),
+];
+
+const nomesMaterias = {
+  'portugues': 'Português',
+  'matematica': 'Matemática',
+  'ciencias': 'Ciências Naturais',
+  'humanas': 'Ciências Humanas',
+  'etica': 'Ética',
+  'ingles': 'Inglês',
+};
+
+InfoGalaxia galaxiaDe(String materia) => galaxias.firstWhere((g) => g.materia == materia,
+    orElse: () => InfoGalaxia(materia, 'Galáxia $materia', '🌌'));
+
+/// Matéria de um planeta do conteúdo, pelo fim do id (ex.: a4b4-mat).
+String materiaDoPlaneta(Planeta p) {
+  final sufixo = p.id.split('-').last;
+  for (final g in galaxias) {
+    if ((_apelidos[g.materia] ?? [g.materia]).contains(sufixo)) return g.materia;
+  }
+  return sufixo;
+}
+
+/// Os pedaços (um por bimestre) de uma galáxia ao longo do ano.
+List<({BimestreConteudo bimestre, Planeta planeta})> partesDaGalaxia(
+        ConteudoAno c, String materia) =>
+    [
+      for (final b in c.bimestres)
+        for (final p in b.planetas)
+          if (materiaDoPlaneta(p) == materia) (bimestre: b, planeta: p)
+    ];
 
 // ---------------------------------------------------------------------------
 // Montagem das perguntas de uma partida
@@ -248,11 +398,14 @@ List<Exercicio> montarPartida(No no, Nivel nivel, Random rnd) {
   if (missoes.isEmpty) return const [];
   final total = switch (no) {
     NoMissao() => nivel.perguntasMissao,
-    NoRevisao() => nivel.perguntasRevisao,
+    NoRevisao() || NoTreino() => nivel.perguntasRevisao,
+    NoSurpresa() => missoes.length,
     _ => nivel.perguntasChefao,
   };
   List<Exercicio> lista;
-  if (no is NoMissao) {
+  if (no is NoSurpresa) {
+    lista = [for (final m in missoes) ..._sortear(m, nivel, 1, rnd)];
+  } else if (no is NoMissao) {
     lista = _sortear(missoes.first, nivel, total, rnd);
   } else {
     final porMissao = (total / missoes.length).ceil() + (no is NoChefao ? 1 : 0);
@@ -324,6 +477,75 @@ Exercicio adaptar(Exercicio e, Nivel nivel, Random rnd) {
     default:
       return e;
   }
+}
+
+/// Monta a prova surpresa: até 3 missões já feitas (com estrela), de
+/// matérias diferentes quando der.
+NoSurpresa? montarSurpresa(Iterable<Planeta> planetas, Progresso progresso,
+    String nivel, Random rnd) {
+  final feitas = <(String, Missao)>[];
+  for (final p in planetas) {
+    final r = RegrasPlaneta(p, progresso, nivel);
+    for (final n in r.nos) {
+      if (n is NoMissao && !n.missao.emBreve && r.estrelas(n) > 0) {
+        feitas.add((materiaDoPlaneta(p), n.missao));
+      }
+    }
+  }
+  if (feitas.isEmpty) return null;
+  feitas.shuffle(rnd);
+  final escolhidas = <Missao>[];
+  final materias = <String>{};
+  for (final (mat, m) in feitas) {
+    if (materias.add(mat)) escolhidas.add(m);
+    if (escolhidas.length == 3) break;
+  }
+  for (final (_, m) in feitas) {
+    if (escolhidas.length == 3) break;
+    if (!escolhidas.contains(m)) escolhidas.add(m);
+  }
+  return NoSurpresa(escolhidas);
+}
+
+/// Oferece a prova surpresa no fim de uma missão? No máximo uma por dia,
+/// com 40% de chance a cada missão.
+bool sortearSurpresa(Progresso p, DateTime hoje, Random rnd) =>
+    (p.surpresasPorDia[chaveDia(hoje)] ?? 0) == 0 && rnd.nextDouble() < 0.4;
+
+// ---------------------------------------------------------------------------
+// Desafios de aprendizado no meio da missão
+
+enum TipoDesafio { relampago, sequencia }
+
+class Desafio {
+  final TipoDesafio tipo;
+
+  /// Antes de qual pergunta (índice) o desafio aparece.
+  final int antesDe;
+  const Desafio(this.tipo, this.antesDe);
+
+  String get titulo => switch (tipo) {
+        TipoDesafio.relampago => '⚡ Desafio relâmpago!',
+        TipoDesafio.sequencia => '🔥 Desafio da sequência!',
+      };
+  String get descricao => switch (tipo) {
+        TipoDesafio.relampago =>
+          'Responda a próxima pergunta em até $segundosRelampago segundos e ganhe +$bonusDesafio suprimentos!',
+        TipoDesafio.sequencia =>
+          'Acerte as próximas 3 perguntas seguidas e ganhe +$bonusDesafio suprimentos!',
+      };
+}
+
+const segundosRelampago = 25;
+const bonusDesafio = 2;
+
+/// Sorteia um desafio para uma missão ou revisão (metade das vezes).
+Desafio? sortearDesafio(No no, int perguntas, Random rnd) {
+  if (no is! NoMissao && no is! NoRevisao) return null;
+  if (perguntas < 4 || rnd.nextDouble() >= 0.5) return null;
+  final tipo = TipoDesafio.values[rnd.nextInt(TipoDesafio.values.length)];
+  final ultimo = tipo == TipoDesafio.sequencia ? perguntas - 3 : perguntas - 1;
+  return Desafio(tipo, 1 + rnd.nextInt(max(1, ultimo)));
 }
 
 /// Recompensa de uma partida.

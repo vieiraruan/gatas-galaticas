@@ -47,10 +47,13 @@ class TelaPerfis extends ConsumerWidget {
                   childAspectRatio: 0.95,
                   children: [
                     for (final p in lista) _CartaoPerfil(p),
-                    _CartaoNovo(onTap: () => context.go('/novo-perfil')),
+                    _CartaoNovo(onTap: () => context.go('/pais/novo-perfil')),
                   ],
                 ),
               ),
+              const SizedBox(height: 22),
+              Botao3D.branco(
+                  texto: '🔐 Área dos pais', onPressed: () => context.go('/pais')),
             ],
           ),
         ),
@@ -63,21 +66,6 @@ class _CartaoPerfil extends ConsumerWidget {
   final PerfilCrianca perfil;
   const _CartaoPerfil(this.perfil);
 
-  Future<void> _remover(BuildContext context, WidgetRef ref) async {
-    final ok = await showDialog<bool>(
-      context: context,
-      builder: (c) => AlertDialog(
-        title: Text('Remover ${perfil.nome}?'),
-        content: const Text('Todo o progresso desta criança será apagado.'),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Cancelar')),
-          TextButton(onPressed: () => Navigator.pop(c, true), child: const Text('Remover')),
-        ],
-      ),
-    );
-    if (ok == true) await ref.read(acoesProvider).removerPerfil(perfil.id);
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
@@ -89,7 +77,6 @@ class _CartaoPerfil extends ConsumerWidget {
           ref.read(bimestreEscolhidoProvider.notifier).limpar();
           context.go('/c/${perfil.id}');
         },
-        onLongPress: () => _remover(context, ref),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -126,7 +113,7 @@ class _CartaoNovo extends StatelessWidget {
           children: [
             Text('🧑‍🚀', style: TextStyle(fontSize: 50)),
             SizedBox(height: 8),
-            Text('Novo astronauta',
+            Text('Novo astronauta\n(pais)',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontSize: 17, fontWeight: FontWeight.w900, color: Colors.white)),

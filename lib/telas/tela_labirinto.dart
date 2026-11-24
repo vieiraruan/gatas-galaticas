@@ -55,6 +55,7 @@ class TelaLabirinto extends ConsumerWidget {
           return _Jogo(
             sessao: s,
             planeta: p,
+            setor: no == null ? -1 : setorDoNo(no),
             estrelasMissao: no == null ? 0 : r.estrelas(no),
             anteriores: anteriores,
             recentes: recentes,
@@ -68,12 +69,14 @@ class TelaLabirinto extends ConsumerWidget {
 class _Jogo extends ConsumerStatefulWidget {
   final Sessao sessao;
   final Planeta planeta;
+  final int setor;
   final int estrelasMissao;
   final List<Missao> anteriores;
   final List<Missao> recentes;
   const _Jogo({
     required this.sessao,
     required this.planeta,
+    required this.setor,
     required this.estrelasMissao,
     required this.anteriores,
     required this.recentes,
@@ -288,7 +291,8 @@ class _JogoState extends ConsumerState<_Jogo> {
         perfilId: widget.sessao.perfil.id, xp: g.xp, peixinhos: g.peixinhos);
   }
 
-  void _voltar() => context.go('/c/${widget.sessao.perfil.id}/p/${widget.planeta.id}');
+  void _voltar() => context.go('/c/${widget.sessao.perfil.id}/p/${widget.planeta.id}'
+      '/s/${widget.setor}');
 
   // -------------------------------------------------------------------------
   // Tela

@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../componentes/astros.dart';
 import '../componentes/tema.dart';
 import '../componentes/texto_rico.dart';
 import '../componentes/visuais.dart';
@@ -9,11 +10,14 @@ import '../logica/regras.dart';
 import '../modelos/conteudo.dart';
 import '../providers.dart';
 
-/// Caminho de um planeta: setores com missões, revisão, cápsula e chefão.
+/// Caminho de um planeta (assunto): missões, revisão e cápsula.
+/// `planetaId` é a matéria do bimestre no conteúdo e `setor` é o assunto;
+/// setor -1 mostra a estação do chefão e null mostra o bimestre inteiro.
 class TelaPlaneta extends ConsumerWidget {
   final String perfilId;
   final String planetaId;
-  const TelaPlaneta({super.key, required this.perfilId, required this.planetaId});
+  final int? setor;
+  const TelaPlaneta({super.key, required this.perfilId, required this.planetaId, this.setor});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,7 +34,7 @@ class TelaPlaneta extends ConsumerWidget {
               return const Center(
                   child: Text('Planeta não encontrado.', style: TextStyle(color: Colors.white)));
             }
-            return _Caminho(s: s, planeta: p);
+            return _Caminho(s: s, planeta: p, setor: setor);
           },
         ),
       ),
@@ -41,7 +45,8 @@ class TelaPlaneta extends ConsumerWidget {
 class _Caminho extends ConsumerStatefulWidget {
   final Sessao s;
   final Planeta planeta;
-  const _Caminho({required this.s, required this.planeta});
+  final int? setor;
+  const _Caminho({required this.s, required this.planeta, this.setor});
 
   @override
   ConsumerState<_Caminho> createState() => _CaminhoState();
@@ -55,7 +60,8 @@ class _CaminhoState extends ConsumerState<_Caminho> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final c = _chaveAtual.currentContext;
-      if (c != null) Scrollable.ensureVisible(c, alignment: 0.4);
+      final ro = c?.findRenderObject();
+      if (c != null && ro is RenderBox && ro.hasSize) Scrollable.ensureVisible(c, alignment: 0.4);
     });
   }
 
@@ -64,13 +70,16 @@ class _CaminhoState extends ConsumerState<_Caminho> {
     final s = widget.s, p = widget.planeta;
     final r = s.regras(p);
     final res = r.resumo;
+    final so = widget.setor;
+    final materia = materiaDoPlaneta(p);
     const desloc = [0.0, 50, 74, 50, 0, -50, -74, -50];
-    final atual = r.atual;
+    final atual = so != null && so >= 0 ? r.atualDoSetor(so) : r.atual;
     final capsulaPronta = [for (var i = 0; i < r.nos.length; i++) r.capsulaPronta(i)];
     final filhos = <Widget>[];
     var k = 0;
     for (var i = 0; i < r.nos.length; i++) {
       final no = r.nos[i];
+      if (so != null && setorDoNo(no) != so) continue;
       if (no is NoMissao && no.setor.missoes.first == no.missao) {
         k = 0;
         filhos.add(_BannerSetor(
@@ -100,6 +109,14 @@ class _CaminhoState extends ConsumerState<_Caminho> {
       ));
       k++;
     }
+    final titulo = so == null
+        ? p.nome
+        : so < 0
+            ? 'Estação do chefão'
+            : p.setores[so].titulo;
+    final estrelasTopo = so == null || so < 0
+        ? '⭐ ${res.ganhas}/${res.maximo}'
+        : '⭐ ${r.resumoDoSetor(so).ganhas}/${r.resumoDoSetor(so).maximo}';
     return Column(children: [
       Container(
         color: p.cor,
@@ -108,16 +125,19 @@ class _CaminhoState extends ConsumerState<_Caminho> {
           IconButton(
             tooltip: 'Voltar para a galáxia',
             icon: const Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () => context.go('/c/${s.perfil.id}'),
+            onPressed: () => context.go('/c/${s.perfil.id}/g/$materia'),
           ),
-          Text(p.emoji, style: const TextStyle(fontSize: 30)),
+          if (so != null && so >= 0)
+            DesenhoPlaneta(cor: Colors.white, semente: p.setores[so].id, tamanho: 42)
+          else
+            Text(so == null ? p.emoji : p.chefaoEmoji, style: const TextStyle(fontSize: 30)),
           const SizedBox(width: 8),
           Expanded(
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(p.nome,
+              Text(titulo,
                   style: const TextStyle(
                       color: Colors.white, fontSize: 19, fontWeight: FontWeight.w900)),
-              Text('${p.disciplina} · ${s.nivel.emoji} ${s.nivel.nome} · ⭐ ${res.ganhas}/${res.maximo}',
+              Text('${galaxiaDe(materia).nome} · ${s.nivel.emoji} ${s.nivel.nome} · $estrelasTopo',
                   style: const TextStyle(color: Colors.white, fontSize: 12)),
             ]),
           ),
@@ -146,15 +166,16 @@ class _CaminhoState extends ConsumerState<_Caminho> {
     final vazio = emBreve(no);
     final n = s.nivel;
     final descricao = switch (no) {
-      NoMissao(:final missao, :final setor, :final indiceSetor) => vazio
+      NoMissao(:final missao, :final setor) => vazio
           ? (missao.descricao ?? 'Missão em construção.')
-          : 'Setor ${indiceSetor + 1} · ${setor.titulo} · ${n.perguntasMissao} perguntas',
-      NoRevisao() => 'Mistura as missões do setor · ${n.perguntasRevisao} perguntas',
+          : 'Planeta ${setor.titulo} · ${n.perguntasMissao} perguntas',
+      NoRevisao() => 'Mistura as missões do planeta · ${n.perguntasRevisao} perguntas',
       NoCapsula() => r.capsulaAberta(no)
           ? 'Você já abriu esta cápsula!'
           : 'Termine a revisão para abrir.',
       NoChefao() =>
-        'Derrote o chefão acertando ${n.perguntasChefao} perguntas de todo o planeta ${p.emoji}',
+        'Derrote o chefão acertando ${n.perguntasChefao} perguntas de todos os planetas do bimestre ${p.emoji}',
+      _ => '',
     };
     showModalBottomSheet<void>(
       context: context,
@@ -180,6 +201,9 @@ class _CaminhoState extends ConsumerState<_Caminho> {
               const SizedBox(height: 12),
               if (vazio)
                 const Text('🛠️ As perguntas desta missão ainda estão sendo escritas.',
+                    style: TextStyle(fontSize: 15))
+              else if (bloqueado && no is NoChefao)
+                const Text('🔒 Complete as missões de todos os planetas do bimestre para enfrentar o chefão.',
                     style: TextStyle(fontSize: 15))
               else if (bloqueado && no is! NoCapsula)
                 const Text('🔒 Termine a missão anterior para liberar esta.',
@@ -258,7 +282,7 @@ class _CaminhoState extends ConsumerState<_Caminho> {
           controller: sc,
           padding: const EdgeInsets.fromLTRB(18, 16, 18, 30),
           children: [
-            Text('📖 Resumo · Setor ${indice + 1}',
+            Text('📖 Resumo do planeta',
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
             Text(setor.titulo,
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w900, color: p.cor)),
@@ -320,7 +344,7 @@ class _BannerSetor extends StatelessWidget {
       child: Row(children: [
         Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('SETOR ${indice + 1}${setor.subtitulo.isEmpty ? '' : ' · ${setor.subtitulo}'}',
+            Text(setor.subtitulo.isEmpty ? 'PLANETA ${indice + 1}' : setor.subtitulo,
                 style: const TextStyle(color: Colors.white70, fontSize: 11, fontWeight: FontWeight.w900)),
             Text(setor.titulo,
                 style: const TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.w900)),
