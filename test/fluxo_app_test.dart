@@ -25,8 +25,8 @@ class FalaMuda extends Fala {
 class ConteudoDoDisco implements RepositorioConteudo {
   @override
   Future<ConteudoAno> ano(int ano) async => ConteudoAno.fromJson(
-      jsonDecode(File('assets/conteudo/ano_$ano.json').readAsStringSync())
-          as Map<String, dynamic>);
+    jsonDecode(File('assets/conteudo/ano_$ano.json').readAsStringSync()) as Map<String, dynamic>,
+  );
   @override
   Future<List<Nivel>> niveis() async =>
       (jsonDecode(File('assets/conteudo/niveis.json').readAsStringSync()) as List)
@@ -35,8 +35,7 @@ class ConteudoDoDisco implements RepositorioConteudo {
 }
 
 void main() {
-  testWidgets('cadastra criança do 4º ano e vence uma missão de Matemática',
-      (tester) async {
+  testWidgets('cadastra criança do 4º ano e vence uma missão de Matemática', (tester) async {
     tester.view.physicalSize = const Size(1080, 2400);
     tester.view.devicePixelRatio = 2.5;
     addTearDown(tester.view.reset);
@@ -45,16 +44,18 @@ void main() {
     final prefs = await SharedPreferences.getInstance();
     final fala = FalaMuda();
 
-    await tester.pumpWidget(ProviderScope(
-      overrides: [
-        prefsProvider.overrideWithValue(prefs),
-        relogioProvider.overrideWithValue(() => DateTime(2026, 11, 19, 10)),
-        aleatorioProvider.overrideWithValue(Random(3)),
-        falaProvider.overrideWithValue(fala),
-        repositorioConteudoProvider.overrideWithValue(ConteudoDoDisco()),
-      ],
-      child: const AppGalaxia(),
-    ));
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          prefsProvider.overrideWithValue(prefs),
+          relogioProvider.overrideWithValue(() => DateTime(2026, 11, 19, 10)),
+          aleatorioProvider.overrideWithValue(Random(3)),
+          falaProvider.overrideWithValue(fala),
+          repositorioConteudoProvider.overrideWithValue(ConteudoDoDisco()),
+        ],
+        child: const AppGalaxia(),
+      ),
+    );
     await tester.pumpAndSettle();
 
     expect(find.text('Quem vai decolar hoje?'), findsOneWidget);
@@ -87,8 +88,11 @@ void main() {
     expect(find.text('MISSÕES DE HOJE'), findsOneWidget);
 
     // Matéria = galáxia, assunto = planeta.
-    await tester.scrollUntilVisible(find.text('Galáxia dos Números'), 300,
-        scrollable: find.byType(Scrollable).first);
+    await tester.scrollUntilVisible(
+      find.text('Galáxia dos Números'),
+      300,
+      scrollable: find.byType(Scrollable).first,
+    );
     await tester.ensureVisible(find.text('Galáxia dos Números'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Galáxia dos Números'));
@@ -125,7 +129,8 @@ void main() {
         await tester.pumpAndSettle();
       }
       final opcao = find.byWidgetPredicate(
-          (w) => w.key is ValueKey && '${(w.key as ValueKey).value}'.startsWith('opcao'));
+        (w) => w.key is ValueKey && '${(w.key as ValueKey).value}'.startsWith('opcao'),
+      );
       await tester.tap(opcao.first);
       await tester.pump();
       await tester.tap(find.text('VERIFICAR'));
@@ -140,17 +145,28 @@ void main() {
     expect(reacoes, greaterThan(0));
     expect(find.text('SUPRIMENTOS PARA A NAVE GATÍSTICA'), findsOneWidget);
 
-    final progresso = jsonDecode(prefs.getString(
-            'progresso_${jsonDecode(prefs.getString('perfis')!)[0]['id']}')!)
-        as Map<String, dynamic>;
+    final progresso = jsonDecode(
+      prefs.getString('progresso_${jsonDecode(prefs.getString('perfis')!)[0]['id']}')!,
+    ) as Map<String, dynamic>;
     expect(progresso['xp'], greaterThan(0));
     expect((progresso['estrelas'] as Map).keys.single, 'f:a4b4-m11');
     expect((progresso['suprimentos'] as Map)['matematica'], greaterThan(0));
     expect((progresso['respostasPorMateria'] as Map)['matematica'], greaterThan(0));
 
-    // Pausa opcional no Labirinto Orbital, e pular volta ao mapa.
-    await tester.ensureVisible(find.text('🌌 LABIRINTO ORBITAL'));
-    await tester.tap(find.text('🌌 LABIRINTO ORBITAL'));
+    // Pausa opcional: o menu lista os 4 minijogos; abre o Labirinto Orbital
+    // e pular volta ao mapa.
+    await tester.ensureVisible(find.text('🛋️ HORA DA PAUSA'));
+    await tester.tap(find.text('🛋️ HORA DA PAUSA'));
+    await tester.pumpAndSettle();
+    for (final nome in [
+      'Labirinto Orbital',
+      'Patrulha da Luz',
+      'Cauda de Cometa',
+      'Travessia do Cinturão',
+    ]) {
+      expect(find.text(nome), findsOneWidget);
+    }
+    await tester.tap(find.text('Labirinto Orbital'));
     await tester.pumpAndSettle();
     expect(find.text('🌌 LABIRINTO ORBITAL'), findsOneWidget);
     expect(find.text('Invasão Rápida'), findsOneWidget); // poder da Nala
