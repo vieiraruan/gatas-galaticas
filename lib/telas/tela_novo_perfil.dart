@@ -54,7 +54,7 @@ class _TelaNovoPerfilState extends ConsumerState<TelaNovoPerfil> {
           gato: _gato,
         );
     await ref.read(acoesProvider).salvarPerfil(perfil);
-    if (mounted) context.go(_original == null ? '/' : '/c/${perfil.id}');
+    if (mounted) context.go(_original == null ? '/pais' : '/pais/f/${perfil.id}');
   }
 
   @override
@@ -73,16 +73,16 @@ class _TelaNovoPerfilState extends ConsumerState<TelaNovoPerfil> {
                 child: IconButton(
                   tooltip: 'Voltar',
                   icon: const Icon(Icons.arrow_back, color: Colors.white),
-                  onPressed: () => context.go(_original == null ? '/' : '/c/${_original!.id}'),
+                  onPressed: () => context.go(_original == null ? '/pais' : '/pais/f/${_original!.id}'),
                 ),
               ),
               const Text('🧑‍🚀', textAlign: TextAlign.center, style: TextStyle(fontSize: 60)),
-              Text(_original == null ? 'Olá, astronauta!' : 'Editar astronauta',
+              Text(_original == null ? 'Novo astronauta' : 'Editar astronauta',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontSize: 28, fontWeight: FontWeight.w900, color: Cores.ouro)),
               const SizedBox(height: 20),
-              const Text('QUAL É O SEU NOME?', style: rotulo),
+              const Text('NOME DA CRIANÇA', style: rotulo),
               const SizedBox(height: 8),
               TextField(
                 key: const Key('campoNome'),
@@ -100,7 +100,7 @@ class _TelaNovoPerfilState extends ConsumerState<TelaNovoPerfil> {
                 onChanged: (_) => setState(() {}),
               ),
               const SizedBox(height: 20),
-              const Text('EM QUE ANO VOCÊ ESTÁ?', style: rotulo),
+              const Text('ANO ESCOLAR', style: rotulo),
               const SizedBox(height: 8),
               Row(
                 children: [
@@ -159,7 +159,7 @@ class _TelaNovoPerfilState extends ConsumerState<TelaNovoPerfil> {
               ),
               const SizedBox(height: 24),
               Botao3D.ouro(
-                texto: _original == null ? '🚀 DECOLAR!' : 'SALVAR',
+                texto: _original == null ? '🚀 CADASTRAR' : 'SALVAR',
                 onPressed: _valido ? _salvar : null,
               ),
             ],

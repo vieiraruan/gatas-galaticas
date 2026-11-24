@@ -9,20 +9,57 @@ import '../componentes/exercicios.dart';
 import '../componentes/fala.dart';
 import '../componentes/gatos.dart';
 import '../componentes/hud.dart';
+import '../componentes/reacao_gatos.dart';
 import '../componentes/tema.dart';
 import '../componentes/texto_rico.dart';
 import '../componentes/visuais.dart';
+import '../logica/nave.dart';
 import '../logica/regras.dart';
 import '../modelos/conteudo.dart';
 import '../providers.dart';
 
-/// Uma partida: briefing → perguntas → resultado.
+/// Planeta de mentira que dá cor e nome à prova surpresa.
+const _planetaSurpresa = Planeta(
+  id: 'surpresa',
+  disciplina: 'Prova surpresa',
+  nomeCurto: 'Surpresa',
+  nome: 'Prova surpresa',
+  emoji: '🚨',
+  cor: Color(0xFFFF6B3D),
+  corEscura: Color(0xFFC94A22),
+  corClara: Color(0xFFFFE3D9),
+  chefaoEmoji: '🚨',
+  chefaoNome: '',
+  decoracao: [],
+  setores: [],
+);
+
+enum _Modo { normal, surpresa, treino }
+
+/// Uma partida: briefing → perguntas → resultado. Também serve para a
+/// prova surpresa e para o treino de uma prova marcada pelos pais.
 class TelaPartida extends ConsumerWidget {
   final String perfilId;
   final String planetaId;
   final int indice;
+  final String? provaId;
+  final _Modo _modo;
+
   const TelaPartida(
-      {super.key, required this.perfilId, required this.planetaId, required this.indice});
+      {super.key, required this.perfilId, required this.planetaId, required this.indice})
+      : provaId = null,
+        _modo = _Modo.normal;
+
+  const TelaPartida.surpresa({super.key, required this.perfilId})
+      : planetaId = '',
+        indice = -1,
+        provaId = null,
+        _modo = _Modo.surpresa;
+
+  const TelaPartida.treino({super.key, required this.perfilId, required String this.provaId})
+      : planetaId = '',
+        indice = -1,
+        _modo = _Modo.treino;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,8 +73,40 @@ class TelaPartida extends ConsumerWidget {
         error: (e, _) => Center(child: Text('Erro: $e')),
         data: (_) {
           final s = ref.read(sessaoProvider(perfilId)).value;
-          final p = s?.planeta(planetaId);
-          if (s == null || p == null) return const Center(child: Text('Missão não encontrada.'));
+          if (s == null) return const Center(child: Text('Missão não encontrada.'));
+          void voltarAoUniverso() => context.go('/c/$perfilId');
+          switch (_modo) {
+            case _Modo.surpresa:
+              final no = montarSurpresa(
+                  s.planetasAbertos, s.progresso, s.perfil.nivel, ref.read(aleatorioProvider));
+              if (no == null) {
+                return _Aviso(
+                    texto: 'Faça algumas missões primeiro: a prova surpresa usa o que você já estudou! 📚',
+                    onVoltar: voltarAoUniverso);
+              }
+              final materiaDaMissao = {
+                for (final p in s.planetasAbertos)
+                  for (final m in p.missoes) m.id: materiaDoPlaneta(p)
+              };
+              return _Partida(
+                sessao: s,
+                planeta: _planetaSurpresa,
+                no: no,
+                indice: -1,
+                materias: [for (final m in no.missoes) materiaDaMissao[m.id] ?? ''],
+              );
+            case _Modo.treino:
+              final prova = s.prova(provaId!);
+              final no = prova == null ? null : s.treino(prova);
+              if (no == null) {
+                return _Aviso(texto: 'Treino não encontrado.', onVoltar: voltarAoUniverso);
+              }
+              return _Partida(sessao: s, planeta: no.planeta, no: no, indice: -1);
+            case _Modo.normal:
+              break;
+          }
+          final p = s.planeta(planetaId);
+          if (p == null) return const Center(child: Text('Missão não encontrada.'));
           final r = s.regras(p);
           if (indice < 0 || indice >= r.nos.length) {
             return const Center(child: Text('Missão não encontrada.'));
@@ -48,7 +117,7 @@ class TelaPartida extends ConsumerWidget {
               texto: emBreve(no)
                   ? '🛠️ Esta missão ainda está em construção.'
                   : '🔒 Esta missão ainda não foi liberada.',
-              onVoltar: () => context.go('/c/$perfilId/p/$planetaId'),
+              onVoltar: () => context.go('/c/$perfilId/p/$planetaId/s/${setorDoNo(no)}'),
             );
           }
           return _Partida(sessao: s, planeta: p, no: no, indice: indice);
@@ -76,7 +145,7 @@ class _Aviso extends StatelessWidget {
       );
 }
 
-enum _Fase { briefing, pergunta, fim }
+enum _Fase { briefing, desafio, pergunta, fim }
 
 class _Item {
   final Exercicio e;
@@ -94,8 +163,15 @@ class _Partida extends ConsumerStatefulWidget {
   final Planeta planeta;
   final No no;
   final int indice;
+
+  /// Matéria de cada pergunta (só na prova surpresa, que mistura matérias).
+  final List<String>? materias;
   const _Partida(
-      {required this.sessao, required this.planeta, required this.no, required this.indice});
+      {required this.sessao,
+      required this.planeta,
+      required this.no,
+      required this.indice,
+      this.materias});
 
   @override
   ConsumerState<_Partida> createState() => _PartidaState();
@@ -118,17 +194,48 @@ class _PartidaState extends ConsumerState<_Partida> {
   Timer? _relogio;
   int _restante = 0;
   late DateTime _inicio;
-  late final Fala _fala = ref.read(falaProvider);
+  late final Fala _fala;
   _Final? _final;
+
+  // Carinhas dos gatos
+  int _disparo = 0;
+  bool _ultimaCerta = true;
+
+  // Desafio de aprendizado no meio da missão
+  Desafio? _desafio;
+  bool _desafioAceito = false;
+  bool? _desafioVenceu;
+
+  // Respostas de primeira por matéria
+  final _acertos = <String, int>{};
+  final _respostas = <String, int>{};
 
   Sessao get s => widget.sessao;
   Nivel get nivel => s.nivel;
   String get nome => s.perfil.nome;
   bool get chefao => widget.no is NoChefao;
+  bool get surpresa => widget.no is NoSurpresa;
+  bool get especial => widget.no is NoSurpresa || widget.no is NoTreino;
+  String materiaDa(int i) =>
+      widget.materias != null && i < widget.materias!.length
+          ? widget.materias![i]
+          : materiaDoPlaneta(widget.planeta);
+
+  bool get _relampagoAgora =>
+      _desafio?.tipo == TipoDesafio.relampago && _desafioAceito && _i == _desafio!.antesDe;
+
+  /// A pergunta atual faz parte do desafio aceito.
+  bool get _noTrechoDoDesafio {
+    final d = _desafio;
+    if (d == null || !_desafioAceito) return false;
+    final fim = d.tipo == TipoDesafio.relampago ? d.antesDe : d.antesDe + 2;
+    return _i >= d.antesDe && _i <= fim;
+  }
 
   @override
   void initState() {
     super.initState();
+    _fala = ref.read(falaProvider);
     _comecar();
   }
 
@@ -149,6 +256,11 @@ class _PartidaState extends ConsumerState<_Partida> {
     _bloqueado = false;
     _final = null;
     _inicio = DateTime.now();
+    _desafio = sortearDesafio(widget.no, _base, _rnd);
+    _desafioAceito = false;
+    _desafioVenceu = null;
+    _acertos.clear();
+    _respostas.clear();
     if (_fase == _Fase.pergunta) _iniciarRelogio();
   }
 
@@ -159,15 +271,19 @@ class _PartidaState extends ConsumerState<_Partida> {
     super.dispose();
   }
 
+  int get _segundos => _relampagoAgora
+      ? (nivel.tempoSegundos > 0 ? min(nivel.tempoSegundos, segundosRelampago) : segundosRelampago)
+      : nivel.tempoSegundos;
+
   bool get _comTempo {
     final e = _lista[_i].e;
-    return nivel.tempoSegundos > 0 && (e is! Ligar && e is! Separar);
+    return _segundos > 0 && (e is! Ligar && e is! Separar);
   }
 
   void _iniciarRelogio() {
     _relogio?.cancel();
     if (!_comTempo) return;
-    _restante = nivel.tempoSegundos;
+    _restante = _segundos;
     _relogio = Timer.periodic(const Duration(seconds: 1), (t) {
       if (!mounted) return;
       setState(() => _restante--);
@@ -190,7 +306,23 @@ class _PartidaState extends ConsumerState<_Partida> {
     _relogio?.cancel();
     final item = _lista[_i];
     final primeiraVez = _i < _base;
+    if (primeiraVez) {
+      final m = materiaDa(_i);
+      _respostas[m] = (_respostas[m] ?? 0) + 1;
+      if (r.certa && r.semErros) _acertos[m] = (_acertos[m] ?? 0) + 1;
+    }
+    final d = _desafio;
+    if (_noTrechoDoDesafio && _desafioVenceu == null && d != null) {
+      final ok = r.certa && r.semErros;
+      if (!ok) {
+        _desafioVenceu = false;
+      } else if (d.tipo == TipoDesafio.relampago || _i == d.antesDe + 2) {
+        _desafioVenceu = true;
+      }
+    }
     setState(() {
+      _disparo++;
+      _ultimaCerta = r.certa;
       _bloqueado = true;
       _resposta = r;
       if (r.certa) {
@@ -220,11 +352,20 @@ class _PartidaState extends ConsumerState<_Partida> {
         _i++;
         _resposta = null;
         _bloqueado = false;
+        if (_desafio != null && !_desafioAceito && _i == _desafio!.antesDe) _fase = _Fase.desafio;
       });
-      _iniciarRelogio();
+      if (_fase == _Fase.pergunta) _iniciarRelogio();
       return;
     }
     await _terminar();
+  }
+
+  void _aceitarDesafio() {
+    setState(() {
+      _desafioAceito = true;
+      _fase = _Fase.pergunta;
+    });
+    _iniciarRelogio();
   }
 
   Future<void> _terminar() async {
@@ -232,6 +373,20 @@ class _PartidaState extends ConsumerState<_Partida> {
     final ganho = recompensa(widget.no, estrelas, nivel);
     final antes = s.progresso;
     final hojeAntes = s.xpHoje;
+    final estrelasAntes = antes.estrelasDe(s.perfil.nivel, widget.no.id);
+    final sup = <String, int>{};
+    if (surpresa) {
+      // Prova surpresa: suprimentos em dobro por acerto.
+      for (final e in _acertos.entries) {
+        if (e.key.isNotEmpty) sup[e.key] = e.value * 2;
+      }
+    } else {
+      final m = materiaDoPlaneta(widget.planeta);
+      sup[m] = suprimentosDaPartida(widget.no, estrelas, melhorou: estrelas > estrelasAntes) +
+          (_desafioVenceu == true ? bonusDesafio : 0);
+    }
+    final oferecer = (widget.no is NoMissao || widget.no is NoRevisao) &&
+        sortearSurpresa(antes, s.hoje, _rnd);
     setState(() {
       _fase = _Fase.fim;
       _final = _Final(
@@ -244,6 +399,10 @@ class _PartidaState extends ConsumerState<_Partida> {
         novoNivel: nivelJogador(antes.xp + ganho.xp),
         novaPatente: patente(antes.xp + ganho.xp),
         bateuMeta: hojeAntes < metaXpDia && hojeAntes + ganho.xp >= metaXpDia,
+        suprimentos: sup,
+        desafio: _desafio != null && _desafioAceito ? _desafio : null,
+        desafioVenceu: _desafioVenceu == true,
+        surpresa: oferecer,
       );
     });
     await ref.read(acoesProvider).concluirPartida(
@@ -253,7 +412,11 @@ class _PartidaState extends ConsumerState<_Partida> {
           estrelas: estrelas,
           xp: ganho.xp,
           peixinhos: ganho.peixinhos,
+          suprimentos: sup,
+          acertos: Map.of(_acertos),
+          respostas: Map.of(_respostas),
         );
+    if (oferecer) await ref.read(acoesProvider).marcarSurpresa(s.perfil.id);
   }
 
   void _sair() {
@@ -287,11 +450,21 @@ class _PartidaState extends ConsumerState<_Partida> {
     _voltar();
   }
 
-  void _voltar() => context.go('/c/${s.perfil.id}/p/${widget.planeta.id}');
+  void _voltar() => context.go(especial
+      ? '/c/${s.perfil.id}'
+      : '/c/${s.perfil.id}/p/${widget.planeta.id}/s/${setorDoNo(widget.no)}');
 
   @override
   Widget build(BuildContext context) {
     if (_fase == _Fase.fim) return _telaFinal();
+    return Stack(children: [
+      _corpo(context),
+      Positioned.fill(
+          child: ReacaoGatos(disparo: _disparo, acerto: _ultimaCerta, aleatorio: _rnd)),
+    ]);
+  }
+
+  Widget _corpo(BuildContext context) {
     final p = widget.planeta;
     final pct = _fase == _Fase.briefing ? 0.0 : _i / _lista.length;
     return SafeArea(
@@ -315,7 +488,7 @@ class _PartidaState extends ConsumerState<_Partida> {
           padding: const EdgeInsets.fromLTRB(18, 4, 18, 4),
           child: Row(children: [
             Expanded(
-              child: Text('🚀 ${p.nome.toUpperCase()}',
+              child: Text('${surpresa ? '🚨' : '🚀'} ${p.nome.toUpperCase()}',
                   style: TextStyle(color: p.corEscura, fontSize: 13, fontWeight: FontWeight.w900)),
             ),
             Container(
@@ -327,6 +500,19 @@ class _PartidaState extends ConsumerState<_Partida> {
           ]),
         ),
         if (chefao && _fase == _Fase.pergunta) _barraChefao(p),
+        if (_fase == _Fase.pergunta && _noTrechoDoDesafio && _desafioVenceu == null)
+          Container(
+            margin: const EdgeInsets.fromLTRB(18, 2, 18, 4),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+            decoration: BoxDecoration(
+                color: const Color(0xFFFFF4CC), borderRadius: BorderRadius.circular(12)),
+            child: Text(
+              _desafio!.tipo == TipoDesafio.sequencia
+                  ? '${_desafio!.titulo} Pergunta ${_i - _desafio!.antesDe + 1} de 3'
+                  : _desafio!.titulo,
+              style: const TextStyle(fontWeight: FontWeight.w900, color: Color(0xFF7A5A00)),
+            ),
+          ),
         if (_fase == _Fase.pergunta && _comTempo && _resposta == null)
           Padding(
             padding: const EdgeInsets.fromLTRB(18, 2, 18, 4),
@@ -335,11 +521,16 @@ class _PartidaState extends ConsumerState<_Partida> {
               const SizedBox(width: 8),
               Expanded(
                 child: BarraProgresso(
-                    valor: _restante / nivel.tempoSegundos, cor: const Color(0xFFFF9600), altura: 8),
+                    valor: _restante / _segundos, cor: const Color(0xFFFF9600), altura: 8),
               ),
             ]),
           ),
-        Expanded(child: _fase == _Fase.briefing ? _telaBriefing(p) : _telaPergunta(p)),
+        Expanded(
+            child: switch (_fase) {
+          _Fase.briefing => _telaBriefing(p),
+          _Fase.desafio => _telaDesafio(p),
+          _ => _telaPergunta(p),
+        }),
         if (_resposta != null) _painelRetorno(),
       ]),
     );
@@ -445,6 +636,36 @@ class _PartidaState extends ConsumerState<_Partida> {
     ]);
   }
 
+  Widget _telaDesafio(Planeta p) {
+    final d = _desafio!;
+    return ListView(padding: const EdgeInsets.fromLTRB(18, 20, 18, 24), children: [
+      Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(colors: [Color(0xFF2B2F8F), Color(0xFF5A3FD6)]),
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: const [BoxShadow(color: Color(0xFF1A1F5C), offset: Offset(0, 6))],
+        ),
+        child: Column(children: [
+          Text(d.tipo == TipoDesafio.relampago ? '⚡' : '🔥', style: const TextStyle(fontSize: 64)),
+          Text(d.titulo,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Cores.ouro, fontSize: 26, fontWeight: FontWeight.w900)),
+          const SizedBox(height: 8),
+          Text(d.descricao,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.white, fontSize: 18, height: 1.4)),
+          const SizedBox(height: 8),
+          AvatarGato(s.perfil.gato, tamanho: 64),
+          const Text('Se não der, tudo bem: a missão continua normal!',
+              textAlign: TextAlign.center, style: TextStyle(color: Cores.textoClaro)),
+        ]),
+      ),
+      const SizedBox(height: 16),
+      Botao3D.ouro(texto: '💪 ACEITO O DESAFIO!', onPressed: _aceitarDesafio),
+    ]);
+  }
+
   Widget _telaPergunta(Planeta p) {
     final item = _lista[_i];
     const rotulos = {
@@ -492,6 +713,17 @@ class _PartidaState extends ConsumerState<_Partida> {
               padding: const EdgeInsets.only(top: 6),
               child: TextoRico('**Resposta certa:** ${r.respostaCerta}',
                   nome: nome, estilo: TextStyle(fontSize: 17, color: corTexto)),
+            ),
+          if (_noTrechoDoDesafio)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Text(
+                  _desafioVenceu == true
+                      ? '🏅 Desafio vencido! +$bonusDesafio suprimentos para a nave!'
+                      : _desafioVenceu == false
+                          ? 'O desafio não foi desta vez. Bora continuar! 💪'
+                          : '🔥 Desafio em andamento: continue acertando!',
+                  style: TextStyle(fontSize: 17, color: corTexto, fontWeight: FontWeight.w900)),
             ),
           if (r.nota != null)
             Padding(
@@ -563,7 +795,14 @@ class _PartidaState extends ConsumerState<_Partida> {
         child: ListView(padding: const EdgeInsets.fromLTRB(20, 30, 20, 30), children: [
           Text(chefao ? '👑' : f.estrelas == 3 ? '🏆' : '🚀',
               textAlign: TextAlign.center, style: const TextStyle(fontSize: 80)),
-          Text(chefao ? 'Você derrotou o ${p.chefaoNome}!' : 'Missão cumprida!',
+          Text(
+              chefao
+                  ? 'Você derrotou o ${p.chefaoNome}!'
+                  : surpresa
+                      ? 'Prova surpresa concluída!'
+                      : widget.no is NoTreino
+                          ? 'Treino concluído!'
+                          : 'Missão cumprida!',
               textAlign: TextAlign.center,
               style: const TextStyle(color: Color(0xFFFFB100), fontSize: 28, fontWeight: FontWeight.w900)),
           Text.rich(
@@ -590,6 +829,10 @@ class _PartidaState extends ConsumerState<_Partida> {
                 '${proximoNivel != null ? '\nQue tal tentar o nível ${proximoNivel.emoji} ${proximoNivel.nome}?' : '\nVocê é um verdadeiro Gênio do Universo! 🌌'}'),
           if (f.subiuNivel) aviso('⬆️ Subiu para o nível ${f.novoNivel}: ${f.novaPatente}!'),
           if (f.bateuMeta) aviso('🎯 Meta do dia batida!'),
+          if (f.desafio != null)
+            aviso(f.desafioVenceu
+                ? '🏅 ${f.desafio!.titulo} vencido: +$bonusDesafio suprimentos!'
+                : '${f.desafio!.titulo} Não foi desta vez, mas o próximo vem aí! 💪'),
           const SizedBox(height: 18),
           Row(children: [
             cartao('XP', '⚡${f.xp}', Cores.ouro),
@@ -601,8 +844,63 @@ class _PartidaState extends ConsumerState<_Partida> {
           const SizedBox(height: 8),
           Text('⏱️ ${seg ~/ 60}:${(seg % 60).toString().padLeft(2, '0')} · ${nivel.emoji} ${nivel.nome}',
               textAlign: TextAlign.center, style: const TextStyle(color: Cores.textoClaro)),
+          if (f.suprimentos.values.any((v) => v > 0)) ...[
+            const SizedBox(height: 14),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Cores.ciano, width: 2),
+              ),
+              child: Column(children: [
+                const Text('SUPRIMENTOS PARA A NAVE GATÍSTICA',
+                    style: TextStyle(color: Cores.ciano, fontSize: 12, fontWeight: FontWeight.w900)),
+                const SizedBox(height: 4),
+                Text(
+                  [
+                    for (final e in f.suprimentos.entries)
+                      if (e.value > 0) '+${e.value} ${suprimentoDe(e.key).emoji}'
+                  ].join('   '),
+                  style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w900),
+                ),
+                Text(
+                  [
+                    for (final e in f.suprimentos.entries)
+                      if (e.value > 0) suprimentoDe(e.key).nome
+                  ].join(' · '),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Cores.textoClaro, fontSize: 12),
+                ),
+              ]),
+            ),
+          ],
+          if (f.surpresa) ...[
+            const SizedBox(height: 14),
+            Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFF6B3D),
+                borderRadius: BorderRadius.circular(18),
+                boxShadow: const [BoxShadow(color: Color(0xFFC94A22), offset: Offset(0, 5))],
+              ),
+              child: Column(children: [
+                const Text('🚨 TRANSMISSÃO SURPRESA! 🚨',
+                    style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w900)),
+                const SizedBox(height: 4),
+                Text(
+                    '${gatoPorId(s.perfil.gato).nome} preparou uma prova surpresa com 3 perguntas do que você já estudou. Cada acerto vale suprimento em dobro!',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white, fontSize: 16)),
+                const SizedBox(height: 10),
+                Botao3D.ouro(
+                    texto: '🚨 ENCARAR A PROVA SURPRESA',
+                    onPressed: () => context.go('/c/${s.perfil.id}/surpresa')),
+              ]),
+            ),
+          ],
           const SizedBox(height: 22),
-          if (!chefao) ...[
+          if (!chefao && !especial) ...[
             const Text('Quer dar uma pausa antes da próxima missão?',
                 textAlign: TextAlign.center, style: TextStyle(color: Color(0xFFC9CFF5))),
             const SizedBox(height: 8),
@@ -612,8 +910,12 @@ class _PartidaState extends ConsumerState<_Partida> {
                     '/c/${s.perfil.id}/p/${widget.planeta.id}/labirinto/${widget.indice}')),
             const SizedBox(height: 10),
           ],
-          Botao3D(cor: p.cor, corSombra: p.corEscura, texto: 'VOLTAR PARA A NAVE', onPressed: _voltar),
-          if (f.estrelas < 3) ...[
+          Botao3D(
+              cor: p.cor,
+              corSombra: p.corEscura,
+              texto: especial ? 'VOLTAR PARA O UNIVERSO' : 'VOLTAR PARA O PLANETA',
+              onPressed: _voltar),
+          if (f.estrelas < 3 && !surpresa) ...[
             const SizedBox(height: 10),
             Botao3D.branco(texto: '🔁 JOGAR DE NOVO', onPressed: () => setState(_comecar)),
           ],
@@ -633,8 +935,16 @@ class _Final {
   final int novoNivel;
   final String novaPatente;
   final bool bateuMeta;
+  final Map<String, int> suprimentos;
+  final Desafio? desafio;
+  final bool desafioVenceu;
+  final bool surpresa;
 
   _Final({
+    required this.suprimentos,
+    required this.desafio,
+    required this.desafioVenceu,
+    required this.surpresa,
     required this.estrelas,
     required this.xp,
     required this.peixinhos,

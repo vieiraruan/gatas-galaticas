@@ -1,9 +1,11 @@
+import 'dart:math';
 import 'dart:ui' show Color;
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:trilha_do_saber/logica/regras.dart';
 import 'package:trilha_do_saber/modelos/conteudo.dart';
 import 'package:trilha_do_saber/modelos/progresso.dart';
+import 'package:trilha_do_saber/modelos/rotina.dart';
 
 const _q = Escolha(pergunta: 'q', opcoes: ['a', 'b']);
 
@@ -54,6 +56,96 @@ void main() {
     expect(emBreve(r.nos[4]), isTrue); // m3 sem perguntas
     expect(r.atual, 5); // pula m3 e vai para m4
     expect(r.bloqueado(5), isFalse);
+  });
+
+  test('cada planeta (setor) libera sozinho; o chefão pede todos', () {
+    final p2 = planeta('a1b1-mat', [
+      Setor('s1', 'Setor 1', '', [m('m1'), m('m2')]),
+      Setor('s2', 'Setor 2', '', [m('m3'), m('m4')]),
+    ]);
+    var r = RegrasPlaneta(p2, Progresso.vazio, 'f');
+    expect(r.bloqueado(4), isFalse); // m3: primeiro do planeta 2
+    expect(r.bloqueado(5), isTrue); // m4 depende de m3
+    expect(r.bloqueado(r.indiceChefao), isTrue);
+    expect(r.indicesDoSetor(1), [4, 5, 6, 7]);
+    expect(r.atualDoSetor(1), 4);
+    r = RegrasPlaneta(
+        p2, com({'m1': 1, 'm2': 1, 's1-revisao': 1, 'm3': 1, 'm4': 1, 's2-revisao': 1}), 'f');
+    expect(r.bloqueado(r.indiceChefao), isFalse);
+    expect(r.resumoDoSetor(0).feitas, 3);
+    expect(setorDoNo(r.nos.last), -1);
+  });
+
+  test('galáxias: matéria pelo id do planeta, nos 4 bimestres', () {
+    expect(materiaDoPlaneta(p), 'matematica');
+    final c = ConteudoAno(1, '1º', [
+      BimestreConteudo(1, '1º', [planeta('a1b1-matematica', const [])]),
+      BimestreConteudo(2, '2º', [planeta('a1b2-matematica', const [])]),
+    ], const {});
+    expect(partesDaGalaxia(c, 'matematica').map((x) => x.bimestre.numero), [1, 2]);
+    expect(galaxiaDe('portugues').nome, 'Galáxia das Letras');
+  });
+
+  test('horário dos pais e provas mudam as missões do dia', () {
+    final port = planeta('a1b1-portugues', [Setor('p', 'P', '', [m('p1')])]);
+    final ing = planeta('a1b1-ingles', [Setor('i', 'I', '', [m('i1')])]);
+    final mat = planeta('a1b1-mat', [
+      Setor('fra', 'Frações', '', [m('f1')]),
+      Setor('dec', 'Decimais', '', [m('d1')]),
+    ]);
+    final b = BimestreConteudo(1, '1º', [port, mat, ing]);
+    final c = ConteudoAno(1, '1º ano', [b], {
+      2: ['portugues', 'matematica'],
+    });
+    final terca = DateTime(2026, 11, 24);
+    // Sem rotina: rodízio.
+    var hoje = missoesDoDia(
+        conteudo: c, bimestre: b, progresso: Progresso.vazio, nivel: 'f', hoje: terca);
+    expect(hoje.first.planeta.id, 'a1b1-portugues');
+    // Horário: terça tem Inglês.
+    var rotina = const Rotina(horario: {
+      2: ['ingles']
+    });
+    hoje = missoesDoDia(
+        conteudo: c, bimestre: b, progresso: Progresso.vazio, nivel: 'f', hoje: terca, rotina: rotina);
+    expect(hoje.first.planeta.id, 'a1b1-ingles');
+    expect(hoje.first.motivo, '🏫 Teve aula hoje');
+    // Prova de Matemática (Decimais) em 3 dias passa na frente.
+    rotina = rotina.copyWith(provas: [
+      Prova(id: 'x', materia: 'matematica', data: DateTime(2026, 11, 27), assuntos: const ['dec']),
+    ]);
+    hoje = missoesDoDia(
+        conteudo: c, bimestre: b, progresso: Progresso.vazio, nivel: 'f', hoje: terca, rotina: rotina);
+    expect(hoje.first.no.id, 'd1');
+    expect(hoje.first.motivo, '📝 Prova em 3 dias');
+    expect(hoje.length, 3);
+    // Prova que já passou não conta.
+    expect(rotina.proximas(DateTime(2026, 11, 28)), isEmpty);
+  });
+
+  test('prova surpresa usa missões já feitas, de matérias diferentes', () {
+    final port = planeta('a1b1-portugues', [Setor('p', 'P', '', [m('p1'), m('p2')])]);
+    final prog = com({'m1': 2, 'm2': 3, 'p1': 1});
+    final no = montarSurpresa([p, port], prog, 'f', Random(1))!;
+    expect(no.missoes.length, 3);
+    expect(no.missoes.map((x) => x.id).toSet().containsAll(['p1']), isTrue);
+    expect(montarSurpresa([p], Progresso.vazio, 'f', Random(1)), isNull);
+    final hoje = DateTime(2026, 11, 24);
+    final jaTeve = Progresso(surpresasPorDia: {chaveDia(hoje): 1});
+    expect(List.generate(20, (_) => sortearSurpresa(jaTeve, hoje, Random())), everyElement(false));
+  });
+
+  test('desafio aparece no meio da missão, nunca no chefão', () {
+    final r = RegrasPlaneta(p, Progresso.vazio, 'f');
+    var achou = 0;
+    for (var i = 0; i < 50; i++) {
+      final d = sortearDesafio(r.nos.first, 6, Random(i));
+      if (d == null) continue;
+      achou++;
+      expect(d.antesDe, inInclusiveRange(1, d.tipo == TipoDesafio.sequencia ? 3 : 5));
+    }
+    expect(achou, greaterThan(10));
+    expect(sortearDesafio(r.nos.last, 8, Random(1)), isNull);
   });
 
   test('estrelas são separadas por nível', () {
