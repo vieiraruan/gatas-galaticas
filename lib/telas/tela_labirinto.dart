@@ -17,7 +17,7 @@ import '../providers.dart';
 
 /// Labirinto Orbital: pausa opcional depois de uma missão.
 /// `indice` é o nó (missão) que a criança acabou de jogar.
-class TelaLabirinto extends ConsumerWidget {
+class TelaLabirinto extends ConsumerStatefulWidget {
   final String perfilId;
   final String planetaId;
   final int indice;
@@ -25,43 +25,52 @@ class TelaLabirinto extends ConsumerWidget {
       {super.key, required this.perfilId, required this.planetaId, required this.indice});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // Lê a sessão uma vez: gravar o resultado não deve recriar o labirinto.
-    final pronto = ref.watch(sessaoProvider(perfilId).select((a) => a.whenData((s) => s != null)));
+  ConsumerState<TelaLabirinto> createState() => _TelaLabirintoState();
+}
+
+class _TelaLabirintoState extends ConsumerState<TelaLabirinto> {
+  // Monta o labirinto uma vez só: gravar o resultado recarrega a sessão, e
+  // isso não pode recriar o labirinto nem esconder a tela final.
+  Widget? _jogo;
+
+  @override
+  Widget build(BuildContext context) {
+    final sessao = ref.watch(sessaoProvider(widget.perfilId));
+    if (_jogo == null && sessao.hasValue) _jogo = _montar(sessao.value);
     return Scaffold(
       backgroundColor: Cores.espaco,
-      body: pronto.when(
-        skipLoadingOnReload: true,
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('Erro: $e')),
-        data: (_) {
-          final s = ref.read(sessaoProvider(perfilId)).value;
-          final p = s?.planeta(planetaId);
-          if (s == null || p == null) {
-            return const Center(
-                child: Text('Labirinto não encontrado.', style: TextStyle(color: Colors.white)));
-          }
-          final r = s.regras(p);
-          final no = indice >= 0 && indice < r.nos.length ? r.nos[indice] : null;
-          final recentes = no == null ? const <Missao>[] : missoesDoNo(no);
-          final ids = recentes.map((m) => m.id).toSet();
-          // Missões já feitas no bimestre (com estrela), menos a de agora.
-          final anteriores = [
-            for (final pl in s.bimestre.planetas)
-              for (final n in s.regras(pl).nos)
-                if (n is NoMissao && s.regras(pl).estrelas(n) > 0 && !ids.contains(n.missao.id))
-                  n.missao
-          ];
-          return _Jogo(
-            sessao: s,
-            planeta: p,
-            setor: no == null ? -1 : setorDoNo(no),
-            estrelasMissao: no == null ? 0 : r.estrelas(no),
-            anteriores: anteriores,
-            recentes: recentes,
-          );
-        },
-      ),
+      body: _jogo ??
+          (sessao.hasError
+              ? Center(child: Text('Erro: ${sessao.error}'))
+              : const Center(child: CircularProgressIndicator())),
+    );
+  }
+
+  Widget _montar(Sessao? s) {
+    final p = s?.planeta(widget.planetaId);
+    if (s == null || p == null) {
+      return const Center(
+          child: Text('Labirinto não encontrado.', style: TextStyle(color: Colors.white)));
+    }
+    final r = s.regras(p);
+    final indice = widget.indice;
+    final no = indice >= 0 && indice < r.nos.length ? r.nos[indice] : null;
+    final recentes = no == null ? const <Missao>[] : missoesDoNo(no);
+    final ids = recentes.map((m) => m.id).toSet();
+    // Missões já feitas no bimestre (com estrela), menos a de agora.
+    final anteriores = [
+      for (final pl in s.bimestre.planetas)
+        for (final n in s.regras(pl).nos)
+          if (n is NoMissao && s.regras(pl).estrelas(n) > 0 && !ids.contains(n.missao.id))
+            n.missao
+    ];
+    return _Jogo(
+      sessao: s,
+      planeta: p,
+      setor: no == null ? -1 : setorDoNo(no),
+      estrelasMissao: no == null ? 0 : r.estrelas(no),
+      anteriores: anteriores,
+      recentes: recentes,
     );
   }
 }

@@ -17,6 +17,7 @@ import '../logica/nave.dart';
 import '../logica/regras.dart';
 import '../modelos/conteudo.dart';
 import '../providers.dart';
+import 'tela_minijogos.dart';
 
 /// Planeta de mentira que dá cor e nome à prova surpresa.
 const _planetaSurpresa = Planeta(
@@ -905,9 +906,11 @@ class _PartidaState extends ConsumerState<_Partida> {
                 textAlign: TextAlign.center, style: TextStyle(color: Color(0xFFC9CFF5))),
             const SizedBox(height: 8),
             Botao3D.ouro(
-                texto: '🌌 LABIRINTO ORBITAL',
-                onPressed: () => context.go(
-                    '/c/${s.perfil.id}/p/${widget.planeta.id}/labirinto/${widget.indice}')),
+                texto: '🛋️ HORA DA PAUSA',
+                onPressed: () => mostrarPausa(context,
+                    perfilId: s.perfil.id,
+                    planetaId: widget.planeta.id,
+                    indice: widget.indice)),
             const SizedBox(height: 10),
           ],
           Botao3D(

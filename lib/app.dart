@@ -3,7 +3,9 @@ import 'package:material_ui/material_ui.dart';
 
 import 'componentes/tema.dart';
 import 'telas/tela_galaxia.dart';
+import 'logica/minijogos.dart';
 import 'telas/tela_labirinto.dart';
+import 'telas/tela_minijogos.dart';
 import 'telas/tela_nave.dart';
 import 'telas/tela_novo_perfil.dart';
 import 'telas/tela_pais.dart';
@@ -85,6 +87,16 @@ GoRouter criarRoteador() => GoRouter(routes: [
                       perfilId: s.pathParameters['perfilId']!,
                       planetaId: s.pathParameters['planetaId']!,
                       indice: int.parse(s.pathParameters['indice']!),
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'pausa/:jogo/:indice',
+                    builder: (_, s) => TelaMinijogo(
+                      perfilId: s.pathParameters['perfilId']!,
+                      planetaId: s.pathParameters['planetaId']!,
+                      indice: int.parse(s.pathParameters['indice']!),
+                      jogo: Minijogo.values.asNameMap()[s.pathParameters['jogo']] ??
+                          Minijogo.travessia,
                     ),
                   ),
                   GoRoute(
