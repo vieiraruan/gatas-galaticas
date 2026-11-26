@@ -15,8 +15,11 @@ import json
 import os
 import sys
 
+from complexidade import marcar_planetas, niveis_do_app
+
 PERGUNTAS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "perguntas")
 sys.path.insert(0, PERGUNTAS)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 
 def banco(ano, bim):
@@ -128,6 +131,7 @@ def main(bncc_path, galaxia_path, destino):
                 sobra = sorted(set(perguntas) - ids)
                 assert not sobra, f"ids sem missão na trilha: {sobra}"
                 origem = "BNCC + banco de perguntas" if perguntas else "BNCC (estrutura)"
+            marcar_planetas(planetas)
             conteudo["bimestres"].append({
                 "numero": b["numero"],
                 "titulo": f"{b['numero']}º bimestre",
@@ -137,7 +141,7 @@ def main(bncc_path, galaxia_path, destino):
         with open(os.path.join(destino, f"ano_{ano}.json"), "w", encoding="utf-8") as f:
             json.dump(conteudo, f, ensure_ascii=False, separators=(",", ":"))
     with open(os.path.join(destino, "niveis.json"), "w", encoding="utf-8") as f:
-        json.dump(galaxia["niveis"], f, ensure_ascii=False, indent=1)
+        json.dump(niveis_do_app(galaxia["niveis"], bncc["niveis_complexidade"]), f, ensure_ascii=False, indent=1)
 
 
 if __name__ == "__main__":

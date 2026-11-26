@@ -47,3 +47,12 @@ def missao(briefing, exercicios):
 def desafio(texto):
     """Cartão final para missões que pedem uma atividade fora da tela."""
     return ("🏡", "**Desafio com um adulto:** " + texto)
+
+
+def nivel(n, exercicio, medalha=None):
+    """Marca a complexidade (1 reconhecer, 2 compreender, 3 aplicar, 4 analisar
+    e criar) e, se houver, a medalha (detetive, explicador, inventor)."""
+    exercicio["complexidade"] = n
+    if medalha:
+        exercicio["medalha"] = medalha
+    return exercicio

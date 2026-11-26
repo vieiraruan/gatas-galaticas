@@ -416,19 +416,107 @@ List<Exercicio> montarPartida(No no, Nivel nivel, Random rnd) {
   return [for (final e in lista) adaptar(e, nivel, rnd)];
 }
 
-List<Exercicio> _sortear(Missao m, Nivel nivel, int n, Random rnd) {
-  final base = nivel.desafio && m.exerciciosDesafio.isNotEmpty
-      ? m.exerciciosDesafio
-      : m.exercicios;
-  final out = <Exercicio>[];
-  while (out.length < n) {
-    out.addAll((List.of(base)..shuffle(rnd)).take(n - out.length));
+List<Exercicio> _sortear(Missao m, Nivel nivel, int n, Random rnd) =>
+    sortearPorMistura([...m.exercicios, ...m.exerciciosDesafio], nivel.mistura, n, rnd);
+
+/// Sorteia [n] perguntas seguindo a mistura de complexidade do nível
+/// (ex.: {3: 60, 2: 30, 1: 10}). Quando falta pergunta de uma
+/// complexidade, completa com a mais próxima, primeiro as mais fáceis.
+List<Exercicio> sortearPorMistura(
+    List<Exercicio> todas, Map<int, int> mistura, int n, Random rnd) {
+  if (todas.isEmpty || n <= 0) return const [];
+  final porC = <int, List<Exercicio>>{};
+  for (final e in todas) {
+    (porC[e.complexidade] ??= []).add(e);
   }
-  return out;
+  for (final l in porC.values) {
+    l.shuffle(rnd);
+  }
+  // Cotas por complexidade, arredondadas, somando n.
+  final niveis = mistura.keys.toList()..sort((a, b) => b.compareTo(a));
+  final total = mistura.values.fold(0, (a, b) => a + b);
+  final cotas = <int, int>{};
+  var usados = 0;
+  for (final c in niveis) {
+    final q = (n * mistura[c]! / (total == 0 ? 1 : total)).round();
+    cotas[c] = q;
+    usados += q;
+  }
+  if (niveis.isNotEmpty) cotas[niveis.first] = cotas[niveis.first]! + (n - usados);
+
+  final out = <Exercicio>[];
+  final usadas = <Exercicio>{};
+  Exercicio? pegar(int alvo) {
+    // A própria complexidade; depois as mais fáceis; depois as mais difíceis.
+    final ordem = [
+      alvo,
+      for (var c = alvo - 1; c >= 1; c--) c,
+      for (var c = alvo + 1; c <= 4; c++) c,
+    ];
+    for (final c in ordem) {
+      final l = porC[c];
+      if (l == null) continue;
+      for (final e in l) {
+        if (!usadas.contains(e)) return e;
+      }
+    }
+    return null;
+  }
+
+  for (final c in niveis) {
+    for (var i = 0; i < cotas[c]!; i++) {
+      final e = pegar(c);
+      if (e == null) break;
+      usadas.add(e);
+      out.add(e);
+    }
+  }
+  // Banco pequeno: repete perguntas até completar.
+  while (out.length < n) {
+    out.addAll((List.of(todas)..shuffle(rnd)).take(n - out.length));
+  }
+  return out..shuffle(rnd);
+}
+
+/// Uma pergunta de "aquecimento": complexidade abaixo da do nível, das
+/// missões do nó. Oferecida depois de 2 erros seguidos, nunca como castigo.
+Exercicio? aquecimento(No no, Nivel nivel, Random rnd, {Set<Exercicio> evitar = const {}}) {
+  final todas = [
+    for (final m in missoesDoNo(no)) ...m.exercicios,
+  ];
+  if (todas.isEmpty) return null;
+  final alvo = max(1, nivel.complexidade - 1);
+  final candidatas = todas.where((e) => e.complexidade <= alvo && !evitar.contains(e)).toList();
+  final base = candidatas.isNotEmpty
+      ? candidatas
+      : (todas.toList()..sort((a, b) => a.complexidade.compareTo(b.complexidade)))
+          .take(3)
+          .toList();
+  return adaptar((base..shuffle(rnd)).first, nivel, rnd);
+}
+
+/// Acerto mínimo e número de missões seguidas para convidar a subir de nível.
+const acertoParaConvite = 80;
+const missoesParaConvite = 2;
+
+/// Chave da sequência de missões boas de uma unidade num nível.
+String chaveSequencia(String nivel, Setor setor) => '$nivel:${setor.id}';
+
+/// Atualiza a sequência de missões com 80% ou mais e diz se é hora de
+/// convidar a criança a subir de nível. Depois do convite a contagem
+/// recomeça; a criança escolhe se sobe, e o app nunca rebaixa sozinho.
+({int sequencia, bool convidar}) avaliarConvite(int sequenciaAntes, int acerto) {
+  if (acerto < acertoParaConvite) return (sequencia: 0, convidar: false);
+  final s = sequenciaAntes + 1;
+  if (s >= missoesParaConvite) return (sequencia: 0, convidar: true);
+  return (sequencia: s, convidar: false);
 }
 
 /// Ajusta a pergunta ao nível: menos opções, menos itens, sem dicas.
-Exercicio adaptar(Exercicio e, Nivel nivel, Random rnd) {
+Exercicio adaptar(Exercicio e, Nivel nivel, Random rnd) =>
+    _adaptar(e, nivel, rnd).copiarInfo(e);
+
+Exercicio _adaptar(Exercicio e, Nivel nivel, Random rnd) {
   switch (e) {
     case Escolha():
       var opcoes = e.opcoes;

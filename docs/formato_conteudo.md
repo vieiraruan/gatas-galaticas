@@ -64,3 +64,18 @@ de cada planeta o **chefão**.
 
 - O `id` de uma missão **não deve mudar** depois de publicado: o progresso é salvo por ele.
 - Os ids levam o prefixo do ano e bimestre (ex.: `a4b4-`) para não se repetirem.
+
+## Complexidade e medalhas (trilha 2.1.0)
+
+Cada exercício pode ter `complexidade` (1 reconhecer, 2 compreender, 3 aplicar,
+4 analisar e criar) e `medalha` (`detetive`, `explicador`, `inventor`). No banco,
+use `nivel(3, mc(...))` ou `nivel(4, tf(...), "detetive")` de `tool/perguntas/base.py`.
+Sem marcação, `tool/complexidade.py` estima pelo tipo e pelo texto.
+
+`niveis.json` junta os níveis do app (forma: opções, dicas, tempo) com os níveis
+de complexidade da trilha: `complexidade`, `mistura` (% de perguntas por
+complexidade) e `incentivos` (acerto, erro, convite). A partida sorteia as
+perguntas pela `mistura`; se faltar pergunta de uma complexidade, completa com
+a mais próxima. Depois de 2 erros seguidos entra um "aquecimento" mais simples;
+com 80% de acerto em 2 missões seguidas da unidade, a criança é convidada a
+subir de nível (nunca desce sozinha).

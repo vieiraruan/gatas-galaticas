@@ -244,6 +244,8 @@ class Acoes {
     Map<String, int> suprimentos = const {},
     Map<String, int> acertos = const {},
     Map<String, int> respostas = const {},
+    Map<String, int> medalhas = const {},
+    (String chave, int valor)? sequencia,
   }) =>
       _alterar(perfilId, (p) {
         final k = Progresso.chave(nivel, noId);
@@ -257,6 +259,10 @@ class Acoes {
           suprimentos: somar(p.suprimentos, suprimentos),
           acertosPorMateria: somar(p.acertosPorMateria, acertos),
           respostasPorMateria: somar(p.respostasPorMateria, respostas),
+          medalhas: somar(p.medalhas, medalhas),
+          sequencias: sequencia == null
+              ? null
+              : {...p.sequencias, sequencia.$1: sequencia.$2},
         );
       });
 

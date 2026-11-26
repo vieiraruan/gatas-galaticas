@@ -1,6 +1,6 @@
 # Trilhas de aprendizagem EF1 (1º ao 5º ano) com base na BNCC
 
-Versão 2.0.0, 2026-11-23. Fonte: BNCC (MEC, 2018). Distribuição por bimestre é uma proposta.
+Versão 2.1.0, 2026-11-26. Fonte: BNCC (MEC, 2018). Distribuição por bimestre é uma proposta.
 
 ## 1º ano (6 anos)
 
@@ -657,3 +657,274 @@ Versão 2.0.0, 2026-11-23. Fonte: BNCC (MEC, 2018). Distribuição por bimestre 
 | LI_ESCR | eixo_lingua_inglesa | Escrita: escrever palavras e frases curtas em inglês. |
 | LI_LING | eixo_lingua_inglesa | Conhecimentos linguísticos: vocabulário e estruturas básicas. |
 | LI_INTER | eixo_lingua_inglesa | Dimensão intercultural: conhecer culturas de povos que falam inglês. |
+
+## Níveis de complexidade
+
+| Nível | Nome | Processos | Como formular a pergunta | Nível do app |
+| --- | --- | --- | --- | --- |
+| 1 | Reconhecer | lembrar, identificar, nomear, localizar | Pergunta curta, com uma única informação; Apoio visual ou sonoro; Distratores bem diferentes da resposta | f |
+| 2 | Compreender | classificar, comparar, explicar, exemplificar | Pedir classificação ou comparação; Perguntas com 'por que' de resposta curta; Distratores próximos (erros comuns) | d |
+| 3 | Aplicar | resolver, usar, executar, planejar | Contexto real (mercado, casa, escola, cidade); Duas ou mais etapas; Dados que precisam ser escolhidos; Sem dica visual da resposta | x |
+| 4 | Analisar e criar | analisar, justificar, avaliar, inferir, elaborar, criar | 'Encontre o erro', 'Explique por que', 'O que aconteceria se...'; Elaborar um problema, regra ou proposta; Ligar o conteúdo a outra matéria ou à vida real; Respostas abertas avaliadas pelo raciocínio (gravação de voz, texto curto, desenho) | g |
+
+## Anexo: perguntas-modelo por nível em cada unidade
+
+### 1º ano
+
+#### 1º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Letras e o meu nome | Toque na letra A. (A) | Quais destas são letras e quais são números: B, 7, M, 3? (Letras: B, M; números: 7, 3) | Com as letras do seu nome, qual vem primeiro no alfabeto? (ex.: ANA) (A) | O Lucas escreveu o nome de trás para frente: SACUL. O que ele precisa mudar? (Escrever da esquerda para a direita: LUCAS) |
+| Matemática: Números até 20 e contagem | Quantas maçãs há na cesta? (5 maçãs) (5) | Qual grupo tem mais: 7 balões ou 4 balões? (7 balões) | Na fila, Bia é a 3ª. Quantas crianças estão na frente dela? (2) | Separe os brinquedos em 2 grupos do jeito que quiser e diga qual foi a sua regra. (Resposta aberta (cor, tamanho, forma)) |
+| Ciências Naturais: Meu corpo e a diversidade | Toque no nariz do menino. (Nariz) | Que parte do corpo usamos para ouvir a música? (Orelhas) | Para sentir se a sopa está quente sem se queimar, que sentidos você usa primeiro? (Visão (vapor) e tato com cuidado) | Duas crianças têm cabelos diferentes. Isso faz uma ser melhor que a outra? Por quê? (Não; todos são diferentes e merecem respeito) |
+| Ciências Humanas: Eu e minha história | Qual foto mostra um bebê? (A do bebê) | O que você faz hoje que não fazia quando era bebê? (Andar, falar, comer sozinho...) | Ordene: bebê, criança, adulto, idoso. (bebê, criança, adulto, idoso) | Que objeto da sua casa conta uma parte da sua história? Explique. (Resposta aberta (foto, brinquedo, roupa de bebê)) |
+| Ciências Humanas: Meus lugares de vivência | Qual imagem é uma escola? (A escola) | Em qual cômodo fica a cama? (Quarto) | Na palafita a casa fica no alto. Por que ela é construída assim? (Porque fica perto da água e o rio pode subir) | Desenhe o caminho da sua casa até a escola e conte o que vê no meio do caminho. (Resposta aberta) |
+| Ética: Eu e minhas emoções | Qual carinha está feliz? (A carinha sorrindo) | O menino perdeu o brinquedo. Como ele pode estar se sentindo? (Triste) | Você ficou com raiva no jogo. O que pode fazer para se acalmar? (Respirar fundo, contar até 10, conversar) | Por que é importante contar para um adulto quando estamos com medo? (Para receber ajuda e proteção) |
+| Inglês: Hello! Greetings | Ouça: 'Hello!'. É chegada ou despedida? (Chegada) | Qual palavra usamos para ir embora: hello ou bye? (bye) | Alguém pergunta 'What's your name?'. Responda. (My name is ...) | É de manhã. Ligue: Good morning / Good night. Qual você diria ao chegar na escola e por quê? (Good morning, porque é de manhã) |
+
+#### 2º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Sons e sílabas | Qual figura começa com o som /b/: bola ou casa? (bola) | Quantas sílabas tem SAPATO? (3) | Troque a primeira sílaba de GATO por PA. Que palavra nasce? (PATO) | Invente uma palavra que comece com o mesmo som de MALA. (Resposta aberta (mamãe, macaco...)) |
+| Matemática: Números até 100, sequências e localização | Qual número vem depois do 29? (30) | 34 tem quantas dezenas e quantas unidades? (3 dezenas e 4 unidades) | Tenho 2 pacotes de 10 figurinhas e mais 5 soltas. Quantas são? (25) | Na sequência 10, 20, 30, __, 50, que número falta e qual é a regra? (40; de 10 em 10) |
+| Ciências Naturais: Higiene e saúde | Qual imagem mostra alguém lavando as mãos? (A da pia com sabão) | Por que lavamos as mãos antes de comer? (Para tirar sujeira e germes) | Ordene: molhar, ensaboar, esfregar, enxaguar, secar. (Essa é a ordem) | A Lia escova os dentes só à noite. O que pode acontecer? O que você sugere? (Cáries; escovar após as refeições) |
+| Ciências Humanas: Minha família | Qual figura mostra uma família? (Qualquer uma: há muitas formas de família) | Avó, tio e prima fazem parte da família? (Sim) | Quais tarefas de casa uma criança pode ajudar a fazer? (Guardar brinquedos, arrumar a cama...) | A família do vovô quando era criança era igual à sua? O que mudou? (Resposta aberta (tamanho, onde moravam)) |
+| Ciências Humanas: Convivência e espaços públicos | O que tem em uma praça: balanço ou fogão? (Balanço) | Por que não podemos jogar lixo no chão da praça? (Porque a praça é de todos e fica suja) | No parquinho, duas crianças querem o mesmo balanço. Que regra ajuda? (Esperar a vez / revezar) | Crie uma regra nova para a sua turma e explique por que ela é boa. (Resposta aberta) |
+| Ética: Amizade e respeito | Qual é a palavra mágica para pedir algo? (Por favor) | Quando dizemos 'desculpa'? (Quando erramos ou machucamos alguém) | Seu amigo caiu e se machucou. O que você faz? (Ajuda e chama um adulto) | Por que esperar a vez deixa a brincadeira mais justa? (Todos podem brincar) |
+| Inglês: Colors and numbers 1–10 | Toque na cor RED. (Vermelho) | Quantos são 'three' balões? (3) | Pinte: o sol yellow e a grama green. (Sol amarelo, grama verde) | Conte em inglês os dedos de uma mão. (one, two, three, four, five) |
+
+#### 3º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Escrevendo palavras e frases | Ligue a palavra BOLA à figura. (Bola) | Que letra falta: CA_A (casa)? (S) | Separe as palavras: OGATOPULOU. (O GATO PULOU) | Escreva uma frase sobre o seu bicho preferido. (Resposta aberta) |
+| Matemática: Adição, subtração, formas e comparação de medidas | Quanto é 2 + 3? (5) | Tinha 6 balas e comi 2. Ficaram quantas? (4) | Ana tem 4 bonecas e ganhou mais 3. Depois deu 1. Com quantas ficou? (6) | Invente um probleminha que tenha resposta 5. (Resposta aberta) |
+| Ciências Naturais: Materiais do dia a dia | De que é feita a colher de pau? (Madeira) | Qual é transparente: copo de vidro ou caneca de barro? (Copo de vidro) | Para fazer um barquinho que flutue, você usaria pedra ou isopor? (Isopor) | Por que separamos o vidro dos outros lixos? (Pode cortar e pode ser reciclado) |
+| Ciências Humanas: Escola e comunidade | Quem ensina na escola? (Professor(a)) | O que é responsabilidade da criança na escola? (Cuidar do material, fazer as tarefas) | Na escola, o que você faz se encontrar um lápis que não é seu? (Devolver / entregar à professora) | Se ninguém limpasse a escola, o que aconteceria? Quem cuida disso? (Ficaria suja; a equipe de limpeza e todos nós) |
+| Ciências Humanas: Localização e mapas simples | O gato está DENTRO ou FORA da caixa? (Dentro) | Levante a mão direita. Qual é? (A direita) | Para chegar à porta, ande 3 passos para frente e vire à esquerda. Onde você chega? (No ponto indicado no mapa) | Desenhe um mapa do seu quarto mostrando onde fica a cama. (Resposta aberta) |
+| Ética: Regras e combinados | Na sala, podemos correr ou andar? (Andar) | Por que existe a regra de levantar a mão para falar? (Para todos serem ouvidos) | No jogo, um colega não respeita a regra. O que fazer? (Conversar e lembrar o combinado) | Crie um combinado para a hora de dormir na sua casa. (Resposta aberta) |
+| Inglês: My family | Quem é 'mom'? (Mãe) | Ligue: brother e sister. (Irmão e irmã) | Ouça 'This is my grandpa' e toque na imagem. (O avô) | Apresente sua família: 'This is my...' (2 pessoas). (Resposta aberta) |
+
+#### 4º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Parlendas, rimas, listas e convites | Qual palavra rima com MÃO: PÃO ou BOLA? (PÃO) | Para que serve uma lista de compras? (Para lembrar o que comprar) | Complete a parlenda: 'Hoje é domingo, pé de...' (cachimbo) | Crie um convite para o seu aniversário: o que não pode faltar? (Dia, hora, lugar, para quem) |
+| Matemática: Tempo e calendário | Que dia vem depois de segunda-feira? (Terça-feira) | Dormimos de dia ou à noite? (À noite) | Hoje é quarta. Que dia foi ontem e que dia será amanhã? (Terça e quinta) | Faltam 3 dias para sábado. Que dia é hoje? (Quarta-feira) |
+| Matemática: Dinheiro, chance e gráficos | Qual é a moeda de 1 real? (A moeda de 1 real) | O sol vai nascer amanhã: com certeza, talvez ou impossível? (Com certeza) | Pirulito custa 2 reais. Tenho uma moeda de 1 real. Consigo comprar? (Não, falta 1 real) | No gráfico, banana teve 5 votos e maçã 3. Quantos votos a mais teve a banana? (2) |
+| Ciências Naturais: Dia, noite e a passagem do tempo | A coruja fica acordada de dia ou à noite? (À noite) | O que acontece com o céu quando a noite chega? (Fica escuro, aparecem a Lua e estrelas) | Por que acendemos a luz à noite e não de dia? (De dia temos a luz do Sol) | Se não existisse noite, como seria o nosso sono? (Resposta aberta (difícil dormir, cansaço)) |
+| Ciências Humanas: Brincadeiras e festas | Qual é uma brincadeira antiga: pião ou videogame? (Pião) | Que festa tem quadrilha e fogueira? (Festa junina) | Pergunte a um adulto do que ele brincava. Ainda existe hoje? (Resposta aberta) | Por que algumas brincadeiras antigas continuam até hoje? (Resposta aberta (são divertidas, passam de geração em geração)) |
+| Ciências Humanas: Ritmos da natureza e trabalho | Em dia de chuva usamos guarda-chuva ou óculos de sol? (Guarda-chuva) | Que roupa usamos no frio? (Casaco) | O padeiro acorda bem cedo. Por quê? (Para o pão ficar pronto de manhã) | Se fizesse frio o ano todo, o que mudaria na sua roupa e na comida? (Resposta aberta) |
+| Ética: Cuidar de mim e do planeta | Onde jogamos o papel de bala? (No lixo) | Por que fechamos a torneira ao escovar os dentes? (Para não desperdiçar água) | Você viu uma luz acesa num quarto vazio. O que faz? (Apaga) | Dê duas ideias para sua família desperdiçar menos. (Resposta aberta) |
+| Inglês: Animals | Qual é o 'dog'? (Cachorro) | Quem faz 'moo'? (A vaca (cow)) | Qual animal vive na água: fish ou horse? (fish) | Diga em inglês o nome de um animal que voa e um que nada. (bird, fish) |
+
+### 2º ano
+
+#### 1º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Sílabas e formação de palavras | Quantas sílabas tem PIPOCA? (3) | Troque CA por PA em CAPA. (PAPA) | Junte as sílabas embaralhadas TA-BA-TA para formar a palavra da figura. (BATATA) | Tire uma sílaba de SAPATO e forme outra palavra. (PATO) |
+| Matemática: Números até 1000 e sequências | Qual é maior: 305 ou 350? (350) | Quantas centenas tem o número 472? (4) | Continue: 500, 510, 520, __, __. (530, 540) | Com os algarismos 3, 7 e 1, forme o maior e o menor número. (731 e 137) |
+| Ciências Naturais: Materiais e objetos | De que material é a janela? (Vidro) | Por que a panela é de metal e não de plástico? (O metal aguenta o fogo) | Para fazer um guarda-chuva, que material você escolheria? (Tecido impermeável ou plástico) | Invente um brinquedo com sucata e diga de que materiais ele seria feito. (Resposta aberta) |
+| Ciências Humanas: Grupos e convivência | Quais destes são grupos: família, turma, time? (Todos) | O que une as pessoas de um time? (Gostar do mesmo esporte, um objetivo comum) | Você faz parte de quais grupos? Cite dois. (Resposta aberta) | Por que uma mesma pessoa pode ter papéis diferentes em cada grupo? (Ex.: é filha em casa e aluna na escola) |
+| Ciências Humanas: Meu bairro e suas histórias | Migrar é: mudar de lugar para morar ou viajar de férias? (Mudar de lugar para morar) | Por que algumas famílias mudam de cidade? (Trabalho, estudo, ficar perto da família) | Uma família nordestina mudou para o Sul. Que costume ela pode ter levado? (Comidas, festas, músicas) | Pergunte em casa de onde veio sua família e compare com um colega. (Resposta aberta) |
+| Ética: Gentileza e empatia | Qual atitude é gentil: empurrar ou ajudar? (Ajudar) | A colega está sozinha no recreio. Como ela pode se sentir? (Triste, sozinha) | O que você poderia fazer por ela? (Convidar para brincar) | Por que se colocar no lugar do outro ajuda a fazer amigos? (Entendemos o que o outro sente) |
+| Inglês: School objects | Qual é o 'pencil'? (Lápis) | What is this? (borracha) (It's an eraser) | Arrume a mochila: book, ruler, pencil. (Livro, régua, lápis) | Escreva o nome em inglês de 2 objetos da sua mesa. (Resposta aberta) |
+
+#### 2º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Sons parecidos e nasalidade | Qual está certo: FACA ou VACA para o animal? (VACA) | Complete com M ou N: CA_PO. (M (campo)) | Ouça e escreva: 'O pão está quente.' Atenção ao til! (O pão está quente.) | Por que PATO e BATO são palavras diferentes se só muda uma letra? (O som P/B muda o sentido) |
+| Matemática: Adição, subtração e localização | Quanto é 8 + 7? (15) | Tinha 45 figurinhas e ganhei 23. Quantas tenho? (68) | Pedro tem 120 reais, gastou 35 e ganhou 10. Quanto tem agora? (95) | No mapa da escola, descreva o caminho da sala até o pátio usando direita e esquerda. (Resposta aberta) |
+| Ciências Naturais: Prevenção de acidentes | A tesoura é perigosa para criança pequena? (Sim) | Por que remédio só com um adulto? (Pode fazer mal na dose errada) | Encontre 3 perigos na cozinha da imagem. (Faca, fogão aceso, produto de limpeza) | Crie um cartaz com 3 regras para uma casa segura. (Resposta aberta) |
+| Ciências Humanas: O tempo e a memória | O calendário marca horas ou dias? (Dias) | Ordene: café da manhã, almoço, jantar. (Essa ordem) | Quantos dias faltam do dia 10 ao dia 15? (5) | Compare uma foto antiga da cidade com uma atual: o que mudou e o que continuou? (Resposta aberta) |
+| Ciências Humanas: Transporte, comunicação e o passar do tempo | O avião anda por terra, água ou ar? (Ar) | Qual meio de comunicação é mais rápido: carta ou celular? (Celular) | Para ir a uma ilha, que transportes você pode usar? (Barco ou avião) | Como as pessoas se comunicavam antes do celular? E como será no futuro? (Resposta aberta) |
+| Ética: Somos diferentes, somos iguais | Todas as crianças podem brincar juntas? (Sim) | Em que você e seu colega são iguais e diferentes? (Resposta aberta) | Um colega fala outra língua. Como incluí-lo na brincadeira? (Gestos, ensinar regras, ajudar) | Por que o mundo seria chato se todos fossem iguais? (Resposta aberta) |
+| Inglês: My body | Toque em 'head'. (Cabeça) | Quantos 'eyes' você tem? (Two) | Simon says: touch your nose and your mouth. (Nariz e boca) | Descreva o robô: 'It has two heads and four...' Complete. (Resposta aberta (hands, eyes...)) |
+
+#### 3º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Frases, pontuação, bilhetes e cartas | Qual sinal termina uma pergunta? (?) | Pontue: 'Que dia lindo' (é uma exclamação). (Que dia lindo!) | Arrume a frase: 'escola a vou eu para'. (Eu vou para a escola.) | Escreva um bilhete para a vovó com saudação, recado e assinatura. (Resposta aberta) |
+| Matemática: Multiplicação, dobro, metade, formas e dinheiro | Quanto é 3 grupos de 2? (6) | Qual é o dobro de 4? (8) | Uma bala custa 5 reais. Quanto custam 3 balas? (15) | Tenho 12 figurinhas. Dei metade ao meu irmão e depois ganhei o dobro do que sobrou. Com quantas fiquei? (12) |
+| Ciências Naturais: Plantas e animais | Qual parte da planta fica embaixo da terra? (Raiz) | Para que serve a folha? (Produzir o alimento da planta com a luz) | Uma planta ficou no armário escuro. O que acontece? (Amarela e fraca, pode morrer) | Planeje um teste para provar que a planta precisa de água. (Duas plantas, só uma regada, observar) |
+| Ciências Humanas: Objetos, documentos e histórias de família | Qual documento mostra quando você nasceu? (Certidão de nascimento) | Para que serve a carteira de vacinação? (Registrar as vacinas tomadas) | Qual objeto da sua família conta uma história antiga? (Resposta aberta) | Por que algumas famílias guardam cartas antigas? (Para guardar memórias) |
+| Ciências Humanas: Representando o espaço | Qual imagem é a mesa vista de cima? (O retângulo visto do alto) | Na planta da sala, onde fica a porta? (Lugar indicado) | Posicione na planta: quadro na frente, janelas à esquerda. (Planta montada) | Faça uma maquete do seu quarto e explique o que cada símbolo representa. (Resposta aberta) |
+| Ética: Honestidade e verdade | Achei uma carteira. É minha? (Não) | O que fazer com a carteira? (Devolver ao dono ou entregar a um adulto) | Você quebrou o vaso sem querer. O que é mais honesto fazer? (Contar e ajudar a consertar) | Na história, o menino mentiu e todos deixaram de acreditar nele. Por quê? (Perdeu a confiança) |
+| Inglês: Toys and numbers 1–20 | Qual é a 'ball'? (Bola) | How many? (12 carrinhos) (twelve) | Ordene: eleven, twelve, thirteen. (Essa ordem) | Diga em inglês qual brinquedo você prefere e quantos tem. (Resposta aberta) |
+
+#### 4º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Palavras e histórias | Qual o contrário de FELIZ? (INFELIZ / TRISTE) | Diminutivo de CASA? (CASINHA) | Na história, qual era o problema do personagem? (Depende do texto) | Invente outro final para a história. (Resposta aberta) |
+| Matemática: Medidas e tempo | O que medimos com a régua? (Comprimento) | Quantos centímetros tem 1 metro? (100) | Do dia 3 ao dia 17 do mês, quantos dias se passam? (14) | Meça sua mesa com palmos e com fita métrica. Por que os resultados são diferentes? (Unidades diferentes) |
+| Matemática: Chance e gráficos | Chover sorvete é possível? (Impossível) | No gráfico, qual fruta teve mais votos? (Depende do gráfico) | Na caixa há 8 bolas azuis e 1 vermelha. Qual cor é mais provável sair? (Azul) | Faça uma pesquisa com 5 pessoas e monte o gráfico. O que ele mostra? (Resposta aberta) |
+| Ciências Naturais: Sol, sombra e calor | Ao meio-dia a sombra é grande ou pequena? (Pequena) | Por que a sombra muda durante o dia? (O Sol muda de posição no céu) | Qual esquenta mais ao sol: camiseta preta ou branca? (Preta) | Em um dia de calor, que roupa você escolheria para sair ao sol? Justifique. (Roupa clara, reflete o calor) |
+| Ciências Humanas: Trabalho na comunidade | Quem trabalha consertando carros? (Mecânico) | O que o agricultor produz? (Alimentos) | Que trabalhos podem poluir um rio? (Fábricas, garimpo, esgoto) | Entreviste um adulto: o que ele faz e por que o trabalho dele é importante? (Resposta aberta) |
+| Ciências Humanas: Solo, água e atividades extrativas | De onde vem o leite? (Da vaca) | Para que usamos o solo? (Plantar, construir, extrair materiais) | O que acontece com o solo quando cortam todas as árvores? (Fica fraco, sofre erosão) | Proponha duas atitudes para cuidar da água no bairro. (Resposta aberta) |
+| Ética: Cuidado com os animais e a natureza | O cachorro precisa de água? (Sim) | Do que um animal de estimação precisa? (Água, comida, abrigo, carinho, veterinário) | Você viu alguém maltratando um animal. O que faz? (Avisa um adulto) | Por que adotar um animal é uma responsabilidade grande? (Ele depende de nós a vida toda) |
+| Inglês: Fruits and food | Qual é a 'apple'? (Maçã) | 'I like bananas' significa gosto ou não gosto? (Gosto) | Monte o seu prato: 'I like... I don't like...'. (Resposta aberta) | Compare o café da manhã de uma criança inglesa com o seu. (Resposta aberta) |
+
+### 3º ano
+
+#### 1º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Ortografia: regras contextuais e dígrafos | Complete: CA__O (veículo) com R ou RR. (RR (carro)) | Por que CARO e CARRO têm sentidos diferentes? (R e RR têm sons diferentes) | Corrija o bilhete: 'A galinha do vizino botou um ovo na palha.' (vizinho) | Crie uma regra com suas palavras para saber quando usar QU. (Antes de E e I para o som /k/ (queijo, quilo)) |
+| Matemática: Números até 9.999 | Como se lê 2.305? (Dois mil trezentos e cinco) | Decomponha 4.072. (4.000 + 70 + 2) | Na reta, que número fica entre 1.000 e 1.200, bem no meio? (1.100) | Complete para ficar igual: 8 + 5 = 10 + __. Explique como pensou. (3; tirei 2 do 5 para completar o 10) |
+| Ciências Naturais: Som e luz | O som do violão vem da vibração de quê? (Das cordas) | Vidro, papel vegetal e madeira: classifique em transparente, translúcido e opaco. (Vidro transp., papel transl., madeira opaca) | Por que ouvir música muito alta no fone faz mal? (Pode prejudicar a audição) | Planeje um teste para descobrir qual material abafa melhor o som de um despertador. (Cobrir com materiais diferentes e comparar) |
+| Ciências Humanas: A cidade e seus povos | Cite um povo que ajudou a formar as cidades brasileiras. (Indígenas, africanos, portugueses, imigrantes) | Uma foto antiga é uma fonte histórica de que tipo? (Visual / iconográfica) | Que fontes você usaria para descobrir como era a sua rua há 50 anos? (Fotos, entrevistas, jornais) | Dois moradores contam a história de um mesmo fato de forma diferente. Por que isso acontece? (Pontos de vista diferentes) |
+| Ciências Humanas: Culturas e modos de vida | Acarajé é uma comida de origem africana ou japonesa? (Africana) | O que é uma comunidade quilombola? (Comunidade formada por descendentes de africanos escravizados) | Que palavras do português vieram de línguas indígenas? (Pipoca, abacaxi, jacaré...) | Por que é importante preservar o modo de vida dos povos tradicionais? (Resposta aberta (cultura, conhecimento, direitos)) |
+| Ética: Resolver conflitos com diálogo | Em uma briga, o melhor é gritar ou conversar? (Conversar) | O que significa ouvir o outro? (Prestar atenção sem interromper) | Dois amigos querem o mesmo jogo. Proponha uma solução justa. (Revezar, sortear, jogar juntos) | Transforme a frase 'Você é chato!' em uma frase que diga o que você sente. ('Eu fico chateado quando...') |
+| Inglês: Days of the week and weather | Qual dia vem depois de Monday? (Tuesday) | Imagem de sol: How's the weather? (It's sunny) | Está chovendo. Que roupa você leva? Responda: 'It's rainy, I need an...' (umbrella) | Faça a previsão do tempo da semana em inglês para 3 dias. (Resposta aberta) |
+
+#### 2º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Sílabas e acentuação | Quantas sílabas tem BORBOLETA? (4 (polissílaba)) | Em CAFÉ, qual é a sílaba tônica? (FÉ (oxítona)) | Acentue se precisar: SOFA, BOLO, PE. (SOFÁ, BOLO, PÉ) | Por que JABUTI não tem acento e SACI também não, mas CAFÉ tem? (Oxítonas em I não levam acento; em E sim) |
+| Matemática: Adição, subtração e dinheiro | Quanto é 250 + 130? (380) | Tinha 500 reais, gastei 175. Quanto sobrou? (325) | Comprei um livro de 38 reais e um caderno de 17. Paguei com 100. Quanto de troco? (45) | Encontre o erro: 403 − 158 = 355. Qual o resultado certo e onde está o erro? (245; erro no empréstimo) |
+| Ciências Naturais: Os animais | O peixe tem pelos, penas ou escamas? (Escamas) | Qual animal é carnívoro: vaca, leão ou coelho? (Leão) | Ordene o ciclo do sapo: ovo, girino, sapo jovem, sapo adulto. (Essa ordem) | O morcego voa e tem pelos. Ele é ave ou mamífero? Justifique. (Mamífero: tem pelos e mama) |
+| Ciências Humanas: Patrimônio e memória | O frevo é patrimônio material ou imaterial? (Imaterial) | Por que algumas ruas têm nome de pessoas? (Para homenagear e lembrar) | Que patrimônio da sua cidade você indicaria para um turista? (Resposta aberta) | Um prédio antigo vai ser demolido. Dê um argumento a favor de preservá-lo. (Guarda a memória da cidade) |
+| Ciências Humanas: Paisagens e produção | Uma floresta sem construções é paisagem natural ou modificada? (Natural) | De onde vem o arroz que comemos? (Da agricultura) | Ordene as imagens de uma mata virando cidade. (Mata, sítio, vila, cidade) | Que vantagens e problemas surgem quando uma floresta vira plantação? (Alimento x perda de animais e árvores) |
+| Ética: Responsabilidade | Guardar o material depois de usar é responsabilidade de quem? (De quem usou) | O que acontece se ninguém cumprir as tarefas de casa? (Tudo fica bagunçado) | Organize sua agenda: tarefa, banho, brincar, jantar. (Resposta aberta com ordem lógica) | Você esqueceu de fazer a tarefa. Como assumir isso de forma responsável? (Contar a verdade e combinar quando fará) |
+| Inglês: Clothes | Qual é a 'jacket'? (Jaqueta) | Imagem de praia: shorts ou jacket? (shorts) | Descreva sua roupa: 'I'm wearing a ... and ...'. (Resposta aberta) | Monte a mala para uma viagem à neve em inglês, com 3 itens. (jacket, boots, scarf...) |
+
+#### 3º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Classes de palavras e pontuação | Na frase 'O gato pulou', qual palavra é o verbo? (pulou) | Que adjetivo combina com 'monstro': peludo ou correr? (peludo) | Forme palavras com o prefixo DES: fazer, ligar. (desfazer, desligar) | Reescreva o diálogo com dois-pontos e travessão: Ana disse que estava com fome. (Ana disse: — Estou com fome.) |
+| Matemática: Multiplicação e divisão | Quanto é 4 × 5? (20) | Divida 18 balas entre 3 crianças. Quantas para cada? (6) | São 23 alunos em grupos de 5. Quantos grupos completos e quantos sobram? (4 grupos, sobram 3) | Invente um problema de divisão com resto 2. (Resposta aberta) |
+| Matemática: Medidas | Para medir o peso de uma fruta, use: régua ou balança? (Balança) | Quantos mililitros tem 1 litro? (1.000) | Uma jarra tem 1 litro. Quantos copos de 250 ml enche? (4) | Ana mediu a mesa com palmos (8) e o pai (6). Por que deu diferente? (Os palmos têm tamanhos diferentes) |
+| Ciências Naturais: A Terra e o céu | Qual é o formato da Terra? (Quase esférico) | No globo, o azul representa o quê? (Água (oceanos)) | Por que às vezes vemos a Lua de dia? (Ela também fica no céu de dia; o Sol a ilumina) | Se a Terra fosse plana, o que veríamos diferente num navio indo embora? (Ele não sumiria de baixo para cima) |
+| Ciências Humanas: Cidade e campo: trabalho e lazer | Plantar e colher é trabalho mais comum no campo ou na cidade? (No campo) | Cite uma diferença entre a vida no campo e na cidade. (Resposta aberta (trânsito, natureza)) | Como as crianças se divertiam há 60 anos e como se divertem hoje? (Resposta aberta) | A cidade precisa do campo? Dê um exemplo. (Sim, alimentos) |
+| Ciências Humanas: Mapas e legendas | No mapa, o que indica a legenda? (O significado dos símbolos) | Um símbolo de cruz vermelha costuma indicar o quê? (Hospital) | Use a legenda para encontrar a escola no mapa. (Localização indicada) | Crie símbolos para padaria, praça e parada de ônibus. Explique suas escolhas. (Resposta aberta) |
+| Ética: Bullying não é brincadeira | Apelido que humilha é brincadeira? (Não, pode ser bullying) | O que diferencia brincadeira de bullying? (Bullying é repetido, machuca e um lado sofre) | Um colega é excluído todo dia. O que você pode fazer? (Acolher e contar a um adulto) | Crie uma campanha de 1 frase contra o bullying. (Resposta aberta) |
+| Inglês: My house | Onde cozinhamos: kitchen ou bedroom? (kitchen) | The cat is ___ the box (dentro). (in) | Leia: 'The ball is under the bed.' Onde está a bola? (Embaixo da cama) | Descreva seu quarto com 2 frases usando in, on ou under. (Resposta aberta) |
+
+#### 4º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Textos do cotidiano e narrativas | Numa receita, onde estão os ingredientes? (Na lista de ingredientes) | Qual é a ideia principal da página de diário? (Depende do texto) | Ordene os passos da receita de bolo. (Ordem lógica) | Escreva uma carta a um amigo contando algo legal da semana, com saudação e despedida. (Resposta aberta) |
+| Matemática: Geometria e trajetos | Quantos lados tem um triângulo? (3) | O dado tem quantas faces? (6) | Desenhe no croqui o caminho de casa até a escola virando 2 vezes à direita. (Resposta aberta) | Um cubo e uma pirâmide de base quadrada: qual tem mais vértices? (Cubo (8 contra 5)) |
+| Matemática: Tempo, chance e gráficos | Que hora o relógio mostra? (3h) (3 horas) | Quantos minutos tem 1 hora? (60) | O filme começou às 14h e terminou às 15h30. Quanto durou? (1h30) | Ao lançar um dado, é mais provável sair número par ou o número 6? Explique. (Par (3 chances contra 1)) |
+| Ciências Naturais: O solo | Qual solo tem mais restos de folhas e é bom para plantar? (Humífero) | Em qual solo a água passa mais rápido: arenoso ou argiloso? (Arenoso) | Por que o barro gruda e serve para fazer tijolo? (Solo argiloso retém água e é moldável) | Planeje um experimento para comparar a permeabilidade de 2 solos. (Garrafa, filtro, mesma água, medir tempo) |
+| Ciências Humanas: Espaços públicos e privados | A praça é um espaço público ou privado? (Público) | Quem cuida da escola pública? (O governo e toda a comunidade) | Localize no mapa: hospital, prefeitura e praça. (Localização) | Por que é importante existirem áreas de preservação na cidade? (Natureza, animais, ar e lazer) |
+| Ciências Humanas: Recursos naturais e consumo consciente | Garrafa PET vai em qual lixeira? (Plástico (vermelha)) | Por que reciclar ajuda o planeta? (Menos lixo e menos recursos novos) | Calcule: banho de 15 min gasta 135 L. De 5 min, quanto? (45 L) | Proponha 3 ações para a escola produzir menos lixo. (Resposta aberta) |
+| Ética: Cooperação e consumo consciente | Brinquedo novo é necessidade ou desejo? (Desejo) | Por que trabalhar em equipe ajuda a resolver desafios? (Cada um contribui) | Sua turma vai montar um mural. Como dividir as tarefas de forma justa? (Resposta aberta) | Antes de comprar algo, que 3 perguntas você poderia fazer? (Preciso? Já tenho? Dá para trocar/emprestar?) |
+| Inglês: Feelings and actions | Carinha sorrindo: happy ou sad? (happy) | 'I can swim' significa? (Eu sei nadar) | Escreva 2 coisas que você consegue fazer: 'I can...' (Resposta aberta) | Ele está 'tired'. O que ele pode fazer para melhorar? Responda em português ou inglês. (Descansar / sleep) |
+
+### 4º ano
+
+#### 1º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Ortografia e dicionário | Complete: P__XE (ei ou e). (PEIXE) | Em ordem alfabética: cenoura, abacaxi, banana. (abacaxi, banana, cenoura) | No dicionário, 'manga' tem 2 sentidos. Qual vale em 'A manga da camisa rasgou'? (Parte da roupa) | Por que falamos 'pexe' mas escrevemos 'peixe'? Dê outro exemplo. (O ditongo é reduzido na fala; caixa/caxa) |
+| Matemática: Números até 99.999 | Como se escreve 'trinta e cinco mil e doze'? (35.012) | Decomponha 47.305. (4×10.000 + 7×1.000 + 3×100 + 5) | Quais são múltiplos de 6 até 40? (6, 12, 18, 24, 30, 36) | Qual o maior número de 5 algarismos diferentes? Explique. (98.765) |
+| Ciências Naturais: Misturas e transformações | Água e óleo misturam? (Não, formam uma mistura heterogênea) | O gelo derretendo é transformação reversível ou irreversível? (Reversível) | Qual transformação não volta: queimar papel ou congelar água? (Queimar papel) | Explique por que o bolo assado não volta a ser massa crua. (O calor transformou os ingredientes (irreversível)) |
+| Ciências Humanas: O ser humano no tempo | Os primeiros grupos humanos eram nômades ou sedentários? (Nômades) | O que mudou quando os humanos começaram a plantar? (Passaram a se fixar em um lugar) | Ordene: nomadismo, agricultura, cidades, indústria. (Essa ordem) | Que invenção atual você acha que mudou tanto a vida quanto a agricultura? Justifique. (Resposta aberta) |
+| Ciências Humanas: Culturas, migrações e territórios | Peteca é palavra de origem indígena ou africana? (Indígena) | O que é uma terra indígena? (Território reconhecido para povos indígenas) | Leia o mapa de migração: de que região saíram mais pessoas? (Depende do mapa) | Como a cultura da sua cidade mostra a mistura de povos? Dê 2 exemplos. (Resposta aberta) |
+| Ética: Direitos e deveres da criança | Brincar é um direito da criança? (Sim) | Estudar é direito ou dever? (Os dois) | Uma criança está trabalhando em vez de estudar. Isso respeita o ECA? (Não) | Por que todo direito vem junto com um dever? Dê um exemplo. (Direito à escola, dever de respeitar colegas) |
+| Inglês: Daily routine and time | Qual é 'wake up'? (Acordar) | Relógio 7:00: What time is it? (It's seven o'clock) | Ordene a rotina de Tom: wake up, have breakfast, go to school. (Essa ordem) | Escreva 3 frases sobre sua rotina com horários. (Resposta aberta) |
+
+#### 2º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Acentuação e pontuação | Qual leva acento: LAPIS ou LIVRO? (LÁPIS) | Coloque vírgulas: Comprei pão leite e ovos. (pão, leite e ovos) | Corrija: 'Joao, voce trouxe o açucar?' (João, você trouxe o açúcar?) | Explique por que FÁCIL tem acento e PAPEL não. (Fácil é paroxítona em L; papel é oxítona) |
+| Matemática: Adição, subtração e igualdades | Quanto é 3.450 + 1.275? (4.725) | Tire a prova real de 800 − 345 = 455. (455 + 345 = 800) | Uma escola tinha 1.240 alunos, saíram 135 e entraram 210. Quantos são agora? (1.315) | Que número torna verdadeiro: 250 + __ = 600 − 50? (300) |
+| Matemática: Multiplicação e divisão | Quanto é 6 × 7? (42) | Uma horta tem 8 fileiras de 12 mudas. Quantas mudas? (96) | 125 alunos vão de ônibus de 40 lugares. Quantos ônibus são necessários? (4) | Com 3 camisetas e 4 bermudas, quantas combinações? Mostre como pensou. (12) |
+| Ciências Naturais: Cadeias alimentares | Quem é produtor: capim ou onça? (Capim) | Monte a cadeia: capim, gafanhoto, sapo. (capim → gafanhoto → sapo) | O que fazem os fungos e bactérias na cadeia? (Decompõem e devolvem nutrientes ao solo) | Se todos os sapos sumissem, o que aconteceria com os gafanhotos? (Aumentariam e faltaria capim) |
+| Ciências Humanas: Transformações na cidade e no campo | Na foto antiga, a rua era de terra ou asfalto? (Depende da foto) | O que mudou na sua cidade com a chegada dos carros? (Ruas, trânsito, poluição) | Por que o campo foi ocupado com plantações? (Para produzir alimento) | Compare 2 fotos da cidade em épocas diferentes: cite 2 mudanças e 1 permanência. (Resposta aberta) |
+| Ciências Humanas: O município e as divisões do Brasil | Quem governa o município? (Prefeito(a)) | O que fazem os vereadores? (Criam leis e fiscalizam a prefeitura) | Ordene: bairro, município, estado, região, país. (Essa ordem) | Seu bairro precisa de uma praça. A quem pedir e como? (Câmara, prefeitura, abaixo-assinado) |
+| Ética: Ética digital e segurança na internet | Posso postar meu endereço na internet? (Não) | O que fazer se um desconhecido pedir sua foto? (Não enviar e contar a um adulto) | Qual comentário é respeitoso para a foto de um colega? (Resposta respeitosa) | Por que o que postamos pode durar para sempre? Que cuidado tomar? (Fica salvo; pensar antes de postar) |
+| Inglês: Places in town | Onde compramos pão: bakery ou hospital? (bakery) | 'Turn left' significa? (Vire à esquerda) | Siga: go straight, turn right. Onde você chega no mapa? (Lugar indicado) | Escreva o caminho da escola até o parque usando 2 direções. (Resposta aberta) |
+
+#### 3º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Concordância e formação de palavras | Complete: Os meninos ___ (jogar) bola. (jogam) | Concordância: 'as casa bonita' ou 'as casas bonitas'? (as casas bonitas) | Forme palavras com -eza e -oso: belo, coragem. (beleza, corajoso) | Reescreva sem repetir o nome: 'Ana chegou. Ana abraçou a mãe.' (Ana chegou. Ela abraçou a mãe.) |
+| Matemática: Frações, decimais e dinheiro | Que fração da pizza é 1 de 4 pedaços? (1/4) | R$ 0,50 é que parte de 1 real? (Metade (50 centésimos)) | Comprei por R$ 7,50 e paguei com R$ 10,00. Qual o troco? (R$ 2,50) | O que é maior, 1/3 ou 1/5 da mesma pizza? Explique. (1/3; dividida em menos partes, cada uma é maior) |
+| Matemática: Medidas | Qual a unidade da temperatura? (Grau Celsius) | Perímetro de um quadrado de lado 5 m? (20 m) | Uma figura tem 12 quadradinhos de área. Desenhe duas formas diferentes com essa área. (Ex.: 3×4 e 2×6) | Uma aula vai das 13h40 às 15h15. Quanto tempo dura? (1h35) |
+| Ciências Naturais: Microrganismos | Qual alimento usa fungo para crescer: pão ou arroz? (Pão (fermento)) | Todos os microrganismos fazem mal? (Não) | Que atitudes evitam doenças transmitidas por microrganismos? (Lavar as mãos, vacina, água tratada) | Explique por que a vacina protege mesmo antes de ficarmos doentes. (Prepara o corpo para reconhecer o micróbio) |
+| Ciências Humanas: Caminhos e comunicação | Qual veio primeiro: rádio ou internet? (Rádio) | Por que os rios eram importantes para o comércio? (Transportavam pessoas e mercadorias) | Ordene: carta, telégrafo, rádio, TV, internet. (Essa ordem) | Como a internet mudou o jeito de as pessoas se comunicarem? Uma vantagem e um problema. (Resposta aberta) |
+| Ciências Humanas: Campo, cidade e produção | O leite é produzido no campo ou na cidade? (No campo) | Que trabalho é típico da cidade? (Comércio, fábricas, serviços) | Ordene a produção do leite: vaca, indústria, caminhão, mercado. (Essa ordem) | O que o campo recebe da cidade? Dê 2 exemplos. (Máquinas, remédios, roupas) |
+| Ética: Inclusão e acessibilidade | Para que serve uma rampa? (Para quem usa cadeira de rodas e outros) | O que é Libras? (Língua brasileira de sinais) | Encontre 2 barreiras na escola da imagem e proponha soluções. (Resposta aberta) | Por que acessibilidade é bom para todos, não só para pessoas com deficiência? (Idosos, carrinhos de bebê etc.) |
+| Inglês: Jobs | Quem trabalha no hospital? (doctor / nurse) | Pista: 'I teach children.' Who am I? (A teacher) | Ligue: firefighter, farmer, chef aos locais de trabalho. (fire station, farm, restaurant) | Grave: 'I want to be a ... because ...'. (Resposta aberta) |
+
+#### 4º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Textos informativos e teatro | 'O sorvete é gostoso' é fato ou opinião? (Opinião) | No texto científico, o que a tabela mostra? (Depende do texto) | No teatro, o que indicam os parênteses nas falas? (Rubricas: como agir ou falar) | Leia a notícia e escreva uma frase de fato e uma de opinião sobre ela. (Resposta aberta) |
+| Matemática: Geometria | O canto do caderno é ângulo reto? (Sim) | Qual planificação monta um cubo? (A de 6 quadrados em cruz) | Complete a figura simétrica no espelho. (Figura espelhada) | Quais letras maiúsculas têm eixo de simetria? Cite 3 e mostre o eixo. (A, M, T, O...) |
+| Matemática: Estatística e chance | No gráfico, qual dia foi mais quente? (Depende do gráfico) | Na roleta com 3 partes azuis e 1 vermelha, qual cor tem mais chance? (Azul) | Monte a tabela de temperaturas máximas da semana e diga a diferença entre o maior e o menor valor. (Resposta aberta) | Crie uma roleta em que vermelho tenha o dobro de chance de azul. (Ex.: 2 partes vermelhas, 1 azul) |
+| Ciências Naturais: Pontos cardeais e calendários | O Sol nasce em qual ponto cardeal? (Leste) | Para que serve a bússola? (Indicar o norte) | Ao meio-dia, a sombra do gnômon aponta para o sul. Onde fica o norte? (Para o lado oposto) | Por que o calendário tem 365 dias? (Tempo de a Terra dar uma volta no Sol) |
+| Ciências Humanas: Migrações | Migrar é? (Mudar de lugar para morar) | Cite um motivo para migrar. (Trabalho, guerra, seca, estudo) | Que contribuições os imigrantes japoneses trouxeram ao Brasil? (Culinária, agricultura...) | Monte sua árvore genealógica e descubra se alguém migrou. Por quê? (Resposta aberta) |
+| Ciências Humanas: Orientação, mapas e paisagens | Qual direção fica oposta ao norte? (Sul) | Para que serve um mapa político? (Mostrar fronteiras e divisões) | Use a rosa dos ventos: a escola fica a nordeste da praça. Onde? (Localização indicada) | Qual mapa você usaria para planejar uma trilha na serra e por quê? (Mapa físico (relevo)) |
+| Ética: Justiça e trabalho em equipe | Dividir os doces igualmente é justo? (Sim) | É justo só um fazer todo o trabalho do grupo? (Não) | Na votação da turma deu empate. Proponha uma forma justa de decidir. (Resposta aberta) | Grave sua opinião sobre um tema da escola com um motivo. (Resposta aberta) |
+| Inglês: Likes and dislikes | 'I like pizza' significa? (Eu gosto de pizza) | Do you like broccoli? Responda. (Yes, I do / No, I don't) | Monte a frase: like / I / don't / spiders. (I don't like spiders) | Pergunte a 3 pessoas o que gostam e escreva em inglês. (Resposta aberta) |
+
+### 5º ano
+
+#### 1º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Ortografia e acentuação | Complete com S ou Z: CA_A. (CASA) | Acentue: ARVORE, MESA. (ÁRVORE, MESA) | Por que LÂMPADA tem acento? (É proparoxítona: todas levam acento) | Explique por que HOJE não se escreve OJE. (É grafia histórica: h inicial sem som) |
+| Matemática: Números naturais e decimais | Como se lê 305.120? (Trezentos e cinco mil, cento e vinte) | Ordene: 2,5; 2,05; 2,50. (2,05 < 2,5 = 2,50) | Comprei 3 itens de R$ 4,75. Quanto gastei? (R$ 14,25) | Por que 2,5 e 2,50 são o mesmo número? (O zero à direita dos décimos não muda o valor) |
+| Ciências Naturais: Propriedades dos materiais e ciclo da água | A rolha afunda ou flutua? (Flutua) | Ordene: evaporação, condensação, precipitação. (Essa ordem) | Por que a panela tem cabo de plástico ou madeira? (São maus condutores de calor) | Explique como o desmatamento pode diminuir as chuvas. (Menos transpiração das plantas, menos vapor) |
+| Ciências Humanas: Povos e culturas | Os egípcios viviam perto de qual rio? (Nilo) | Por que os povos antigos se fixavam perto de rios? (Água, alimento, transporte) | Ligue o povo à criação: egípcios, gregos, maias. (Pirâmides, democracia, calendário) | Compare a religião em uma cultura antiga e na sua comunidade: algo em comum? (Resposta aberta) |
+| Ciências Humanas: População e diversidade | Qual estado tem mais habitantes no Brasil? (São Paulo) | O que é densidade demográfica? (Habitantes por área) | Leia a tabela: qual região do seu estado tem mais pessoas? (Depende da tabela) | Por que algumas regiões têm mais pessoas que outras? Dê 2 motivos. (Empregos, clima, história) |
+| Ética: Cidadania e participação | Votar para escolher o representante da turma é atitude cidadã? (Sim) | O que é bem comum? (Aquilo que beneficia todos) | Ordene a assembleia: propor, discutir, votar, cumprir. (Essa ordem) | Crie uma proposta para melhorar seu bairro e explique quem seria beneficiado. (Resposta aberta) |
+| Inglês: What are you doing? | 'She is reading' significa? (Ela está lendo) | Add -ing: play, run. (playing, running) | What is he doing? (imagem de menino comendo) (He is eating) | Escreva 3 frases sobre o que sua família está fazendo agora. (Resposta aberta) |
+
+#### 2º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Sentidos e pontuação | Em 'Sentei no banco da praça', banco é? (Assento) | Para que servem as aspas numa citação? (Indicar a fala de outra pessoa) | O que as reticências indicam em 'Eu queria... deixa pra lá.'? (Hesitação, pensamento interrompido) | Leia o texto e responda: por que o personagem saiu correndo, se o texto não diz? (Inferência a partir das pistas) |
+| Matemática: Frações e porcentagem | 1/2 é igual a quantos quartos? (2/4) | Coloque na reta: 1/4, 0,5, 3/4. (0,25; 0,5; 0,75) | Uma blusa de R$ 80,00 tem 25% de desconto. Quanto pago? (R$ 60,00) | O que é maior: 3/5 ou 60%? Explique. (São iguais) |
+| Ciências Naturais: Água e consumo consciente | Fechar a torneira ao escovar os dentes economiza água? (Sim) | Reutilizar é o mesmo que reciclar? (Não) | Classifique: usar o verso da folha, separar latinhas, comprar menos. (Reutilizar, reciclar, reduzir) | Leia a conta de água da casa e proponha uma meta de economia. (Resposta aberta) |
+| Ciências Humanas: Estado e cidadania | Quem faz as leis no Brasil? (Poder Legislativo) | O que o ECA protege? (Os direitos de crianças e adolescentes) | Ligue os três poderes às suas funções. (Executivo governa, Legislativo legisla, Judiciário julga) | Escolha um direito e diga o que acontece quando ele não é respeitado. (Resposta aberta) |
+| Ciências Humanas: Cidades e rede urbana | Santos é uma cidade portuária? (Sim) | Que problemas o crescimento rápido de uma cidade pode trazer? (Trânsito, falta de moradia, poluição) | No mapa, que cidades estão ligadas à capital por estradas? (Depende do mapa) | Proponha uma solução para o trânsito de uma cidade grande. (Resposta aberta) |
+| Ética: Notícias falsas e pensamento crítico | Fake news é notícia verdadeira? (Não) | Qual o primeiro passo para checar uma notícia? (Ver a fonte) | Ordene a checagem: fonte, data, outros sites, compartilhar só se confirmar. (Essa ordem) | Uma mensagem diz que chocolate cura gripe. Como você mostraria a um amigo que é falsa? (Argumentos e fontes) |
+| Inglês: Hobbies and sports | Qual é 'soccer'? (Futebol) | Can a fish swim? (Yes, it can) | Leia: 'Emma can play the piano but she can't swim.' O que Emma não sabe fazer? (Nadar) | Escreva 2 coisas que você sabe e 1 que não sabe fazer em inglês. (Resposta aberta) |
+
+#### 3º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Verbos, conjunções e formação de palavras | 'Amanhã eu viajarei': presente, passado ou futuro? (Futuro) | Complete: Nós ___ (cantar) ontem. (cantamos) | Escolha a conjunção: Estudei, ___ tirei nota boa. (mas/por isso) (por isso) | Explique a diferença entre 'flor', 'floricultura' e 'couve-flor'. (Primitiva, derivada e composta) |
+| Matemática: Álgebra, proporcionalidade e contagem | Quantas combinações com 2 sucos e 3 sanduíches? (6) | Que número falta: __ × 4 = 36? (9) | Uma receita para 4 pessoas usa 2 ovos. Para 10 pessoas? (5 ovos) | Divida R$ 60 entre dois irmãos de forma que um receba o dobro do outro. (R$ 20 e R$ 40) |
+| Matemática: Geometria e localização | Quantos lados tem um hexágono? (6) | Qual ponto está em (3, 2) no plano? (3 para a direita, 2 para cima) | Qual planificação forma um cilindro? (Dois círculos e um retângulo) | Ampliei um quadrado dobrando o lado. A área dobrou? Explique. (Não, quadruplicou) |
+| Ciências Naturais: Corpo humano e nutrição | Onde começa a digestão? (Na boca) | Que órgão bombeia o sangue? (O coração) | Monte um prato equilibrado com os grupos alimentares. (Resposta aberta) | Explique por que respiramos mais rápido ao correr. (Os músculos precisam de mais oxigênio) |
+| Ciências Humanas: Linguagens, memória e tempo | Os hieróglifos eram a escrita de que povo? (Egípcios) | Por que algumas datas viram feriado? (Para lembrar fatos importantes) | Ordene: pintura rupestre, hieróglifos, alfabeto, escrita digital. (Essa ordem) | Quem decide o que vira monumento? Um fato importante pode ser esquecido? (Resposta aberta) |
+| Ciências Humanas: Trabalho, tecnologia e energia | Energia solar vem de onde? (Do Sol) | Fábrica é setor primário, secundário ou terciário? (Secundário) | Classifique: agricultor, metalúrgico, professor. (Primário, secundário, terciário) | Qual fonte de energia seria melhor para sua região? Justifique. (Resposta aberta) |
+| Ética: Respeito à diversidade e combate ao preconceito | Racismo é crime no Brasil? (Sim) | O que é preconceito? (Julgar alguém sem conhecer, por sua origem ou aparência) | Seu colega foi xingado por causa da cor da pele. O que fazer? (Acolher, não se calar, avisar um adulto) | Escolha uma personalidade negra ou indígena e conte por que ela é importante. (Resposta aberta) |
+| Inglês: Describing people | 'Tall' significa? (Alto) | 'She has long hair' descreve o quê? (O cabelo comprido) | Leia a descrição e encontre a pessoa: 'He is short and has blue eyes.' (Pessoa indicada) | Descreva um amigo em 3 frases em inglês. (Resposta aberta) |
+
+#### 4º bimestre
+
+| Unidade | 1. Reconhecer | 2. Compreender | 3. Aplicar | 4. Analisar e criar |
+| --- | --- | --- | --- | --- |
+| Língua Portuguesa: Narrativas e poemas | Quem conta a história é o? (Narrador) | Transforme em discurso indireto: — Estou cansado, disse Leo. (Leo disse que estava cansado.) | Identifique tempo, espaço e conflito do conto. (Depende do texto) | Escreva um poema de 4 versos com rima e declame. (Resposta aberta) |
+| Matemática: Medidas | Quantos centímetros há em 2 metros? (200) | Volume de uma caixa de 2 × 3 × 2 cubinhos? (12 cubinhos) | Um terreno de 4 m × 6 m e outro de 5 m × 5 m: qual tem maior área? E perímetro? (25 m² maior área; perímetros 20 e 20) | Desenhe duas figuras com perímetro 12 e áreas diferentes. (Ex.: 3×3 (9) e 1×5 (5)) |
+| Matemática: Probabilidade e estatística | Ao lançar uma moeda, quais resultados são possíveis? (Cara ou coroa) | Probabilidade de sair 3 em um dado? (1/6) | No gráfico de linhas, em que mês a temperatura caiu mais? (Depende do gráfico) | É mais provável tirar soma 7 ou soma 2 com dois dados? Explique. (7 (6 combinações contra 1)) |
+| Ciências Naturais: O céu e a Terra | Qual constelação aparece na bandeira do Brasil? (Cruzeiro do Sul) | Ordene as fases da Lua. (Nova, crescente, cheia, minguante) | Por que parece que o Sol se move no céu? (A Terra gira (rotação)) | Construa um periscópio e explique o caminho que a luz faz dentro dele. (Reflete em dois espelhos) |
+| Ciências Humanas: Patrimônio e atualidade | O Cristo Redentor é patrimônio material ou imaterial? (Material) | O que é patrimônio da humanidade? (Bem importante para todos os povos) | Compare dois textos com opiniões diferentes sobre um tema atual. (Resposta aberta) | Grave um guia de 1 minuto sobre um patrimônio da sua cidade. (Resposta aberta) |
+| Ciências Humanas: Qualidade ambiental | Esgoto no rio é poluição? (Sim) | Compare as imagens de satélite: o que mudou na mata? (Depende das imagens) | Quais problemas ambientais existem perto da sua escola? (Resposta aberta) | Escreva uma carta à prefeitura propondo uma solução para um deles. (Resposta aberta) |
+| Ética: Projeto de vida e sustentabilidade | Uma meta é algo que queremos alcançar? (Sim) | Qual opção polui menos: ir de bicicleta ou de carro? (Bicicleta) | Divida uma meta grande em 3 passos menores. (Resposta aberta) | Escreva uma carta para você no 6º ano com 2 sonhos e 1 atitude pelo planeta. (Resposta aberta) |
+| Inglês: Short stories | Qual é o personagem principal da história? (Depende do texto) | Ordene as cenas da história. (Ordem do texto) | Responda em inglês: Where does the story happen? (Depende do texto) | Invente um final diferente em 2 frases em inglês. (Resposta aberta) |
+

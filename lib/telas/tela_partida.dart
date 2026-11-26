@@ -151,8 +151,20 @@ enum _Fase { briefing, desafio, pergunta, fim }
 class _Item {
   final Exercicio e;
   final bool revanche;
-  _Item(this.e, this.revanche);
+
+  /// Pergunta mais simples oferecida depois de 2 erros seguidos.
+  final bool aquecimento;
+  _Item(this.e, this.revanche, {this.aquecimento = false});
+
+  bool get original => !revanche && !aquecimento;
 }
+
+/// Medalhas por processo de pensamento (trilha 2.1.0).
+const medalhasInfo = {
+  'detetive': (emoji: '🕵️', nome: 'Detetive', texto: 'você encontrou o erro'),
+  'explicador': (emoji: '💬', nome: 'Explicador', texto: 'você explicou o porquê'),
+  'inventor': (emoji: '💡', nome: 'Inventor', texto: 'você criou algo seu'),
+};
 
 const _elogios = [
   'Miau-ravilha!', 'Mandou bem!', 'Isso aí!', 'Show!', 'Perfeito!', 'Arrasou!', 'Craque!', 'Decolou!'
@@ -211,6 +223,11 @@ class _PartidaState extends ConsumerState<_Partida> {
   final _acertos = <String, int>{};
   final _respostas = <String, int>{};
 
+  // Incentivo: aquecimento depois de 2 erros seguidos e medalhas da partida
+  int _errosSeguidos = 0;
+  int _aquecimentos = 0;
+  final _medalhas = <String, int>{};
+
   Sessao get s => widget.sessao;
   Nivel get nivel => s.nivel;
   String get nome => s.perfil.nome;
@@ -224,6 +241,15 @@ class _PartidaState extends ConsumerState<_Partida> {
 
   bool get _relampagoAgora =>
       _desafio?.tipo == TipoDesafio.relampago && _desafioAceito && _i == _desafio!.antesDe;
+
+  /// Pode inserir um aquecimento agora? Não no chefão, nas provas
+  /// especiais nem antes de um desafio (que conta pela posição).
+  bool get _podeAquecer =>
+      !chefao &&
+      !especial &&
+      nivel.complexidade > 1 &&
+      _aquecimentos < 2 &&
+      (_desafio == null || _i > _desafio!.antesDe + 2);
 
   /// A pergunta atual faz parte do desafio aceito.
   bool get _noTrechoDoDesafio {
@@ -253,6 +279,9 @@ class _PartidaState extends ConsumerState<_Partida> {
     _i = 0;
     _primeira = 0;
     _combo = 0;
+    _errosSeguidos = 0;
+    _aquecimentos = 0;
+    _medalhas.clear();
     _resposta = null;
     _bloqueado = false;
     _final = null;
@@ -306,7 +335,7 @@ class _PartidaState extends ConsumerState<_Partida> {
   void _responder(Resposta r) {
     _relogio?.cancel();
     final item = _lista[_i];
-    final primeiraVez = _i < _base;
+    final primeiraVez = item.original;
     if (primeiraVez) {
       final m = materiaDa(_i);
       _respostas[m] = (_respostas[m] ?? 0) + 1;
@@ -321,18 +350,23 @@ class _PartidaState extends ConsumerState<_Partida> {
         _desafioVenceu = true;
       }
     }
+    final medalha = item.e.medalha;
+    if (primeiraVez && r.certa && r.semErros && medalha != null) {
+      _medalhas[medalha] = (_medalhas[medalha] ?? 0) + 1;
+    }
     setState(() {
       _disparo++;
       _ultimaCerta = r.certa;
       _bloqueado = true;
       _resposta = r;
       if (r.certa) {
+        _errosSeguidos = 0;
         _combo++;
         if (primeiraVez && r.semErros) _primeira++;
         if (chefao) _vidaChefao = max(0, _vidaChefao - 1);
         _tituloRetorno = (item.e is Ligar || item.e is Separar)
             ? 'Missão cumprida! 👏'
-            : '${([..._elogios, 'Isso aí, $nome!']..shuffle(_rnd)).first}'
+            : '${([..._elogios, ...nivel.incentivosAcerto, 'Isso aí, $nome!']..shuffle(_rnd)).first}'
                 '${_combo >= 3 ? ' 🔥 $_combo seguidas!' : ''}';
       } else {
         _combo = 0;
@@ -342,7 +376,19 @@ class _PartidaState extends ConsumerState<_Partida> {
         }
         _tituloRetorno = chefao
             ? 'O chefão se defendeu! 🛡️'
-            : (List.of(_incentivos)..shuffle(_rnd)).first;
+            : (List.of(nivel.incentivosErro.isEmpty ? _incentivos : nivel.incentivosErro)
+                  ..shuffle(_rnd))
+                .first;
+        _errosSeguidos++;
+        if (_errosSeguidos >= 2 && _podeAquecer) {
+          final ex = aquecimento(widget.no, nivel, _rnd,
+              evitar: {for (final x in _lista) x.e});
+          if (ex != null) {
+            _lista.insert(_i + 1, _Item(ex, false, aquecimento: true));
+            _aquecimentos++;
+            _errosSeguidos = 0;
+          }
+        }
       }
     });
   }
@@ -386,6 +432,16 @@ class _PartidaState extends ConsumerState<_Partida> {
       sup[m] = suprimentosDaPartida(widget.no, estrelas, melhorou: estrelas > estrelasAntes) +
           (_desafioVenceu == true ? bonusDesafio : 0);
     }
+    final acerto = _base == 0 ? 0 : (_primeira * 100 / _base).round();
+    final no = widget.no;
+    (String, int)? sequencia;
+    var convidar = false;
+    if (no is NoMissao) {
+      final k = chaveSequencia(s.perfil.nivel, no.setor);
+      final r = avaliarConvite(antes.sequencias[k] ?? 0, acerto);
+      sequencia = (k, r.sequencia);
+      convidar = r.convidar && _proximoNivel != null;
+    }
     final oferecer = (widget.no is NoMissao || widget.no is NoRevisao) &&
         sortearSurpresa(antes, s.hoje, _rnd);
     setState(() {
@@ -394,7 +450,9 @@ class _PartidaState extends ConsumerState<_Partida> {
         estrelas: estrelas,
         xp: ganho.xp,
         peixinhos: ganho.peixinhos,
-        acerto: _base == 0 ? 0 : (_primeira * 100 / _base).round(),
+        acerto: acerto,
+        convite: convidar,
+        medalhas: Map.of(_medalhas),
         tempo: DateTime.now().difference(_inicio),
         subiuNivel: nivelJogador(antes.xp + ganho.xp) > nivelJogador(antes.xp),
         novoNivel: nivelJogador(antes.xp + ganho.xp),
@@ -416,8 +474,20 @@ class _PartidaState extends ConsumerState<_Partida> {
           suprimentos: sup,
           acertos: Map.of(_acertos),
           respostas: Map.of(_respostas),
+          medalhas: Map.of(_medalhas),
+          sequencia: sequencia,
         );
     if (oferecer) await ref.read(acoesProvider).marcarSurpresa(s.perfil.id);
+  }
+
+  Nivel? get _proximoNivel {
+    final i = s.niveis.indexWhere((n) => n.id == nivel.id);
+    return i >= 0 && i + 1 < s.niveis.length ? s.niveis[i + 1] : null;
+  }
+
+  Future<void> _subirNivel(Nivel n) async {
+    await ref.read(acoesProvider).salvarPerfil(s.perfil.copyWith(nivel: n.id));
+    if (mounted) _voltar();
   }
 
   void _sair() {
@@ -679,7 +749,12 @@ class _PartidaState extends ConsumerState<_Partida> {
     };
     return ListView(padding: const EdgeInsets.fromLTRB(18, 6, 18, 24), children: [
       Text(
-        (item.revanche ? '🔁 Revanche: tente de novo' : rotulos[item.e.runtimeType]!).toUpperCase(),
+        (item.revanche
+                ? '🔁 Revanche: tente de novo'
+                : item.aquecimento
+                    ? '🔥 Aquecimento: uma mais tranquila'
+                    : rotulos[item.e.runtimeType]!)
+            .toUpperCase(),
         style: TextStyle(color: p.cor, fontSize: 13, fontWeight: FontWeight.w900),
       ),
       const SizedBox(height: 8),
@@ -834,6 +909,38 @@ class _PartidaState extends ConsumerState<_Partida> {
             aviso(f.desafioVenceu
                 ? '🏅 ${f.desafio!.titulo} vencido: +$bonusDesafio suprimentos!'
                 : '${f.desafio!.titulo} Não foi desta vez, mas o próximo vem aí! 💪'),
+          for (final m in f.medalhas.entries)
+            if (medalhasInfo[m.key] != null)
+              aviso('${medalhasInfo[m.key]!.emoji} Medalha ${medalhasInfo[m.key]!.nome}'
+                  '${m.value > 1 ? ' ×${m.value}' : ''}: ${medalhasInfo[m.key]!.texto}!'),
+          if (f.convite && proximoNivel != null) ...[
+            Container(
+              margin: const EdgeInsets.only(top: 14),
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(colors: [Color(0xFF2B2F8F), Color(0xFF5A3FD6)]),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: Cores.ouro, width: 2),
+              ),
+              child: Column(children: [
+                const Text('🚀 CONVITE DA TRIPULAÇÃO',
+                    style: TextStyle(color: Cores.ouro, fontSize: 14, fontWeight: FontWeight.w900)),
+                const SizedBox(height: 6),
+                Text(
+                    '${nivel.convite ?? 'Você está mandando muito bem!'}\n'
+                    'Você acertou $acertoParaConvite% ou mais em $missoesParaConvite missões seguidas.',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.white, fontSize: 16, height: 1.35)),
+                const SizedBox(height: 10),
+                Botao3D.ouro(
+                    texto: 'SUBIR PARA ${proximoNivel.emoji} ${proximoNivel.nome.toUpperCase()}',
+                    onPressed: () => _subirNivel(proximoNivel)),
+                const SizedBox(height: 6),
+                const Text('Você escolhe: dá para continuar neste nível também.',
+                    textAlign: TextAlign.center, style: TextStyle(color: Cores.textoClaro)),
+              ]),
+            ),
+          ],
           const SizedBox(height: 18),
           Row(children: [
             cartao('XP', '⚡${f.xp}', Cores.ouro),
@@ -942,8 +1049,12 @@ class _Final {
   final Desafio? desafio;
   final bool desafioVenceu;
   final bool surpresa;
+  final bool convite;
+  final Map<String, int> medalhas;
 
   _Final({
+    this.convite = false,
+    this.medalhas = const {},
     required this.suprimentos,
     required this.desafio,
     required this.desafioVenceu,
