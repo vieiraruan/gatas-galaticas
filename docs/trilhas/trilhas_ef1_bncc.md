@@ -1,6 +1,6 @@
 # Trilhas de aprendizagem EF1 (1º ao 5º ano) com base na BNCC
 
-Versão 2.1.0, 2026-11-26. Fonte: BNCC (MEC, 2018). Distribuição por bimestre é uma proposta.
+Versão 2.2.0, 2026-11-26. Fonte: BNCC (MEC, 2018). Distribuição por bimestre é uma proposta.
 
 ## 1º ano (6 anos)
 
@@ -200,7 +200,7 @@ Versão 2.1.0, 2026-11-26. Fonte: BNCC (MEC, 2018). Distribuição por bimestre 
 
 | Disciplina | Unidade | Habilidades BNCC / referências | Exemplos de missões diárias |
 | --- | --- | --- | --- |
-| Língua Portuguesa | Textos informativos e teatro | EF04LP15, EF04LP19, EF04LP20, EF04LP27, EF35LP04, EF35LP05 | Fato ou opinião? (arrastar e soltar); Cientista mirim (leitura guiada); Teatro de vozes (gravação de voz) |
+| Língua Portuguesa | Textos informativos e teatro | EF04LP15, EF04LP19, EF04LP20, EF35LP24, EF35LP04, EF35LP05 | Fato ou opinião? (arrastar e soltar); Cientista mirim (leitura guiada); Teatro de vozes (gravação de voz) |
 | Matemática | Geometria | EF04MA16, EF04MA17, EF04MA18, EF04MA19 | Abra a caixa (ligar pares); Ângulo reto? (quiz); Espelho mágico (minijogo) |
 | Matemática | Estatística e chance | EF04MA24, EF04MA26, EF04MA27, EF04MA28 | Qual a chance? (quiz); Leitor de gráficos (quiz); Temperatura da semana (desafio fora da tela) |
 | Ciências Naturais | Pontos cardeais e calendários | EF04CI09, EF04CI10, EF04CI11 | Gnômon virtual (minijogo); Bússola (quiz); Ciclos e calendários (ligar pares) |
@@ -261,376 +261,376 @@ Versão 2.1.0, 2026-11-26. Fonte: BNCC (MEC, 2018). Distribuição por bimestre 
 | Ética | Projeto de vida e sustentabilidade | CG06, CG08, TCT_AMB | Da meta ao sonho (ordenar); Escolha sustentável (quiz); Carta para o eu do futuro (desafio fora da tela) |
 | Inglês | Short stories | LI_LEIT, LI_ESCR, LI_INTER | Story time (leitura guiada); Story order (ordenar); Read aloud (gravação de voz) |
 
-## Anexo: habilidades BNCC usadas (descrições resumidas)
+## Anexo: habilidades BNCC usadas (texto oficial da BNCC, MEC 2018)
 
 | Código | Habilidade |
 | --- | --- |
-| EF01CI01 | Comparar características de materiais de objetos do cotidiano. |
-| EF01CI02 | Localizar, nomear e representar partes do corpo humano e suas funções. |
-| EF01CI03 | Discutir a importância dos hábitos de higiene para a saúde. |
-| EF01CI04 | Comparar características físicas entre colegas, respeitando a diversidade. |
-| EF01CI05 | Identificar escalas de tempo: períodos do dia, dias, semanas, meses e anos. |
-| EF01CI06 | Relacionar a sucessão de dias e noites ao ritmo das atividades dos seres vivos. |
-| EF01GE01 | Descrever características dos lugares de vivência (moradia, escola). |
-| EF01GE02 | Comparar jogos e brincadeiras de diferentes épocas e lugares. |
-| EF01GE03 | Comparar usos do espaço público (praças, parques) para o lazer. |
-| EF01GE04 | Elaborar regras de convívio em diferentes espaços. |
-| EF01GE05 | Observar ritmos naturais (dia e noite, temperatura, umidade). |
-| EF01GE06 | Comparar tipos de moradia e objetos de uso cotidiano. |
-| EF01GE07 | Descrever atividades de trabalho da comunidade. |
-| EF01GE08 | Criar mapas mentais e desenhos a partir de itinerários e histórias. |
-| EF01GE09 | Elaborar mapas simples usando referenciais (frente/atrás, direita/esquerda). |
-| EF01GE10 | Relacionar lugares de vivência aos ritmos da natureza (chuva, vento, calor). |
-| EF01GE11 | Associar mudanças de roupa e alimentação às variações do clima ao longo do ano. |
-| EF01HI01 | Identificar aspectos do seu crescimento por meio de lembranças pessoais e familiares. |
-| EF01HI02 | Relacionar sua história com a da família e da comunidade. |
-| EF01HI03 | Descrever seus papéis e responsabilidades na família, escola e comunidade. |
-| EF01HI04 | Identificar diferenças entre os ambientes em que vive (casa, escola, comunidade). |
-| EF01HI05 | Comparar jogos e brincadeiras atuais e de outras épocas e lugares. |
-| EF01HI06 | Conhecer histórias da família e da escola e o papel de diferentes pessoas. |
+| EF01CI01 | Comparar características de diferentes materiais presentes em objetos de uso cotidiano, discutindo sua origem, os modos como são descartados e como podem ser usados de forma mais consciente. |
+| EF01CI02 | Localizar, nomear e representar graficamente (por meio de desenhos) partes do corpo humano e explicar suas funções. |
+| EF01CI03 | Discutir as razões pelas quais os hábitos de higiene do corpo (lavar as mãos antes de comer, escovar os dentes, limpar os olhos, o nariz e as orelhas etc.) são necessários para a manutenção da saúde. |
+| EF01CI04 | Comparar características físicas entre os colegas, reconhecendo a diversidade e a importância da valorização, do acolhimento e do respeito às diferenças. |
+| EF01CI05 | Identificar e nomear diferentes escalas de tempo: os períodos diários (manhã, tarde, noite) e a sucessão de dias, semanas, meses e anos. |
+| EF01CI06 | Selecionar exemplos de como a sucessão de dias e noites orienta o ritmo de atividades diárias de seres humanos e de outros seres vivos. |
+| EF01GE01 | Descrever características observadas de seus lugares de vivência (moradia, escola etc.) e identificar semelhanças e diferenças entre esses lugares. |
+| EF01GE02 | Identificar semelhanças e diferenças entre jogos e brincadeiras de diferentes épocas e lugares. |
+| EF01GE03 | Identificar e relatar semelhanças e diferenças de usos do espaço público (praças, parques) para o lazer e diferentes manifestações. |
+| EF01GE04 | Discutir e elaborar, coletivamente, regras de convívio em diferentes espaços (sala de aula, escola etc.). |
+| EF01GE05 | Observar e descrever ritmos naturais (dia e noite, variação de temperatura e umidade etc.) em diferentes escalas espaciais e temporais, comparando a sua realidade com outras. |
+| EF01GE06 | Descrever e comparar diferentes tipos de moradia ou objetos de uso cotidiano (brinquedos, roupas, mobiliários), considerando técnicas e materiais utilizados em sua produção. |
+| EF01GE07 | Descrever atividades de trabalho relacionadas com o dia a dia da sua comunidade. |
+| EF01GE08 | Criar mapas mentais e desenhos com base em itinerários, contos literários, histórias inventadas e brincadeiras. |
+| EF01GE09 | Elaborar e utilizar mapas simples para localizar elementos do local de vivência, considerando referenciais espaciais (frente e atrás, esquerda e direita, em cima e embaixo, dentro e fora) e tendo o corpo como referência. |
+| EF01GE10 | Descrever características de seus lugares de vivência relacionadas aos ritmos da natureza (chuva, vento, calor etc.). |
+| EF01GE11 | Associar mudanças de vestuário e hábitos alimentares em sua comunidade ao longo do ano, decorrentes da variação de temperatura e umidade no ambiente. |
+| EF01HI01 | Identificar aspectos do seu crescimento por meio do registro das lembranças particulares ou de lembranças dos membros de sua família e/ou de sua comunidade. |
+| EF01HI02 | Identificar a relação entre as suas histórias e as histórias de sua família e de sua comunidade. |
+| EF01HI03 | Descrever e distinguir os seus papéis e responsabilidades relacionados à família, à escola e à comunidade. |
+| EF01HI04 | Identificar as diferenças entre os variados ambientes em que vive (doméstico, escolar e da comunidade), reconhecendo as especificidades dos hábitos e das regras que os regem. |
+| EF01HI05 | Identificar semelhanças e diferenças entre jogos e brincadeiras atuais e de outras épocas e lugares. |
+| EF01HI06 | Conhecer as histórias da família e da escola e identificar o papel desempenhado por diferentes sujeitos em diferentes espaços. |
 | EF01HI07 | Identificar mudanças e permanências nas formas de organização familiar. |
-| EF01HI08 | Reconhecer o significado de comemorações e festas escolares e familiares. |
-| EF01LP01 | Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo. |
-| EF01LP02 | Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética. |
-| EF01LP03 | Observar escritas convencionais e compará-las às próprias produções. |
+| EF01HI08 | Reconhecer o significado das comemorações e festas escolares, diferenciando-as das datas festivas comemoradas no âmbito familiar ou da comunidade. |
+| EF01LP01 | Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página. |
+| EF01LP02 | Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética – usando letras/grafemas que representem fonemas. |
+| EF01LP03 | Observar escritas convencionais, comparando-as às suas produções escritas, percebendo semelhanças e diferenças. |
 | EF01LP04 | Distinguir as letras do alfabeto de outros sinais gráficos. |
 | EF01LP05 | Reconhecer o sistema de escrita alfabética como representação dos sons da fala. |
 | EF01LP06 | Segmentar oralmente palavras em sílabas. |
 | EF01LP07 | Identificar fonemas e sua representação por letras. |
 | EF01LP08 | Relacionar elementos sonoros (sílabas, fonemas, partes de palavras) com sua representação escrita. |
 | EF01LP09 | Comparar palavras, identificando semelhanças e diferenças entre sons de sílabas iniciais, mediais e finais. |
-| EF01LP10 | Nomear as letras do alfabeto e recitá-lo na ordem. |
-| EF01LP11 | Conhecer, diferenciar e relacionar letras de imprensa e cursiva, maiúsculas e minúsculas. |
+| EF01LP10 | Nomear as letras do alfabeto e recitá-lo na ordem das letras. |
+| EF01LP11 | Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, maiúsculas e minúsculas. |
 | EF01LP12 | Reconhecer a separação das palavras, na escrita, por espaços em branco. |
-| EF01LP14 | Identificar sinais de pontuação (ponto final, interrogação, exclamação) e seus efeitos na entonação. |
-| EF01LP16 | Ler e compreender quadras, quadrinhas, parlendas e trava-línguas, com apoio do professor. |
-| EF01LP17 | Planejar e produzir listas, agendas, calendários, avisos, convites e receitas. |
-| EF01LP19 | Recitar parlendas, quadras, quadrinhas e trava-línguas com entonação adequada. |
-| EF01MA01 | Utilizar números naturais como indicador de quantidade ou de ordem. |
-| EF01MA02 | Contar de maneira exata ou aproximada, usando estratégias como pareamento e agrupamento. |
-| EF01MA03 | Estimar e comparar quantidades de objetos de dois conjuntos (até cerca de 20). |
-| EF01MA04 | Contar a quantidade de objetos de coleções até 100 e registrar o resultado. |
-| EF01MA05 | Comparar números naturais de até duas ordens. |
-| EF01MA06 | Construir fatos básicos da adição e utilizá-los em cálculos. |
-| EF01MA07 | Compor e decompor números de até duas ordens. |
-| EF01MA08 | Resolver e elaborar problemas de adição e subtração com números de até dois algarismos. |
-| EF01MA09 | Organizar e ordenar objetos por atributos (cor, forma, medida). |
-| EF01MA10 | Descrever elementos ausentes em sequências recursivas de números, objetos ou figuras. |
-| EF01MA11 | Descrever a localização de pessoas e objetos no espaço (direita, esquerda, frente, atrás). |
-| EF01MA12 | Descrever a localização de pessoas e objetos segundo um ponto de referência. |
-| EF01MA13 | Relacionar figuras espaciais (cone, cilindro, esfera, bloco retangular) a objetos familiares. |
-| EF01MA14 | Identificar e nomear figuras planas (círculo, quadrado, retângulo, triângulo). |
-| EF01MA15 | Comparar comprimentos, capacidades ou massas (mais alto, mais pesado, cabe mais). |
-| EF01MA16 | Relatar sequências de acontecimentos de um dia usando noções de tempo. |
-| EF01MA17 | Reconhecer e relacionar períodos do dia, dias da semana e meses do ano. |
-| EF01MA18 | Produzir a escrita de uma data (dia, mês, ano). |
-| EF01MA19 | Reconhecer e relacionar valores de moedas e cédulas do real. |
-| EF01MA20 | Classificar eventos de acaso (com certeza, talvez, impossível). |
-| EF01MA21 | Ler dados expressos em tabelas e gráficos de colunas simples. |
-| EF01MA22 | Realizar pesquisa com até duas variáveis categóricas e organizar os dados. |
-| EF02CI01 | Identificar de que materiais são feitos os objetos do cotidiano. |
-| EF02CI02 | Propor o uso de diferentes materiais para construir objetos. |
-| EF02CI03 | Discutir cuidados para prevenir acidentes domésticos. |
-| EF02CI04 | Descrever características de plantas e animais do cotidiano. |
-| EF02CI05 | Investigar a importância da água e da luz para as plantas. |
-| EF02CI06 | Identificar as partes de uma planta e suas funções. |
-| EF02CI07 | Relacionar a posição do Sol ao tamanho da sombra. |
-| EF02CI08 | Comparar o efeito da radiação solar em diferentes superfícies. |
-| EF02GE01 | Descrever a história das migrações no bairro ou comunidade. |
-| EF02GE02 | Comparar costumes e tradições de populações do bairro, respeitando diferenças. |
-| EF02GE03 | Comparar meios de transporte e comunicação. |
-| EF02GE04 | Reconhecer diferentes modos de viver em diferentes lugares. |
-| EF02GE05 | Comparar imagens de um mesmo lugar em diferentes tempos. |
-| EF02GE06 | Relacionar dia e noite a diferentes atividades sociais. |
-| EF02GE07 | Descrever atividades extrativas e seus impactos ambientais. |
-| EF02GE08 | Representar a paisagem com desenhos, mapas mentais e maquetes. |
-| EF02GE09 | Identificar lugares em imagens aéreas, mapas e fotografias. |
-| EF02GE10 | Aplicar referenciais de localização em representações da sala e da escola. |
-| EF02GE11 | Reconhecer a importância do solo e da água e seus usos. |
-| EF02HI01 | Reconhecer espaços de convivência e o que aproxima e separa grupos. |
-| EF02HI02 | Identificar práticas e papéis sociais em diferentes comunidades. |
-| EF02HI03 | Selecionar situações cotidianas que remetam a mudança, pertencimento e memória. |
-| EF02HI04 | Compreender objetos e documentos pessoais como fontes de memória. |
-| EF02HI05 | Compreender função, uso e significado de objetos e documentos de grupos próximos. |
-| EF02HI06 | Organizar fatos no tempo (antes, durante, ao mesmo tempo, depois). |
-| EF02HI07 | Utilizar marcadores de tempo como relógio e calendário. |
-| EF02HI08 | Compilar histórias da família e da comunidade em diferentes fontes. |
-| EF02HI09 | Discutir por que alguns objetos são preservados e outros descartados. |
-| EF02HI10 | Identificar formas de trabalho na comunidade e sua importância. |
-| EF02HI11 | Identificar impactos ambientais das formas de trabalho na comunidade. |
-| EF02LP01 | Usar grafia correta, maiúsculas, segmentação e pontuação final ao produzir textos. |
-| EF02LP02 | Segmentar palavras em sílabas e remover/substituir sílabas para criar novas palavras. |
-| EF02LP03 | Ler e escrever palavras com correspondências regulares diretas (f/v, t/d, p/b) e contextuais (c/q; e/o átonos). |
-| EF02LP04 | Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV. |
+| EF01LP14 | Identificar outros sinais no texto além das letras, como pontos finais, de interrogação e exclamação e seus efeitos na entonação. |
+| EF01LP16 | Ler e compreender, em colaboração com os colegas e com a ajuda do professor, quadras, quadrinhas, parlendas, trava-línguas, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto do texto e relacionando sua forma de organização à sua finalidade. |
+| EF01LP17 | Planejar e produzir, em colaboração com os colegas e com a ajuda do professor, listas, agendas, calendários, avisos, convites, receitas, instruções de montagem e legendas para álbuns, fotos ou ilustrações (digitais ou impressos), dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/ finalidade do texto. |
+| EF01LP19 | Recitar parlendas, quadras, quadrinhas, trava-línguas, com entonação adequada e observando as rimas. |
+| EF01MA01 | Utilizar números naturais como indicador de quantidade ou de ordem em diferentes situações cotidianas e reconhecer situações em que os números não indicam contagem nem ordem, mas sim código de identificação. |
+| EF01MA02 | Contar de maneira exata ou aproximada, utilizando diferentes estratégias como o pareamento e outros agrupamentos. |
+| EF01MA03 | Estimar e comparar quantidades de objetos de dois conjuntos (em torno de 20 elementos), por estimativa e/ou por correspondência (um a um, dois a dois) para indicar “tem mais”, “tem menos” ou “tem a mesma quantidade”. |
+| EF01MA04 | Contar a quantidade de objetos de coleções até 100 unidades e apresentar o resultado por registros verbais e simbólicos, em situações de seu interesse, como jogos, brincadeiras, materiais da sala de aula, entre outros. |
+| EF01MA05 | Comparar números naturais de até duas ordens em situações cotidianas, com e sem suporte da reta numérica. |
+| EF01MA06 | Construir fatos básicos da adição e utilizá-los em procedimentos de cálculo para resolver problemas. |
+| EF01MA07 | Compor e decompor número de até duas ordens, por meio de diferentes adições, com o suporte de material manipulável, contribuindo para a compreensão de características do sistema de numeração decimal e o desenvolvimento de estratégias de cálculo. |
+| EF01MA08 | Resolver e elaborar problemas de adição e de subtração, envolvendo números de até dois algarismos, com os significados de juntar, acrescentar, separar e retirar, com o suporte de imagens e/ou material manipulável, utilizando estratégias e formas de registro pessoais. |
+| EF01MA09 | Organizar e ordenar objetos familiares ou representações por figuras, por meio de atributos, tais como cor, forma e medida. |
+| EF01MA10 | Descrever, após o reconhecimento e a explicitação de um padrão (ou regularidade), os elementos ausentes em sequências recursivas de números naturais, objetos ou figuras. |
+| EF01MA11 | Descrever a localização de pessoas e de objetos no espaço em relação à sua própria posição, utilizando termos como à direita, à esquerda, em frente, atrás. |
+| EF01MA12 | Descrever a localização de pessoas e de objetos no espaço segundo um dado ponto de referência, compreendendo que, para a utilização de termos que se referem à posição, como direita, esquerda, em cima, em baixo, é necessário explicitar-se o referencial. |
+| EF01MA13 | Relacionar figuras geométricas espaciais (cones, cilindros, esferas e blocos retangulares) a objetos familiares do mundo físico. |
+| EF01MA14 | Identificar e nomear figuras planas (círculo, quadrado, retângulo e triângulo) em desenhos apresentados em diferentes disposições ou em contornos de faces de sólidos geométricos. |
+| EF01MA15 | Comparar comprimentos, capacidades ou massas, utilizando termos como mais alto, mais baixo, mais comprido, mais curto, mais grosso, mais fino, mais largo, mais pesado, mais leve, cabe mais, cabe menos, entre outros, para ordenar objetos de uso cotidiano. |
+| EF01MA16 | Relatar em linguagem verbal ou não verbal sequência de acontecimentos relativos a um dia, utilizando, quando possível, os horários dos eventos. |
+| EF01MA17 | Reconhecer e relacionar períodos do dia, dias da semana e meses do ano, utilizando calendário, quando necessário. |
+| EF01MA18 | Produzir a escrita de uma data, apresentando o dia, o mês e o ano, e indicar o dia da semana de uma data, consultando calendários. |
+| EF01MA19 | Reconhecer e relacionar valores de moedas e cédulas do sistema monetário brasileiro para resolver situações simples do cotidiano do estudante. |
+| EF01MA20 | Classificar eventos envolvendo o acaso, tais como “acontecerá com certeza”, “talvez aconteça” e “é impossível acontecer”, em situações do cotidiano. |
+| EF01MA21 | Ler dados expressos em tabelas e em gráficos de colunas simples. |
+| EF01MA22 | Realizar pesquisa, envolvendo até duas variáveis categóricas de seu interesse e universo de até 30 elementos, e organizar dados por meio de representações pessoais. |
+| EF02CI01 | Identificar de que materiais (metais, madeira, vidro etc.) são feitos os objetos que fazem parte da vida cotidiana, como esses objetos são utilizados e com quais materiais eram produzidos no passado. |
+| EF02CI02 | Propor o uso de diferentes materiais para a construção de objetos de uso cotidiano, tendo em vista algumas propriedades desses materiais (flexibilidade, dureza, transparência etc.). |
+| EF02CI03 | Discutir os cuidados necessários à prevenção de acidentes domésticos (objetos cortantes e inflamáveis, eletricidade, produtos de limpeza, medicamentos etc.). |
+| EF02CI04 | Descrever características de plantas e animais (tamanho, forma, cor, fase da vida, local onde se desenvolvem etc.) que fazem parte de seu cotidiano e relacioná-las ao ambiente em que eles vivem. |
+| EF02CI05 | Investigar a importância da água e da luz para a manutenção da vida de plantas em geral. |
+| EF02CI06 | Identificar as principais partes de uma planta (raiz, caule, folhas, flores e frutos) e a função desempenhada por cada uma delas, e analisar as relações entre as plantas, o ambiente e os demais seres vivos. |
+| EF02CI07 | Descrever as posições do Sol em diversos horários do dia e associá-las ao tamanho da sombra projetada. |
+| EF02CI08 | Comparar o efeito da radiação solar (aquecimento e reflexão) em diferentes tipos de superfície (água, areia, solo, superfícies escura, clara e metálica etc.). |
+| EF02GE01 | Descrever a história das migrações no bairro ou comunidade em que vive. |
+| EF02GE02 | Comparar costumes e tradições de diferentes populações inseridas no bairro ou comunidade em que vive, reconhecendo a importância do respeito às diferenças. |
+| EF02GE03 | Comparar diferentes meios de transporte e de comunicação, indicando o seu papel na conexão entre lugares, e discutir os riscos para a vida e para o ambiente e seu uso responsável. |
+| EF02GE04 | Reconhecer semelhanças e diferenças nos hábitos, nas relações com a natureza e no modo de viver de pessoas em diferentes lugares. |
+| EF02GE05 | Analisar mudanças e permanências, comparando imagens de um mesmo lugar em diferentes tempos. |
+| EF02GE06 | Relacionar o dia e a noite a diferentes tipos de atividades sociais (horário escolar, comercial, sono etc.). |
+| EF02GE07 | Descrever as atividades extrativas (minerais, agropecuárias e industriais) de diferentes lugares, identificando os impactos ambientais. |
+| EF02GE08 | Identificar e elaborar diferentes formas de representação (desenhos, mapas mentais, maquetes) para representar componentes da paisagem dos lugares de vivência. |
+| EF02GE09 | Identificar objetos e lugares de vivência (escola e moradia) em imagens aéreas e mapas (visão vertical) e fotografias (visão oblíqua). |
+| EF02GE10 | Aplicar princípios de localização e posição de objetos (referenciais espaciais, como frente e atrás, esquerda e direita, em cima e embaixo, dentro e fora) por meio de representações espaciais da sala de aula e da escola. |
+| EF02GE11 | Reconhecer a importância do solo e da água para a vida, identificando seus diferentes usos (plantação e extração de materiais, entre outras possibilidades) e os impactos desses usos no cotidiano da cidade e do campo. |
+| EF02HI01 | Reconhecer espaços de sociabilidade e identificar os motivos que aproximam e separam as pessoas em diferentes grupos sociais ou de parentesco. |
+| EF02HI02 | Identificar e descrever práticas e papéis sociais que as pessoas exercem em diferentes comunidades. |
+| EF02HI03 | Selecionar situações cotidianas que remetam à percepção de mudança, pertencimento e memória. |
+| EF02HI04 | Selecionar e compreender o significado de objetos e documentos pessoais como fontes de memórias e histórias nos âmbitos pessoal, familiar, escolar e comunitário. |
+| EF02HI05 | Selecionar objetos e documentos pessoais e de grupos próximos ao seu convívio e compreender sua função, seu uso e seu significado. |
+| EF02HI06 | Identificar e organizar, temporalmente, fatos da vida cotidiana, usando noções relacionadas ao tempo (antes, durante, ao mesmo tempo e depois). |
+| EF02HI07 | Identificar e utilizar diferentes marcadores do tempo presentes na comunidade, como relógio e calendário. |
+| EF02HI08 | Compilar histórias da família e/ou da comunidade registradas em diferentes fontes. |
+| EF02HI09 | Identificar objetos e documentos pessoais que remetam à própria experiência no âmbito da família e/ou da comunidade, discutindo as razões pelas quais alguns objetos são preservados e outros são descartados. |
+| EF02HI10 | Identificar diferentes formas de trabalho existentes na comunidade em que vive, seus significados, suas especificidades e importância. |
+| EF02HI11 | Identificar impactos no ambiente causados pelas diferentes formas de trabalho existentes na comunidade em que vive. |
+| EF02LP01 | Utilizar, ao produzir o texto, grafia correta de palavras conhecidas ou com estruturas silábicas já dominadas, letras maiúsculas em início de frases e em substantivos próprios, segmentação entre as palavras, ponto final, ponto de interrogação e ponto de exclamação. |
+| EF02LP02 | Segmentar palavras em sílabas e remover e substituir sílabas iniciais, mediais ou finais para criar novas palavras. |
+| EF02LP03 | Ler e escrever palavras com correspondências regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspondências regulares contextuais (c e q; e e o, em posição átona em final de palavra). |
+| EF02LP04 | Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, identificando que existem vogais em todas as sílabas. |
 | EF02LP05 | Ler e escrever corretamente palavras com marcas de nasalidade (til, m, n). |
 | EF02LP06 | Perceber o princípio acrofônico que opera nos nomes das letras do alfabeto. |
-| EF02LP07 | Escrever palavras, frases e textos curtos em letra de imprensa e cursiva. |
+| EF02LP07 | Escrever palavras, frases, textos curtos nas formas imprensa e cursiva. |
 | EF02LP08 | Segmentar corretamente as palavras ao escrever frases e textos. |
-| EF02LP09 | Usar adequadamente ponto final, de interrogação e de exclamação. |
-| EF02LP10 | Identificar sinônimos e formar antônimos com os prefixos in-/im-. |
-| EF02LP11 | Formar aumentativo e diminutivo com os sufixos -ão e -inho/-zinho. |
-| EF02LP13 | Planejar e produzir bilhetes e cartas. |
-| EF02LP26 | Ler e compreender, com certa autonomia, textos literários de gêneros variados. |
-| EF02LP28 | Reconhecer o conflito gerador de uma narrativa ficcional e sua resolução. |
-| EF02MA01 | Comparar e ordenar números naturais até a ordem de centenas. |
-| EF02MA02 | Fazer estimativas de quantidades de objetos (até 1000). |
-| EF02MA03 | Comparar quantidades de dois conjuntos (tem mais, tem menos, tem a mesma quantidade). |
-| EF02MA04 | Compor e decompor números naturais de até três ordens. |
-| EF02MA05 | Construir fatos básicos da adição e subtração para cálculo mental ou escrito. |
-| EF02MA06 | Resolver e elaborar problemas de adição e subtração com números de até três ordens. |
-| EF02MA07 | Resolver problemas de multiplicação (por 2, 3, 4 e 5) como adição de parcelas iguais. |
-| EF02MA08 | Resolver problemas envolvendo dobro, metade, triplo e terça parte. |
-| EF02MA09 | Construir sequências numéricas crescentes e decrescentes com regularidade. |
-| EF02MA10 | Descrever padrões em sequências repetitivas e recursivas. |
-| EF02MA11 | Descrever elementos ausentes em sequências repetitivas e recursivas. |
-| EF02MA12 | Identificar e registrar localização e deslocamentos de pessoas e objetos. |
-| EF02MA13 | Esboçar roteiros e plantas de ambientes familiares. |
-| EF02MA14 | Reconhecer, nomear e comparar figuras espaciais (cubo, bloco, pirâmide, cone, cilindro, esfera). |
-| EF02MA15 | Reconhecer, comparar e nomear figuras planas. |
-| EF02MA16 | Estimar, medir e comparar comprimentos (metro, centímetro, milímetro). |
-| EF02MA17 | Estimar, medir e comparar capacidade e massa (litro, mililitro, grama, quilograma). |
-| EF02MA18 | Indicar a duração de intervalos de tempo usando o calendário. |
-| EF02MA19 | Medir a duração de um intervalo de tempo com relógio digital. |
-| EF02MA20 | Estabelecer equivalência de valores entre moedas e cédulas. |
-| EF02MA21 | Classificar eventos aleatórios como pouco prováveis, muito prováveis, improváveis e impossíveis. |
-| EF02MA22 | Comparar informações em tabelas de dupla entrada e gráficos de colunas ou barras. |
-| EF02MA23 | Realizar pesquisa com até 30 elementos e organizar dados em listas, tabelas e gráficos. |
-| EF03CI01 | Produzir sons pela vibração de objetos e identificar variáveis do som. |
-| EF03CI02 | Experimentar a passagem da luz por objetos transparentes, opacos e espelhos. |
-| EF03CI03 | Discutir hábitos para a saúde auditiva e visual. |
-| EF03CI04 | Identificar o modo de vida dos animais comuns no ambiente próximo. |
-| EF03CI05 | Descrever alterações no desenvolvimento dos animais desde o nascimento. |
-| EF03CI06 | Agrupar animais por características externas (penas, pelos, escamas etc.). |
-| EF03CI07 | Identificar características da Terra (formato, água, solo) em modelos e imagens. |
-| EF03CI08 | Observar os períodos em que Sol, Lua, estrelas e planetas são visíveis no céu. |
-| EF03CI09 | Comparar amostras de solo (cor, textura, cheiro, permeabilidade). |
-| EF03CI10 | Identificar os usos do solo e sua importância para a vida. |
-| EF03GE01 | Comparar aspectos culturais dos grupos sociais dos lugares de vivência. |
-| EF03GE02 | Identificar contribuições culturais e econômicas de grupos de diferentes origens. |
-| EF03GE03 | Reconhecer modos de vida de povos e comunidades tradicionais. |
-| EF03GE04 | Explicar como processos naturais e históricos mudam as paisagens. |
-| EF03GE05 | Identificar produtos cultivados e extraídos da natureza e o trabalho envolvido. |
-| EF03GE06 | Interpretar imagens bidimensionais e tridimensionais em representações cartográficas. |
-| EF03GE07 | Reconhecer e elaborar legendas com símbolos. |
-| EF03GE08 | Relacionar a produção de lixo ao consumo e propor consumo consciente. |
-| EF03GE09 | Investigar os usos dos recursos naturais, com destaque para a água. |
-| EF03GE10 | Identificar cuidados no uso da água na agricultura e na geração de energia. |
-| EF03GE11 | Comparar impactos das atividades econômicas urbanas e rurais no ambiente. |
-| EF03HI01 | Identificar os grupos populacionais que formam a cidade e a região. |
-| EF03HI02 | Registrar acontecimentos da história da cidade a partir de fontes. |
-| EF03HI03 | Identificar pontos de vista sobre eventos significativos do lugar. |
-| EF03HI04 | Identificar patrimônios históricos e culturais da cidade ou região. |
-| EF03HI05 | Identificar marcos históricos do lugar em que vive. |
-| EF03HI06 | Identificar registros de memória na cidade (ruas, monumentos, edifícios). |
-| EF03HI07 | Comparar comunidades da cidade ou região. |
-| EF03HI08 | Comparar modos de vida na cidade e no campo, no presente e no passado. |
-| EF03HI09 | Mapear os espaços públicos do lugar em que vive. |
-| EF03HI10 | Diferenciar espaço doméstico, espaços públicos e áreas de conservação. |
-| EF03HI11 | Identificar diferenças entre o trabalho na cidade e no campo. |
-| EF03HI12 | Comparar relações de trabalho e lazer do presente e do passado. |
-| EF03LP01 | Ler e escrever palavras com c/qu, g/gu, r/rr, s/ss, o/e átonos finais e marcas de nasalidade. |
-| EF03LP02 | Ler e escrever palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV. |
+| EF02LP09 | Usar adequadamente ponto final, ponto de interrogação e ponto de exclamação. |
+| EF02LP10 | Identificar sinônimos de palavras de texto lido, determinando a diferença de sentido entre eles, e formar antônimos de palavras encontradas em texto lido pelo acréscimo do prefixo de negação in-/im-. |
+| EF02LP11 | Formar o aumentativo e o diminutivo de palavras com os sufixos -ão e -inho/-zinho. |
+| EF02LP13 | Planejar e produzir bilhetes e cartas, em meio impresso e/ou digital, dentre outros gêneros do campo da vida cotidiana, considerando a situação comunicativa e o tema/assunto/finalidade do texto. |
+| EF02LP26 | Ler e compreender, com certa autonomia, textos literários, de gêneros variados, desenvolvendo o gosto pela leitura. |
+| EF02LP28 | Reconhecer o conflito gerador de uma narrativa ficcional e sua resolução, além de palavras, expressões e frases que caracterizam personagens e ambientes. |
+| EF02MA01 | Comparar e ordenar números naturais (até a ordem de centenas) pela compreensão de características do sistema de numeração decimal (valor posicional e função do zero). |
+| EF02MA02 | Fazer estimativas por meio de estratégias diversas a respeito da quantidade de objetos de coleções e registrar o resultado da contagem desses objetos (até 1000 unidades). |
+| EF02MA03 | Comparar quantidades de objetos de dois conjuntos, por estimativa e/ou por correspondência (um a um, dois a dois, entre outros), para indicar “tem mais”, “tem menos” ou “tem a mesma quantidade”, indicando, quando for o caso, quantos a mais e quantos a menos. |
+| EF02MA04 | Compor e decompor números naturais de até três ordens, com suporte de material manipulável, por meio de diferentes adições. |
+| EF02MA05 | Construir fatos básicos da adição e subtração e utilizá-los no cálculo mental ou escrito. |
+| EF02MA06 | Resolver e elaborar problemas de adição e de subtração, envolvendo números de até três ordens, com os significados de juntar, acrescentar, separar, retirar, utilizando estratégias pessoais ou convencionais. |
+| EF02MA07 | Resolver e elaborar problemas de multiplicação (por 2, 3, 4 e 5) com a ideia de adição de parcelas iguais por meio de estratégias e formas de registro pessoais, utilizando ou não suporte de imagens e/ou material manipulável. |
+| EF02MA08 | Resolver e elaborar problemas envolvendo dobro, metade, triplo e terça parte, com o suporte de imagens ou material manipulável, utilizando estratégias pessoais. |
+| EF02MA09 | Construir sequências de números naturais em ordem crescente ou decrescente a partir de um número qualquer, utilizando uma regularidade estabelecida. |
+| EF02MA10 | Descrever um padrão (ou regularidade) de sequências repetitivas e de sequências recursivas, por meio de palavras, símbolos ou desenhos. |
+| EF02MA11 | Descrever os elementos ausentes em sequências repetitivas e em sequências recursivas de números naturais, objetos ou figuras. |
+| EF02MA12 | Identificar e registrar, em linguagem verbal ou não verbal, a localização e os deslocamentos de pessoas e de objetos no espaço, considerando mais de um ponto de referência, e indicar as mudanças de direção e de sentido. |
+| EF02MA13 | Esboçar roteiros a ser seguidos ou plantas de ambientes familiares, assinalando entradas, saídas e alguns pontos de referência. |
+| EF02MA14 | Reconhecer, nomear e comparar figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera), relacionando-as com objetos do mundo físico. |
+| EF02MA15 | Reconhecer, comparar e nomear figuras planas (círculo, quadrado, retângulo e triângulo), por meio de características comuns, em desenhos apresentados em diferentes disposições ou em sólidos geométricos. |
+| EF02MA16 | Estimar, medir e comparar comprimentos de lados de salas (incluindo contorno) e de polígonos, utilizando unidades de medida não padronizadas e padronizadas (metro, centímetro e milímetro) e instrumentos adequados. |
+| EF02MA17 | Estimar, medir e comparar capacidade e massa, utilizando estratégias pessoais e unidades de medida não padronizadas ou padronizadas (litro, mililitro, grama e quilograma). |
+| EF02MA18 | Indicar a duração de intervalos de tempo entre duas datas, como dias da semana e meses do ano, utilizando calendário, para planejamentos e organização de agenda. |
+| EF02MA19 | Medir a duração de um intervalo de tempo por meio de relógio digital e registrar o horário do início e do fim do intervalo. |
+| EF02MA20 | Estabelecer a equivalência de valores entre moedas e cédulas do sistema monetário brasileiro para resolver situações cotidianas. |
+| EF02MA21 | Classificar resultados de eventos cotidianos aleatórios como “pouco prováveis”, “muito prováveis”, “improváveis” e “impossíveis”. |
+| EF02MA22 | Comparar informações de pesquisas apresentadas por meio de tabelas de dupla entrada e em gráficos de colunas simples ou barras, para melhor compreender aspectos da realidade próxima. |
+| EF02MA23 | Realizar pesquisa em universo de até 30 elementos, escolhendo até três variáveis categóricas de seu interesse, organizando os dados coletados em listas, tabelas e gráficos de colunas simples. |
+| EF03CI01 | Produzir diferentes sons a partir da vibração de variados objetos e identificar variáveis que influem nesse fenômeno. |
+| EF03CI02 | Experimentar e relatar o que ocorre com a passagem da luz através de objetos transparentes (copos, janelas de vidro, lentes, prismas, água etc.), no contato com superfícies polidas (espelhos) e na intersecção com objetos opacos (paredes, pratos, pessoas e outros objetos de uso cotidiano). |
+| EF03CI03 | Discutir hábitos necessários para a manutenção da saúde auditiva e visual considerando as condições do ambiente em termos de som e luz. |
+| EF03CI04 | Identificar características sobre o modo de vida (o que comem, como se reproduzem, como se deslocam etc.) dos animais mais comuns no ambiente próximo. |
+| EF03CI05 | Descrever e comunicar as alterações que ocorrem desde o nascimento em animais de diferentes meios terrestres ou aquáticos, inclusive o homem. |
+| EF03CI06 | Comparar alguns animais e organizar grupos com base em características externas comuns (presença de penas, pelos, escamas, bico, garras, antenas, patas etc.). |
+| EF03CI07 | Identificar características da Terra (como seu formato esférico, a presença de água, solo etc.), com base na observação, manipulação e comparação de diferentes formas de representação do planeta (mapas, globos, fotografias etc.). |
+| EF03CI08 | Observar, identificar e registrar os períodos diários (dia e/ou noite) em que o Sol, demais estrelas, Lua e planetas estão visíveis no céu. |
+| EF03CI09 | Comparar diferentes amostras de solo do entorno da escola com base em características como cor, textura, cheiro, tamanho das partículas, permeabilidade etc. |
+| EF03CI10 | Identificar os diferentes usos do solo (plantação e extração de materiais, dentre outras possibilidades), reconhecendo a importância do solo para a agricultura e para a vida. |
+| EF03GE01 | Identificar e comparar aspectos culturais dos grupos sociais de seus lugares de vivência, seja na cidade, seja no campo. |
+| EF03GE02 | Identificar, em seus lugares de vivência, marcas de contribuição cultural e econômica de grupos de diferentes origens. |
+| EF03GE03 | Reconhecer os diferentes modos de vida de povos e comunidades tradicionais em distintos lugares. |
+| EF03GE04 | Explicar como os processos naturais e históricos atuam na produção e na mudança das paisagens naturais e antrópicas nos seus lugares de vivência, comparando-os a outros lugares. |
+| EF03GE05 | Identificar alimentos, minerais e outros produtos cultivados e extraídos da natureza, comparando as atividades de trabalho em diferentes lugares. |
+| EF03GE06 | Identificar e interpretar imagens bidimensionais e tridimensionais em diferentes tipos de representação cartográfica. |
+| EF03GE07 | Reconhecer e elaborar legendas com símbolos de diversos tipos de representações em diferentes escalas cartográficas. |
+| EF03GE08 | Relacionar a produção de lixo doméstico ou da escola aos problemas causados pelo consumo excessivo e construir propostas para o consumo consciente, considerando a ampliação de hábitos de redução, reúso e reciclagem/descarte de materiais consumidos em casa, na escola e/ou no entorno. |
+| EF03GE09 | Investigar os usos dos recursos naturais, com destaque para os usos da água em atividades cotidianas (alimentação, higiene, cultivo de plantas etc.), e discutir os problemas ambientais provocados por esses usos. |
+| EF03GE10 | Identificar os cuidados necessários para utilização da água na agricultura e na geração de energia de modo a garantir a manutenção do provimento de água potável. |
+| EF03GE11 | Comparar impactos das atividades econômicas urbanas e rurais sobre o ambiente físico natural, assim como os riscos provenientes do uso de ferramentas e máquinas. |
+| EF03HI01 | Identificar os grupos populacionais que formam a cidade, o município e a região, as relações estabelecidas entre eles e os eventos que marcam a formação da cidade, como fenômenos migratórios (vida rural/vida urbana), desmatamentos, estabelecimento de grandes empresas etc. |
+| EF03HI02 | Selecionar, por meio da consulta de fontes de diferentes naturezas, e registrar acontecimentos ocorridos ao longo do tempo na cidade ou região em que vive. |
+| EF03HI03 | Identificar e comparar pontos de vista em relação a eventos significativos do local em que vive, aspectos relacionados a condições sociais e à presença de diferentes grupos sociais e culturais, com especial destaque para as culturas africanas, indígenas e de migrantes. |
+| EF03HI04 | Identificar os patrimônios históricos e culturais de sua cidade ou região e discutir as razões culturais, sociais e políticas para que assim sejam considerados. |
+| EF03HI05 | Identificar os marcos históricos do lugar em que vive e compreender seus significados. |
+| EF03HI06 | Identificar os registros de memória na cidade (nomes de ruas, monumentos, edifícios etc.), discutindo os critérios que explicam a escolha desses nomes. |
+| EF03HI07 | Identificar semelhanças e diferenças existentes entre comunidades de sua cidade ou região, e descrever o papel dos diferentes grupos sociais que as formam. |
+| EF03HI08 | Identificar modos de vida na cidade e no campo no presente, comparando-os com os do passado. |
+| EF03HI09 | Mapear os espaços públicos no lugar em que vive (ruas, praças, escolas, hospitais, prédios da Prefeitura e da Câmara de Vereadores etc.) e identificar suas funções. |
+| EF03HI10 | Identificar as diferenças entre o espaço doméstico, os espaços públicos e as áreas de conservação ambiental, compreendendo a importância dessa distinção. |
+| EF03HI11 | Identificar diferenças entre formas de trabalho realizadas na cidade e no campo, considerando também o uso da tecnologia nesses diferentes contextos. |
+| EF03HI12 | Comparar as relações de trabalho e lazer do presente com as de outros tempos e espaços, analisando mudanças e permanências. |
+| EF03LP01 | Ler e escrever palavras com correspondências regulares contextuais entre grafemas e fonemas – c/qu; g/gu; r/rr; s/ss; o (e não u) e e (e não i) em sílaba átona em final de palavra – e com marcas de nasalidade (til, m, n). |
+| EF03LP02 | Ler e escrever corretamente palavras com sílabas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as sílabas. |
 | EF03LP03 | Ler e escrever corretamente palavras com os dígrafos lh, nh, ch. |
-| EF03LP04 | Acentuar monossílabos tônicos e oxítonas terminados em a, e, o (seguidos ou não de s). |
-| EF03LP05 | Classificar palavras pelo número de sílabas (monossílabas a polissílabas). |
-| EF03LP06 | Identificar a sílaba tônica e classificar palavras em oxítonas, paroxítonas e proparoxítonas. |
-| EF03LP07 | Usar ponto final, interrogação, exclamação e, em diálogos, dois-pontos e travessão. |
-| EF03LP08 | Identificar e diferenciar substantivos e verbos e suas funções na oração. |
-| EF03LP09 | Identificar adjetivos e sua função de atribuir propriedades aos substantivos. |
-| EF03LP10 | Reconhecer prefixos e sufixos produtivos na formação de palavras derivadas. |
-| EF03LP11 | Ler e compreender textos instrucionais (receitas, instruções de montagem). |
-| EF03LP12 | Ler e compreender cartas pessoais e diários. |
-| EF03LP13 | Planejar e produzir cartas pessoais e diários. |
-| EF03MA01 | Ler, escrever e comparar números naturais até a ordem de unidade de milhar. |
-| EF03MA02 | Compor e decompor números naturais de até quatro ordens. |
-| EF03MA03 | Construir e utilizar fatos básicos da adição e da multiplicação. |
-| EF03MA04 | Relacionar números naturais e pontos da reta numérica. |
-| EF03MA05 | Usar diferentes procedimentos de cálculo mental e escrito para adição e subtração. |
-| EF03MA06 | Resolver problemas de adição e subtração (juntar, acrescentar, separar, retirar, comparar, completar). |
-| EF03MA07 | Resolver problemas de multiplicação (por 2, 3, 4, 5 e 10). |
-| EF03MA08 | Resolver problemas de divisão (divisor até 10), com e sem resto. |
-| EF03MA09 | Associar o quociente da divisão por 2, 3, 4, 5 e 10 às ideias de metade, terça, quarta, quinta e décima partes. |
-| EF03MA10 | Identificar regularidades em sequências numéricas e descrever a regra. |
-| EF03MA11 | Compreender a ideia de igualdade em sentenças de adição e subtração. |
-| EF03MA12 | Descrever e representar trajetos com esboços, croquis e maquetes. |
-| EF03MA13 | Associar figuras espaciais a objetos do mundo físico e nomeá-las. |
-| EF03MA14 | Descrever características de prismas, pirâmides, cilindros e cones. |
-| EF03MA15 | Classificar e comparar figuras planas em relação a lados e vértices. |
-| EF03MA16 | Reconhecer figuras congruentes usando sobreposição e malhas. |
-| EF03MA17 | Reconhecer que o resultado de uma medida depende da unidade usada. |
-| EF03MA18 | Escolher a unidade e o instrumento adequados para medir comprimento, tempo e capacidade. |
-| EF03MA19 | Estimar, medir e comparar comprimentos (metro, centímetro, milímetro). |
-| EF03MA20 | Estimar e medir capacidade e massa (litro, mililitro, quilograma, grama). |
-| EF03MA21 | Comparar áreas de faces de objetos e figuras planas. |
-| EF03MA22 | Ler e registrar medidas e intervalos de tempo com relógios e calendários. |
-| EF03MA23 | Ler horas em relógios digitais e analógicos (hora, minuto, segundo). |
-| EF03MA24 | Resolver problemas de comparação e equivalência de valores monetários. |
-| EF03MA25 | Identificar resultados possíveis de eventos aleatórios e estimar chances. |
-| EF03MA26 | Resolver problemas com dados em tabelas de dupla entrada e gráficos. |
-| EF03MA27 | Ler, interpretar e comparar dados em tabelas e gráficos. |
-| EF03MA28 | Realizar pesquisa com até 50 elementos e organizar os dados. |
-| EF04CI01 | Identificar misturas na vida diária. |
-| EF04CI02 | Testar transformações de materiais (aquecimento, resfriamento, luz, umidade). |
-| EF04CI03 | Concluir que algumas mudanças são reversíveis e outras não. |
-| EF04CI04 | Analisar e construir cadeias alimentares simples. |
-| EF04CI05 | Comparar o ciclo da matéria e o fluxo de energia nos ecossistemas. |
-| EF04CI06 | Relacionar fungos e bactérias à decomposição. |
-| EF04CI07 | Verificar a participação de microrganismos na produção de alimentos e medicamentos. |
-| EF04CI08 | Propor atitudes para prevenir doenças causadas por microrganismos. |
-| EF04CI09 | Identificar os pontos cardeais pela sombra de uma vara (gnômon). |
-| EF04CI10 | Comparar pontos cardeais obtidos pelo gnômon e pela bússola. |
-| EF04CI11 | Associar movimentos da Lua e da Terra a calendários. |
-| EF04GE01 | Identificar elementos de distintas culturas nos lugares de vivência. |
-| EF04GE02 | Descrever processos migratórios e suas contribuições para a sociedade brasileira. |
-| EF04GE03 | Distinguir funções do poder público municipal e canais de participação. |
-| EF04GE04 | Analisar a interdependência entre campo e cidade. |
-| EF04GE05 | Distinguir unidades político-administrativas (distrito, município, estado, região). |
-| EF04GE06 | Identificar territórios étnico-culturais (terras indígenas, quilombos). |
-| EF04GE07 | Comparar o trabalho no campo e na cidade. |
-| EF04GE08 | Descrever produção, circulação e consumo de produtos. |
-| EF04GE09 | Usar as direções cardeais para localizar elementos na paisagem. |
-| EF04GE10 | Comparar tipos variados de mapas. |
-| EF04GE11 | Identificar características das paisagens naturais e antrópicas. |
-| EF04HI01 | Reconhecer a história como resultado da ação humana no tempo e no espaço. |
-| EF04HI02 | Identificar grandes marcos da humanidade (nomadismo, agricultura, indústria). |
-| EF04HI03 | Identificar transformações na cidade ao longo do tempo. |
-| EF04HI04 | Discutir nomadismo e fixação das primeiras comunidades humanas. |
-| EF04HI05 | Relacionar a ocupação do campo a intervenções na natureza. |
-| EF04HI06 | Identificar transformações nos deslocamentos de pessoas e mercadorias. |
-| EF04HI07 | Explicar a importância dos caminhos terrestres, fluviais e marítimos para o comércio. |
-| EF04HI08 | Identificar transformações nos meios de comunicação. |
-| EF04HI09 | Identificar motivações dos processos migratórios. |
-| EF04HI10 | Analisar fluxos populacionais na formação da sociedade brasileira. |
-| EF04HI11 | Analisar mudanças associadas à migração na sociedade em que vive. |
-| EF04LP01 | Grafar palavras usando regras de correspondência fonema-grafema regulares diretas e contextuais. |
-| EF04LP02 | Ler e escrever palavras com ditongos reduzidos na fala (ai, ei, ou). |
-| EF04LP03 | Localizar palavras no dicionário e escolher o significado adequado ao contexto. |
-| EF04LP04 | Acentuar paroxítonas terminadas em -i(s), -l, -r, -ão(s). |
-| EF04LP05 | Usar pontuação, incluindo dois-pontos, travessão e vírgula em enumerações, vocativo e aposto. |
-| EF04LP06 | Identificar e usar a concordância verbal. |
-| EF04LP07 | Identificar e usar a concordância nominal (artigo, substantivo e adjetivo). |
-| EF04LP08 | Reconhecer e grafar palavras derivadas com -agem, -oso, -eza, -izar/-isar. |
-| EF04LP15 | Distinguir fatos de opiniões em textos informativos, jornalísticos e publicitários. |
-| EF04LP19 | Ler e compreender textos de divulgação científica para crianças. |
-| EF04LP20 | Reconhecer a função de gráficos, diagramas e tabelas em textos. |
-| EF04LP27 | Identificar, em textos dramáticos, marcadores das falas das personagens e de cena. |
+| EF03LP04 | Usar acento gráfico (agudo ou circunflexo) em monossílabos tônicos terminados em a, e, o e em palavras oxítonas terminadas em a, e, o, seguidas ou não de s. |
+| EF03LP05 | Identificar o número de sílabas de palavras, classificando-as em monossílabas, dissílabas, trissílabas e polissílabas. |
+| EF03LP06 | Identificar a sílaba tônica em palavras, classificando-as em oxítonas, paroxítonas e proparoxítonas. |
+| EF03LP07 | Identificar a função na leitura e usar na escrita ponto final, ponto de interrogação, ponto de exclamação e, em diálogos (discurso direto), dois-pontos e travessão. |
+| EF03LP08 | Identificar e diferenciar, em textos, substantivos e verbos e suas funções na oração: agente, ação, objeto da ação. |
+| EF03LP09 | Identificar, em textos, adjetivos e sua função de atribuição de propriedades aos substantivos. |
+| EF03LP10 | Reconhecer prefixos e sufixos produtivos na formação de palavras derivadas de substantivos, de adjetivos e de verbos, utilizando-os para compreender palavras e para formar novas palavras. |
+| EF03LP11 | Ler e compreender, com autonomia, textos injuntivos instrucionais (receitas, instruções de montagem etc.), com a estrutura própria desses textos (verbos imperativos, indicação de passos a ser seguidos) e mesclando palavras, imagens e recursos gráficovisuais, considerando a situação comunicativa e o tema/assunto do texto. |
+| EF03LP12 | Ler e compreender, com autonomia, cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções do gênero carta e considerando a situação comunicativa e o tema/assunto do texto. |
+| EF03LP13 | Planejar e produzir cartas pessoais e diários, com expressão de sentimentos e opiniões, dentre outros gêneros do campo da vida cotidiana, de acordo com as convenções dos gêneros carta e diário e considerando a situação comunicativa e o tema/assunto do texto. |
+| EF03MA01 | Ler, escrever e comparar números naturais de até a ordem de unidade de milhar, estabelecendo relações entre os registros numéricos e em língua materna. |
+| EF03MA02 | Identificar características do sistema de numeração decimal, utilizando a composição e a decomposição de número natural de até quatro ordens. |
+| EF03MA03 | Construir e utilizar fatos básicos da adição e da multiplicação para o cálculo mental ou escrito. |
+| EF03MA04 | Estabelecer a relação entre números naturais e pontos da reta numérica para utilizá-la na ordenação dos números naturais e também na construção de fatos da adição e da subtração, relacionando-os com deslocamentos para a direita ou para a esquerda. |
+| EF03MA05 | Utilizar diferentes procedimentos de cálculo mental e escrito para resolver problemas significativos envolvendo adição e subtração com números naturais. |
+| EF03MA06 | Resolver e elaborar problemas de adição e subtração com os significados de juntar, acrescentar, separar, retirar, comparar e completar quantidades, utilizando diferentes estratégias de cálculo exato ou aproximado, incluindo cálculo mental. |
+| EF03MA07 | Resolver e elaborar problemas de multiplicação (por 2, 3, 4, 5 e 10) com os significados de adição de parcelas iguais e elementos apresentados em disposição retangular, utilizando diferentes estratégias de cálculo e registros. |
+| EF03MA08 | Resolver e elaborar problemas de divisão de um número natural por outro (até 10), com resto zero e com resto diferente de zero, com os significados de repartição equitativa e de medida, por meio de estratégias e registros pessoais. |
+| EF03MA09 | Associar o quociente de uma divisão com resto zero de um número natural por 2, 3, 4, 5 e 10 às ideias de metade, terça, quarta, quinta e décima partes. |
+| EF03MA10 | Identificar regularidades em sequências ordenadas de números naturais, resultantes da realização de adições ou subtrações sucessivas, por um mesmo número, descrever uma regra de formação da sequência e determinar elementos faltantes ou seguintes. |
+| EF03MA11 | Compreender a ideia de igualdade para escrever diferentes sentenças de adições ou de subtrações de dois números naturais que resultem na mesma soma ou diferença. |
+| EF03MA12 | Descrever e representar, por meio de esboços de trajetos ou utilizando croquis e maquetes, a movimentação de pessoas ou de objetos no espaço, incluindo mudanças de direção e sentido, com base em diferentes pontos de referência. |
+| EF03MA13 | Associar figuras geométricas espaciais (cubo, bloco retangular, pirâmide, cone, cilindro e esfera) a objetos do mundo físico e nomear essas figuras. |
+| EF03MA14 | Descrever características de algumas figuras geométricas espaciais (prismas retos, pirâmides, cilindros, cones), relacionando-as com suas planificações. |
+| EF03MA15 | Classificar e comparar figuras planas (triângulo, quadrado, retângulo, trapézio e paralelogramo) em relação a seus lados (quantidade, posições relativas e comprimento) e vértices. |
+| EF03MA16 | Reconhecer figuras congruentes, usando sobreposição e desenhos em malhas quadriculadas ou triangulares, incluindo o uso de tecnologias digitais. |
+| EF03MA17 | Reconhecer que o resultado de uma medida depende da unidade de medida utilizada. |
+| EF03MA18 | Escolher a unidade de medida e o instrumento mais apropriado para medições de comprimento, tempo e capacidade. |
+| EF03MA19 | Estimar, medir e comparar comprimentos, utilizando unidades de medida não padronizadas e padronizadas mais usuais (metro, centímetro e milímetro) e diversos instrumentos de medida. |
+| EF03MA20 | Estimar e medir capacidade e massa, utilizando unidades de medida não padronizadas e padronizadas mais usuais (litro, mililitro, quilograma, grama e miligrama), reconhecendo-as em leitura de rótulos e embalagens, entre outros. |
+| EF03MA21 | Comparar, visualmente ou por superposição, áreas de faces de objetos, de figuras planas ou de desenhos. |
+| EF03MA22 | Ler e registrar medidas e intervalos de tempo, utilizando relógios (analógico e digital) para informar os horários de início e término de realização de uma atividade e sua duração. |
+| EF03MA23 | Ler horas em relógios digitais e em relógios analógicos e reconhecer a relação entre hora e minutos e entre minuto e segundos. |
+| EF03MA24 | Resolver e elaborar problemas que envolvam a comparação e a equivalência de valores monetários do sistema brasileiro em situações de compra, venda e troca. |
+| EF03MA25 | Identificar, em eventos familiares aleatórios, todos os resultados possíveis, estimando os que têm maiores ou menores chances de ocorrência. |
+| EF03MA26 | Resolver problemas cujos dados estão apresentados em tabelas de dupla entrada, gráficos de barras ou de colunas. |
+| EF03MA27 | Ler, interpretar e comparar dados apresentados em tabelas de dupla entrada, gráficos de barras ou de colunas, envolvendo resultados de pesquisas significativas, utilizando termos como maior e menor frequência, apropriando-se desse tipo de linguagem para compreender aspectos da realidade sociocultural significativos. |
+| EF03MA28 | Realizar pesquisa envolvendo variáveis categóricas em um universo de até 50 elementos, organizar os dados coletados utilizando listas, tabelas simples ou de dupla entrada e representá-los em gráficos de colunas simples, com e sem uso de tecnologias digitais. |
+| EF04CI01 | Identificar misturas na vida diária, com base em suas propriedades físicas observáveis, reconhecendo sua composição. |
+| EF04CI02 | Testar e relatar transformações nos materiais do dia a dia quando expostos a diferentes condições (aquecimento, resfriamento, luz e umidade). |
+| EF04CI03 | Concluir que algumas mudanças causadas por aquecimento ou resfriamento são reversíveis (como as mudanças de estado físico da água) e outras não (como o cozimento do ovo, a queima do papel etc.). |
+| EF04CI04 | Analisar e construir cadeias alimentares simples, reconhecendo a posição ocupada pelos seres vivos nessas cadeias e o papel do Sol como fonte primária de energia na produção de alimentos. |
+| EF04CI05 | Descrever e destacar semelhanças e diferenças entre o ciclo da matéria e o fluxo de energia entre os componentes vivos e não vivos de um ecossistema. |
+| EF04CI06 | Relacionar a participação de fungos e bactérias no processo de decomposição, reconhecendo a importância ambiental desse processo. |
+| EF04CI07 | Verificar a participação de microrganismos na produção de alimentos, combustíveis, medicamentos, entre outros. |
+| EF04CI08 | Propor, a partir do conhecimento das formas de transmissão de alguns microrganismos (vírus, bactérias e protozoários), atitudes e medidas adequadas para prevenção de doenças a eles associadas. |
+| EF04CI09 | Identificar os pontos cardeais, com base no registro de diferentes posições relativas do Sol e da sombra de uma vara (gnômon). |
+| EF04CI10 | Comparar as indicações dos pontos cardeais resultantes da observação das sombras de uma vara (gnômon) com aquelas obtidas por meio de uma bússola. |
+| EF04CI11 | Associar os movimentos cíclicos da Lua e da Terra a períodos de tempo regulares e ao uso desse conhecimento para a construção de calendários em diferentes culturas. |
+| EF04GE01 | Selecionar, em seus lugares de vivência e em suas histórias familiares e/ou da comunidade, elementos de distintas culturas (indígenas, afro-brasileiras, de outras regiões do país, latino-americanas, europeias, asiáticas etc.), valorizando o que é próprio em cada uma delas e sua contribuição para a formação da cultura local, regional e brasileira. |
+| EF04GE02 | Descrever processos migratórios e suas contribuições para a formação da sociedade brasileira. |
+| EF04GE03 | Distinguir funções e papéis dos órgãos do poder público municipal e canais de participação social na gestão do Município, incluindo a Câmara de Vereadores e Conselhos Municipais. |
+| EF04GE04 | Reconhecer especificidades e analisar a interdependência do campo e da cidade, considerando fluxos econômicos, de informações, de ideias e de pessoas. |
+| EF04GE05 | Distinguir unidades político-administrativas oficiais nacionais (Distrito, Município, Unidade da Federação e grande região), suas fronteiras e sua hierarquia, localizando seus lugares de vivência. |
+| EF04GE06 | Identificar e descrever territórios étnico-culturais existentes no Brasil, tais como terras indígenas e de comunidades remanescentes de quilombos, reconhecendo a legitimidade da demarcação desses territórios. |
+| EF04GE07 | Comparar as características do trabalho no campo e na cidade. |
+| EF04GE08 | Descrever e discutir o processo de produção (transformação de matériasprimas), circulação e consumo de diferentes produtos. |
+| EF04GE09 | Utilizar as direções cardeais na localização de componentes físicos e humanos nas paisagens rurais e urbanas. |
+| EF04GE10 | Comparar tipos variados de mapas, identificando suas características, elaboradores, finalidades, diferenças e semelhanças. |
+| EF04GE11 | Identificar as características das paisagens naturais e antrópicas (relevo, cobertura vegetal, rios etc.) no ambiente em que vive, bem como a ação humana na conservação ou degradação dessas áreas. |
+| EF04HI01 | Reconhecer a história como resultado da ação do ser humano no tempo e no espaço, com base na identificação de mudanças e permanências ao longo do tempo. |
+| EF04HI02 | Identificar mudanças e permanências ao longo do tempo, discutindo os sentidos dos grandes marcos da história da humanidade (nomadismo, desenvolvimento da agricultura e do pastoreio, criação da indústria etc.). |
+| EF04HI03 | Identificar as transformações ocorridas na cidade ao longo do tempo e discutir suas interferências nos modos de vida de seus habitantes, tomando como ponto de partida o presente. |
+| EF04HI04 | Identificar as relações entre os indivíduos e a natureza e discutir o significado do nomadismo e da fixação das primeiras comunidades humanas. |
+| EF04HI05 | Relacionar os processos de ocupação do campo a intervenções na natureza, avaliando os resultados dessas intervenções. |
+| EF04HI06 | Identificar as transformações ocorridas nos processos de deslocamento das pessoas e mercadorias, analisando as formas de adaptação ou marginalização. |
+| EF04HI07 | Identificar e descrever a importância dos caminhos terrestres, fluviais e marítimos para a dinâmica da vida comercial. |
+| EF04HI08 | Identificar as transformações ocorridas nos meios de comunicação (cultura oral, imprensa, rádio, televisão, cinema, internet e demais tecnologias digitais de informação e comunicação) e discutir seus significados para os diferentes grupos ou estratos sociais. |
+| EF04HI09 | Identificar as motivações dos processos migratórios em diferentes tempos e espaços e avaliar o papel desempenhado pela migração nas regiões de destino. |
+| EF04HI10 | Analisar diferentes fluxos populacionais e suas contribuições para a formação da sociedade brasileira. |
+| EF04HI11 | Analisar, na sociedade em que vive, a existência ou não de mudanças associadas à migração (interna e internacional). |
+| EF04LP01 | Grafar palavras utilizando regras de correspondência fonema-grafema regulares diretas e contextuais. |
+| EF04LP02 | Ler e escrever, corretamente, palavras com sílabas VV e CVV em casos nos quais a combinação VV (ditongo) é reduzida na língua oral (ai, ei, ou). |
+| EF04LP03 | Localizar palavras no dicionário para esclarecer significados, reconhecendo o significado mais plausível para o contexto que deu origem à consulta. |
+| EF04LP04 | Usar acento gráfico (agudo ou circunflexo) em paroxítonas terminadas em -i(s), -l, -r, -ão(s). |
+| EF04LP05 | Identificar a função na leitura e usar, adequadamente, na escrita ponto final, de interrogação, de exclamação, dois-pontos e travessão em diálogos (discurso direto), vírgula em enumerações e em separação de vocativo e de aposto. |
+| EF04LP06 | Identificar em textos e usar na produção textual a concordância entre substantivo ou pronome pessoal e verbo (concordância verbal). |
+| EF04LP07 | Identificar em textos e usar na produção textual a concordância entre artigo, substantivo e adjetivo (concordância no grupo nominal). |
+| EF04LP08 | Reconhecer e grafar, corretamente, palavras derivadas com os sufixos -agem, -oso, -eza, -izar/-isar (regulares morfológicas). |
+| EF04LP15 | Distinguir fatos de opiniões/sugestões em textos (informativos, jornalísticos, publicitários etc.). |
+| EF04LP19 | Ler e compreender textos expositivos de divulgação científica para crianças, considerando a situação comunicativa e o tema/ assunto do texto. |
+| EF04LP20 | Reconhecer a função de gráficos, diagramas e tabelas em textos, como forma de apresentação de dados e informações. |
 | EF04MA01 | Ler, escrever e ordenar números naturais até a ordem de dezenas de milhar. |
-| EF04MA02 | Decompor números naturais em adições e multiplicações por potências de dez. |
-| EF04MA03 | Resolver e elaborar problemas de adição e subtração com números naturais. |
-| EF04MA04 | Usar as relações entre adição/subtração e multiplicação/divisão para ampliar estratégias de cálculo. |
-| EF04MA05 | Usar propriedades das operações em estratégias de cálculo. |
-| EF04MA06 | Resolver problemas de multiplicação (parcelas iguais, organização retangular, proporcionalidade). |
-| EF04MA07 | Resolver problemas de divisão com divisor de até dois algarismos. |
-| EF04MA08 | Resolver problemas simples de contagem. |
-| EF04MA09 | Reconhecer frações unitárias usuais (1/2, 1/3, 1/4, 1/5, 1/10, 1/100). |
-| EF04MA10 | Relacionar décimos e centésimos à representação decimal e ao sistema monetário. |
-| EF04MA11 | Identificar regularidades em sequências de múltiplos de um número. |
-| EF04MA12 | Reconhecer grupos de números com restos iguais na divisão. |
-| EF04MA13 | Reconhecer relações inversas entre as operações. |
-| EF04MA14 | Reconhecer que a igualdade se mantém ao somar ou subtrair o mesmo número dos dois lados. |
-| EF04MA15 | Determinar o número desconhecido que torna uma igualdade verdadeira. |
-| EF04MA16 | Descrever deslocamentos e localizações em malhas, mapas, plantas e croquis. |
-| EF04MA17 | Associar prismas e pirâmides a suas planificações. |
-| EF04MA18 | Reconhecer ângulos retos e não retos. |
-| EF04MA19 | Reconhecer simetria de reflexão em figuras. |
-| EF04MA20 | Medir e estimar comprimentos (inclusive perímetros), massas e capacidades. |
-| EF04MA21 | Medir, comparar e estimar áreas em malha quadriculada. |
-| EF04MA22 | Ler e registrar medidas e intervalos de tempo em horas, minutos e segundos. |
-| EF04MA23 | Reconhecer temperatura como grandeza e o grau Celsius como unidade. |
-| EF04MA24 | Registrar temperaturas máxima e mínima e elaborar gráficos de colunas. |
-| EF04MA25 | Resolver problemas de compra e venda (troco, desconto). |
-| EF04MA26 | Identificar eventos aleatórios com maior ou menor chance de ocorrência. |
-| EF04MA27 | Analisar dados em tabelas e gráficos de colunas ou pictóricos. |
-| EF04MA28 | Realizar pesquisa com variáveis categóricas e numéricas e organizar dados em tabelas e gráficos. |
-| EF05CI01 | Explorar propriedades físicas dos materiais (densidade, condutibilidade, magnetismo, solubilidade). |
-| EF05CI02 | Explicar o ciclo da água pelas mudanças de estado físico. |
-| EF05CI03 | Justificar a importância da cobertura vegetal para o ciclo da água, solos e ar. |
-| EF05CI04 | Identificar usos da água e propor formas sustentáveis de uso. |
-| EF05CI05 | Construir propostas de consumo consciente, reutilização e reciclagem. |
-| EF05CI06 | Explicar como os sistemas digestório e respiratório atuam na nutrição. |
-| EF05CI07 | Relacionar o sistema circulatório à distribuição de nutrientes e eliminação de resíduos. |
-| EF05CI08 | Organizar um cardápio equilibrado. |
-| EF05CI09 | Discutir distúrbios nutricionais e hábitos saudáveis. |
-| EF05CI10 | Identificar constelações no céu. |
-| EF05CI11 | Associar o movimento aparente do Sol e das estrelas à rotação da Terra. |
-| EF05CI12 | Concluir sobre a periodicidade das fases da Lua. |
-| EF05CI13 | Projetar e construir dispositivos de observação à distância (luneta, periscópio). |
-| EF05GE01 | Analisar dinâmicas populacionais da Unidade da Federação. |
-| EF05GE02 | Identificar diferenças étnico-raciais e desigualdades sociais entre grupos. |
-| EF05GE03 | Identificar formas e funções das cidades e efeitos do seu crescimento. |
-| EF05GE04 | Analisar interações entre cidade e campo e a rede urbana. |
-| EF05GE05 | Comparar mudanças no trabalho e na tecnologia nos setores da economia. |
-| EF05GE06 | Comparar transformações dos meios de transporte e de comunicação. |
-| EF05GE07 | Identificar tipos de energia usados na produção e no cotidiano. |
-| EF05GE08 | Analisar transformações de paisagens em fotografias e imagens de satélite. |
-| EF05GE09 | Estabelecer conexões e hierarquias entre cidades com mapas temáticos. |
-| EF05GE10 | Comparar qualidade ambiental e formas de poluição da água. |
-| EF05GE11 | Identificar problemas ambientais no entorno da escola e da casa. |
-| EF05GE12 | Identificar órgãos públicos e canais de participação para melhorar a qualidade de vida. |
-| EF05HI01 | Identificar processos de formação das culturas e dos povos. |
-| EF05HI02 | Identificar formas de organização do poder político e a ideia de Estado. |
-| EF05HI03 | Analisar o papel das culturas e religiões na identidade dos povos antigos. |
-| EF05HI04 | Associar cidadania ao respeito à diversidade e aos direitos humanos. |
-| EF05HI05 | Associar cidadania à conquista de direitos. |
-| EF05HI06 | Comparar linguagens e tecnologias de comunicação ao longo do tempo. |
-| EF05HI07 | Identificar como os marcos de memória são produzidos e difundidos. |
-| EF05HI08 | Identificar formas de marcar o tempo em diferentes sociedades. |
-| EF05HI09 | Comparar pontos de vista sobre temas da atualidade. |
-| EF05HI10 | Inventariar patrimônios materiais e imateriais da humanidade. |
-| EF05LP01 | Grafar palavras usando regras regulares, contextuais e morfológicas e palavras irregulares frequentes. |
-| EF05LP02 | Identificar o caráter polissêmico das palavras conforme o contexto. |
-| EF05LP03 | Acentuar corretamente oxítonas, paroxítonas e proparoxítonas. |
-| EF05LP04 | Diferenciar vírgula, ponto e vírgula e dois-pontos; reconhecer o efeito de reticências, aspas e parênteses. |
-| EF05LP05 | Identificar presente, passado e futuro em tempos verbais do modo indicativo. |
-| EF05LP06 | Flexionar verbos em concordância com o sujeito. |
-| EF05LP07 | Identificar conjunções e as relações que estabelecem (adição, oposição, tempo, causa, condição, finalidade). |
-| EF05LP08 | Diferenciar palavras primitivas, derivadas e compostas. |
-| EF05MA01 | Ler, escrever e ordenar números naturais até a ordem das centenas de milhar. |
-| EF05MA02 | Ler, escrever e ordenar números racionais na forma decimal. |
-| EF05MA03 | Identificar e representar frações como parte de um todo e resultado de divisão. |
+| EF04MA02 | Mostrar, por decomposição e composição, que todo número natural pode ser escrito por meio de adições e multiplicações por potências de dez, para compreender o sistema de numeração decimal e desenvolver estratégias de cálculo. |
+| EF04MA03 | Resolver e elaborar problemas com números naturais envolvendo adição e subtração, utilizando estratégias diversas, como cálculo, cálculo mental e algoritmos, além de fazer estimativas do resultado. |
+| EF04MA04 | Utilizar as relações entre adição e subtração, bem como entre multiplicação e divisão, para ampliar as estratégias de cálculo. |
+| EF04MA05 | Utilizar as propriedades das operações para desenvolver estratégias de cálculo. |
+| EF04MA06 | Resolver e elaborar problemas envolvendo diferentes significados da multiplicação (adição de parcelas iguais, organização retangular e proporcionalidade), utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos. |
+| EF04MA07 | Resolver e elaborar problemas de divisão cujo divisor tenha no máximo dois algarismos, envolvendo os significados de repartição equitativa e de medida, utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos. |
+| EF04MA08 | Resolver, com o suporte de imagem e/ou material manipulável, problemas simples de contagem, como a determinação do número de agrupamentos possíveis ao se combinar cada elemento de uma coleção com todos os elementos de outra, utilizando estratégias e formas de registro pessoais. |
+| EF04MA09 | Reconhecer as frações unitárias mais usuais (1/2, 1/3, 1/4, 1/5, 1/10 e 1/100) como unidades de medida menores do que uma unidade, utilizando a reta numérica como recurso. |
+| EF04MA10 | Reconhecer que as regras do sistema de numeração decimal podem ser estendidas para a representação decimal de um número racional e relacionar décimos e centésimos com a representação do sistema monetário brasileiro. |
+| EF04MA11 | Identificar regularidades em sequências numéricas compostas por múltiplos de um número natural. |
+| EF04MA12 | Reconhecer, por meio de investigações, que há grupos de números naturais para os quais as divisões por um determinado número resultam em restos iguais, identificando regularidades. |
+| EF04MA13 | Reconhecer, por meio de investigações, utilizando a calculadora quando necessário, as relações inversas entre as operações de adição e de subtração e de multiplicação e de divisão, para aplicá-las na resolução de problemas. |
+| EF04MA14 | Reconhecer e mostrar, por meio de exemplos, que a relação de igualdade existente entre dois termos permanece quando se adiciona ou se subtrai um mesmo número a cada um desses termos. |
+| EF04MA15 | Determinar o número desconhecido que torna verdadeira uma igualdade que envolve as operações fundamentais com números naturais. |
+| EF04MA16 | Descrever deslocamentos e localização de pessoas e de objetos no espaço, por meio de malhas quadriculadas e representações como desenhos, mapas, planta baixa e croquis, empregando termos como direita e esquerda, mudanças de direção e sentido, intersecção, transversais, paralelas e perpendiculares. |
+| EF04MA17 | Associar prismas e pirâmides a suas planificações e analisar, nomear e comparar seus atributos, estabelecendo relações entre as representações planas e espaciais. |
+| EF04MA18 | Reconhecer ângulos retos e não retos em figuras poligonais com o uso de dobraduras, esquadros ou softwares de geometria. |
+| EF04MA19 | Reconhecer simetria de reflexão em figuras e em pares de figuras geométricas planas e utilizá-la na construção de figuras congruentes, com o uso de malhas quadriculadas e de softwares de geometria. |
+| EF04MA20 | Medir e estimar comprimentos (incluindo perímetros), massas e capacidades, utilizando unidades de medida padronizadas mais usuais, valorizando e respeitando a cultura local. |
+| EF04MA21 | Medir, comparar e estimar área de figuras planas desenhadas em malha quadriculada, pela contagem dos quadradinhos ou de metades de quadradinho, reconhecendo que duas figuras com formatos diferentes podem ter a mesma medida de área. |
+| EF04MA22 | Ler e registrar medidas e intervalos de tempo em horas, minutos e segundos em situações relacionadas ao seu cotidiano, como informar os horários de início e término de realização de uma tarefa e sua duração. |
+| EF04MA23 | Reconhecer temperatura como grandeza e o grau Celsius como unidade de medida a ela associada e utilizá-lo em comparações de temperaturas em diferentes regiões do Brasil ou no exterior ou, ainda, em discussões que envolvam problemas relacionados ao aquecimento global. |
+| EF04MA24 | Registrar as temperaturas máxima e mínima diárias, em locais do seu cotidiano, e elaborar gráficos de colunas com as variações diárias da temperatura, utilizando, inclusive, planilhas eletrônicas. |
+| EF04MA25 | Resolver e elaborar problemas que envolvam situações de compra e venda e formas de pagamento, utilizando termos como troco e desconto, enfatizando o consumo ético, consciente e responsável. |
+| EF04MA26 | Identificar, entre eventos aleatórios cotidianos, aqueles que têm maior chance de ocorrência, reconhecendo características de resultados mais prováveis, sem utilizar frações. |
+| EF04MA27 | Analisar dados apresentados em tabelas simples ou de dupla entrada e em gráficos de colunas ou pictóricos, com base em informações das diferentes áreas do conhecimento, e produzir texto com a síntese de sua análise. |
+| EF04MA28 | Realizar pesquisa envolvendo variáveis categóricas e numéricas e organizar dados coletados por meio de tabelas e gráficos de colunas simples ou agrupadas, com e sem uso de tecnologias digitais. |
+| EF05CI01 | Explorar fenômenos da vida cotidiana que evidenciem propriedades físicas dos materiais – como densidade, condutibilidade térmica e elétrica, respostas a forças magnéticas, solubilidade, respostas a forças mecânicas (dureza, elasticidade etc.), entre outras. |
+| EF05CI02 | Aplicar os conhecimentos sobre as mudanças de estado físico da água para explicar o ciclo hidrológico e analisar suas implicações na agricultura, no clima, na geração de energia elétrica, no provimento de água potável e no equilíbrio dos ecossistemas regionais (ou locais). |
+| EF05CI03 | Selecionar argumentos que justifiquem a importância da cobertura vegetal para a manutenção do ciclo da água, a conservação dos solos, dos cursos de água e da qualidade do ar atmosférico. |
+| EF05CI04 | Identificar os principais usos da água e de outros materiais nas atividades cotidianas para discutir e propor formas sustentáveis de utilização desses recursos. |
+| EF05CI05 | Construir propostas coletivas para um consumo mais consciente e criar soluções tecnológicas para o descarte adequado e a reutilização ou reciclagem de materiais consumidos na escola e/ou na vida cotidiana. |
+| EF05CI06 | Selecionar argumentos que justifiquem por que os sistemas digestório e respiratório são considerados corresponsáveis pelo processo de nutrição do organismo, com base na identificação das funções desses sistemas. |
+| EF05CI07 | Justificar a relação entre o funcionamento do sistema circulatório, a distribuição dos nutrientes pelo organismo e a eliminação dos resíduos produzidos. |
+| EF05CI08 | Organizar um cardápio equilibrado com base nas características dos grupos alimentares (nutrientes e calorias) e nas necessidades individuais (atividades realizadas, idade, sexo etc.) para a manutenção da saúde do organismo. |
+| EF05CI09 | Discutir a ocorrência de distúrbios nutricionais (como obesidade, subnutrição etc.) entre crianças e jovens a partir da análise de seus hábitos (tipos e quantidade de alimento ingerido, prática de atividade física etc.). |
+| EF05CI10 | Identificar algumas constelações no céu, com o apoio de recursos (como mapas celestes e aplicativos digitais, entre outros), e os períodos do ano em que elas são visíveis no início da noite. |
+| EF05CI11 | Associar o movimento diário do Sol e das demais estrelas no céu ao movimento de rotação da Terra. |
+| EF05CI12 | Concluir sobre a periodicidade das fases da Lua, com base na observação e no registro das formas aparentes da Lua no céu ao longo de, pelo menos, dois meses. |
+| EF05CI13 | Projetar e construir dispositivos para observação à distância (luneta, periscópio etc.), para observação ampliada de objetos (lupas, microscópios) ou para registro de imagens (máquinas fotográficas) e discutir usos sociais desses dispositivos. |
+| EF05GE01 | Descrever e analisar dinâmicas populacionais na Unidade da Federação em que vive, estabelecendo relações entre migrações e condições de infraestrutura. |
+| EF05GE02 | Identificar diferenças étnico-raciais e étnico-culturais e desigualdades sociais entre grupos em diferentes territórios. |
+| EF05GE03 | Identificar as formas e funções das cidades e analisar as mudanças sociais, econômicas e ambientais provocadas pelo seu crescimento. |
+| EF05GE04 | Reconhecer as características da cidade e analisar as interações entre a cidade e o campo e entre cidades na rede urbana. |
+| EF05GE05 | Identificar e comparar as mudanças dos tipos de trabalho e desenvolvimento tecnológico na agropecuária, na indústria, no comércio e nos serviços. |
+| EF05GE06 | Identificar e comparar transformações dos meios de transporte e de comunicação. |
+| EF05GE07 | Identificar os diferentes tipos de energia utilizados na produção industrial, agrícola e extrativa e no cotidiano das populações. |
+| EF05GE08 | Analisar transformações de paisagens nas cidades, comparando sequência de fotografias, fotografias aéreas e imagens de satélite de épocas diferentes. |
+| EF05GE09 | Estabelecer conexões e hierarquias entre diferentes cidades, utilizando mapas temáticos e representações gráficas. |
+| EF05GE10 | Reconhecer e comparar atributos da qualidade ambiental e algumas formas de poluição dos cursos de água e dos oceanos (esgotos, efluentes industriais, marés negras etc.). |
+| EF05GE11 | Identificar e descrever problemas ambientais que ocorrem no entorno da escola e da residência (lixões, indústrias poluentes, destruição do patrimônio histórico etc.), propondo soluções (inclusive tecnológicas) para esses problemas. |
+| EF05GE12 | Identificar órgãos do poder público e canais de participação social responsáveis por buscar soluções para a melhoria da qualidade de vida (em áreas como meio ambiente, mobilidade, moradia e direito à cidade) e discutir as propostas implementadas por esses órgãos que afetam a comunidade em que vive. |
+| EF05HI01 | Identificar os processos de formação das culturas e dos povos, relacionando-os com o espaço geográfico ocupado. |
+| EF05HI02 | Identificar os mecanismos de organização do poder político com vistas à compreensão da ideia de Estado e/ou de outras formas de ordenação social. |
+| EF05HI03 | Analisar o papel das culturas e das religiões na composição identitária dos povos antigos. |
+| EF05HI04 | Associar a noção de cidadania com os princípios de respeito à diversidade, à pluralidade e aos direitos humanos. |
+| EF05HI05 | Associar o conceito de cidadania à conquista de direitos dos povos e das sociedades, compreendendo-o como conquista histórica. |
+| EF05HI06 | Comparar o uso de diferentes linguagens e tecnologias no processo de comunicação e avaliar os significados sociais, políticos e culturais atribuídos a elas. |
+| EF05HI07 | Identificar os processos de produção, hierarquização e difusão dos marcos de memória e discutir a presença e/ou a ausência de diferentes grupos que compõem a sociedade na nomeação desses marcos de memória. |
+| EF05HI08 | Identificar formas de marcação da passagem do tempo em distintas sociedades, incluindo os povos indígenas originários e os povos africanos. |
+| EF05HI09 | Comparar pontos de vista sobre temas que impactam a vida cotidiana no tempo presente, por meio do acesso a diferentes fontes, incluindo orais. |
+| EF05HI10 | Inventariar os patrimônios materiais e imateriais da humanidade e analisar mudanças e permanências desses patrimônios ao longo do tempo. |
+| EF05LP01 | Grafar palavras utilizando regras de correspondência fonema-grafema regulares, contextuais e morfológicas e palavras de uso frequente com correspondências irregulares. |
+| EF05LP02 | Identificar o caráter polissêmico das palavras (uma mesma palavra com diferentes significados, de acordo com o contexto de uso), comparando o significado de determinados termos utilizados nas áreas científicas com esses mesmos termos utilizados na linguagem usual. |
+| EF05LP03 | Acentuar corretamente palavras oxítonas, paroxítonas e proparoxítonas. |
+| EF05LP04 | Diferenciar, na leitura de textos, vírgula, ponto e vírgula, dois-pontos e reconhecer, na leitura de textos, o efeito de sentido que decorre do uso de reticências, aspas, parênteses. |
+| EF05LP05 | Identificar a expressão de presente, passado e futuro em tempos verbais do modo indicativo. |
+| EF05LP06 | Flexionar, adequadamente, na escrita e na oralidade, os verbos em concordância com pronomes pessoais/nomes sujeitos da oração. |
+| EF05LP07 | Identificar, em textos, o uso de conjunções e a relação que estabelecem entre partes do texto: adição, oposição, tempo, causa, condição, finalidade. |
+| EF05LP08 | Diferenciar palavras primitivas, derivadas e compostas, e derivadas por adição de prefixo e de sufixo. |
+| EF05MA01 | Ler, escrever e ordenar números naturais até a ordem das centenas de milhar com compreensão das principais características do sistema de numeração decimal. |
+| EF05MA02 | Ler, escrever e ordenar números racionais na forma decimal com compreensão das principais características do sistema de numeração decimal, utilizando, como recursos, a composição e decomposição e a reta numérica. |
+| EF05MA03 | Identificar e representar frações (menores e maiores que a unidade), associando-as ao resultado de uma divisão ou à ideia de parte de um todo, utilizando a reta numérica como recurso. |
 | EF05MA04 | Identificar frações equivalentes. |
-| EF05MA05 | Comparar e ordenar números racionais (frações e decimais) na reta numérica. |
-| EF05MA06 | Associar 10%, 25%, 50%, 75% e 100% a décima parte, quarta parte, metade, três quartos e inteiro. |
-| EF05MA07 | Resolver problemas de adição e subtração com naturais e decimais. |
-| EF05MA08 | Resolver problemas de multiplicação e divisão com naturais e decimais. |
-| EF05MA09 | Resolver problemas de contagem com o princípio multiplicativo. |
-| EF05MA10 | Concluir que a igualdade se mantém ao operar os dois membros pelo mesmo número. |
-| EF05MA11 | Resolver problemas com igualdades em que um termo é desconhecido. |
-| EF05MA12 | Resolver problemas de proporcionalidade direta. |
-| EF05MA13 | Resolver problemas de partilha em partes desiguais. |
-| EF05MA14 | Usar diferentes representações para localização no plano (mapas, planilhas, coordenadas). |
-| EF05MA15 | Localizar e movimentar objetos no plano cartesiano (1º quadrante). |
-| EF05MA16 | Associar figuras espaciais a suas planificações. |
-| EF05MA17 | Reconhecer, nomear e comparar polígonos (lados, vértices, ângulos). |
-| EF05MA18 | Reconhecer ampliação e redução de figuras em malhas. |
-| EF05MA19 | Resolver problemas de medidas com transformações entre unidades usuais. |
-| EF05MA20 | Concluir que perímetros iguais podem ter áreas diferentes e vice-versa. |
-| EF05MA21 | Reconhecer volume e medi-lo por empilhamento de cubos. |
-| EF05MA22 | Apresentar os resultados possíveis de um experimento aleatório. |
-| EF05MA23 | Determinar a probabilidade de eventos equiprováveis. |
-| EF05MA24 | Interpretar dados em textos, tabelas e gráficos de colunas ou linhas. |
-| EF05MA25 | Realizar pesquisa e organizar dados em tabelas e gráficos. |
-| EF12LP01 | Ler palavras novas com precisão na decodificação; palavras frequentes por memorização. |
-| EF12LP03 | Copiar textos breves, mantendo suas características gráficas. |
-| EF12LP07 | Identificar e (re)produzir rimas, aliterações e assonâncias em cantigas, parlendas e canções. |
+| EF05MA05 | Comparar e ordenar números racionais positivos (representações fracionária e decimal), relacionando-os a pontos na reta numérica. |
+| EF05MA06 | Associar as representações 10%, 25%, 50%, 75% e 100% respectivamente à décima parte, quarta parte, metade, três quartos e um inteiro, para calcular porcentagens, utilizando estratégias pessoais, cálculo mental e calculadora, em contextos de educação financeira, entre outros. |
+| EF05MA07 | Resolver e elaborar problemas de adição e subtração com números naturais e com números racionais, cuja representação decimal seja finita, utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos. |
+| EF05MA08 | Resolver e elaborar problemas de multiplicação e divisão com números naturais e com números racionais cuja representação decimal é finita (com multiplicador natural e divisor natural e diferente de zero), utilizando estratégias diversas, como cálculo por estimativa, cálculo mental e algoritmos. |
+| EF05MA09 | Resolver e elaborar problemas simples de contagem envolvendo o princípio multiplicativo, como a determinação do número de agrupamentos possíveis ao se combinar cada elemento de uma coleção com todos os elementos de outra coleção, por meio de diagramas de árvore ou por tabelas. |
+| EF05MA10 | Concluir, por meio de investigações, que a relação de igualdade existente entre dois membros permanece ao adicionar, subtrair, multiplicar ou dividir cada um desses membros por um mesmo número, para construir a noção de equivalência. |
+| EF05MA11 | Resolver e elaborar problemas cuja conversão em sentença matemática seja uma igualdade com uma operação em que um dos termos é desconhecido. |
+| EF05MA12 | Resolver problemas que envolvam variação de proporcionalidade direta entre duas grandezas, para associar a quantidade de um produto ao valor a pagar, alterar as quantidades de ingredientes de receitas, ampliar ou reduzir escala em mapas, entre outros. |
+| EF05MA13 | Resolver problemas envolvendo a partilha de uma quantidade em duas partes desiguais, tais como dividir uma quantidade em duas partes, de modo que uma seja o dobro da outra, com compreensão da ideia de razão entre as partes e delas com o todo. |
+| EF05MA14 | Utilizar e compreender diferentes representações para a localização de objetos no plano, como mapas, células em planilhas eletrônicas e coordenadas geográficas, a fim de desenvolver as primeiras noções de coordenadas cartesianas. |
+| EF05MA15 | Interpretar, descrever e representar a localização ou movimentação de objetos no plano cartesiano (1º quadrante), utilizando coordenadas cartesianas, indicando mudanças de direção e de sentido e giros. |
+| EF05MA16 | Associar figuras espaciais a suas planificações (prismas, pirâmides, cilindros e cones) e analisar, nomear e comparar seus atributos. |
+| EF05MA17 | Reconhecer, nomear e comparar polígonos, considerando lados, vértices e ângulos, e desenhá-los, utilizando material de desenho ou tecnologias digitais. |
+| EF05MA18 | Reconhecer a congruência dos ângulos e a proporcionalidade entre os lados correspondentes de figuras poligonais em situações de ampliação e de redução em malhas quadriculadas e usando tecnologias digitais. |
+| EF05MA19 | Resolver e elaborar problemas envolvendo medidas das grandezas comprimento, área, massa, tempo, temperatura e capacidade, recorrendo a transformações entre as unidades mais usuais em contextos socioculturais. |
+| EF05MA20 | Concluir, por meio de investigações, que figuras de perímetros iguais podem ter áreas diferentes e que, também, figuras que têm a mesma área podem ter perímetros diferentes. |
+| EF05MA21 | Reconhecer volume como grandeza associada a sólidos geométricos e medir volumes por meio de empilhamento de cubos, utilizando, preferencialmente, objetos concretos. |
+| EF05MA22 | Apresentar todos os possíveis resultados de um experimento aleatório, estimando se esses resultados são igualmente prováveis ou não. |
+| EF05MA23 | Determinar a probabilidade de ocorrência de um resultado em eventos aleatórios, quando todos os resultados possíveis têm a mesma chance de ocorrer (equiprováveis). |
+| EF05MA24 | Interpretar dados estatísticos apresentados em textos, tabelas e gráficos (colunas ou linhas), referentes a outras áreas do conhecimento ou a outros contextos, como saúde e trânsito, e produzir textos com o objetivo de sintetizar conclusões. |
+| EF05MA25 | Realizar pesquisa envolvendo variáveis categóricas e numéricas, organizar dados coletados por meio de tabelas, gráficos de colunas, pictóricos e de linhas, com e sem uso de tecnologias digitais, e apresentar texto escrito sobre a finalidade da pesquisa e a síntese dos resultados. |
+| EF12LP01 | Ler palavras novas com precisão na decodificação, no caso de palavras de uso frequente, ler globalmente, por memorização. |
+| EF12LP03 | Copiar textos breves, mantendo suas características e voltando para o texto sempre que tiver dúvidas sobre sua distribuição gráfica, espaçamento entre as palavras, escrita das palavras e pontuação. |
+| EF12LP07 | Identificar e (re)produzir, em cantiga, quadras, quadrinhas, parlendas, trava-línguas e canções, rimas, aliterações, assonâncias, o ritmo de fala relacionado ao ritmo e à melodia das músicas e seus efeitos de sentido. |
 | EF15LP18 | Relacionar texto com ilustrações e outros recursos gráficos. |
-| EF15LP19 | Recontar oralmente textos literários lidos pelo professor. |
-| EF35LP01 | Ler e compreender, silenciosamente e em voz alta, com autonomia e fluência, textos curtos. |
+| EF15LP19 | Recontar oralmente, com e sem apoio de imagem, textos literários lidos pelo professor. |
+| EF35LP01 | Ler e compreender, silenciosamente e, em seguida, em voz alta, com autonomia e fluência, textos curtos com nível de textualidade adequado. |
 | EF35LP03 | Identificar a ideia central do texto, demonstrando compreensão global. |
 | EF35LP04 | Inferir informações implícitas nos textos lidos. |
-| EF35LP05 | Inferir o sentido de palavras ou expressões desconhecidas pelo contexto. |
-| EF35LP07 | Usar ortografia, concordância e pontuação ao produzir textos. |
-| EF35LP09 | Organizar o texto em parágrafos. |
-| EF35LP12 | Recorrer ao dicionário para esclarecer dúvidas sobre a escrita de palavras. |
-| EF35LP13 | Memorizar a grafia de palavras de uso frequente com relações irregulares e h inicial. |
-| EF35LP14 | Identificar e usar pronomes pessoais, possessivos e demonstrativos. |
-| EF35LP21 | Ler e compreender, de forma autônoma, textos literários de diferentes gêneros e extensões. |
-| EF35LP22 | Perceber diálogos em narrativas e o efeito dos verbos de enunciação. |
-| EF35LP25 | Criar narrativas ficcionais com detalhes descritivos, sequência de eventos e marcadores de tempo e espaço. |
-| EF35LP26 | Compreender os elementos da narrativa: enredo, tempo, espaço, personagens e narrador. |
-| EF35LP27 | Ler e compreender textos em versos, explorando rimas, sons e imagens poéticas. |
-| EF35LP28 | Declamar poemas com entonação, postura e interpretação adequadas. |
-| EF35LP30 | Diferenciar discurso direto e indireto. |
+| EF35LP05 | Inferir o sentido de palavras ou expressões desconhecidas em textos, com base no contexto da frase ou do texto. |
+| EF35LP07 | Utilizar, ao produzir um texto, conhecimentos linguísticos e gramaticais, tais como ortografia, regras básicas de concordância nominal e verbal, pontuação (ponto final, ponto de exclamação, ponto de interrogação, vírgulas em enumerações) e pontuação do discurso direto, quando for o caso. |
+| EF35LP09 | Organizar o texto em unidades de sentido, dividindo-o em parágrafos segundo as normas gráficas e de acordo com as características do gênero textual. |
+| EF35LP12 | Recorrer ao dicionário para esclarecer dúvida sobre a escrita de palavras, especialmente no caso de palavras com relações irregulares fonema-grafema. |
+| EF35LP13 | Memorizar a grafia de palavras de uso frequente nas quais as relações fonema-grafema são irregulares e com h inicial que não representa fonema. |
+| EF35LP14 | Identificar em textos e usar na produção textual pronomes pessoais, possessivos e demonstrativos, como recurso coesivo anafórico. |
+| EF35LP21 | Ler e compreender, de forma autônoma, textos literários de diferentes gêneros e extensões, inclusive aqueles sem ilustrações, estabelecendo preferências por gêneros, temas, autores. |
+| EF35LP22 | Perceber diálogos em textos narrativos, observando o efeito de sentido de verbos de enunciação e, se for o caso, o uso de variedades linguísticas no discurso direto. |
+| EF35LP24 | Identificar funções do texto dramático (escrito para ser encenado) e sua organização por meio de diálogos entre personagens e marcadores das falas das personagens e de cena. |
+| EF35LP25 | Criar narrativas ficcionais, com certa autonomia, utilizando detalhes descritivos, sequências de eventos e imagens apropriadas para sustentar o sentido do texto, e marcadores de tempo, espaço e de fala de personagens. |
+| EF35LP26 | Ler e compreender, com certa autonomia, narrativas ficcionais que apresentem cenários e personagens, observando os elementos da estrutura narrativa: enredo, tempo, espaço, personagens, narrador e a construção do discurso indireto e discurso direto. |
+| EF35LP27 | Ler e compreender, com certa autonomia, textos em versos, explorando rimas, sons e jogos de palavras, imagens poéticas (sentidos figurados) e recursos visuais e sonoros. |
+| EF35LP28 | Declamar poemas, com entonação, postura e interpretação adequadas. |
+| EF35LP30 | Diferenciar discurso indireto e discurso direto, determinando o efeito de sentido de verbos de enunciação e explicando o uso de variedades linguísticas no discurso direto, quando for o caso. |
 
 ## Anexo: referências de Ética e Inglês
 
