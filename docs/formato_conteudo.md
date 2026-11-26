@@ -79,3 +79,8 @@ perguntas pela `mistura`; se faltar pergunta de uma complexidade, completa com
 a mais próxima. Depois de 2 erros seguidos entra um "aquecimento" mais simples;
 com 80% de acerto em 2 missões seguidas da unidade, a criança é convidada a
 subir de nível (nunca desce sozinha).
+
+Perguntas de níveis 3 e 4 ficam em `tool/perguntas/anoN_bB_avancado.py`
+(`AVANCADAS`: id da missão → lista de exercícios marcados com `nivel()`).
+O montador junta essas perguntas às da missão. No 4º bimestre do 4º ano
+(Galáxia), use os ids com prefixo, como `a4b4-p11`.

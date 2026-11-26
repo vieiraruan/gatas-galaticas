@@ -27,10 +27,32 @@ def banco(ano, bim):
     caminho = os.path.join(PERGUNTAS, f"ano{ano}_b{bim}.py")
     if not os.path.exists(caminho):
         return {}
-    spec = importlib.util.spec_from_file_location(f"ano{ano}_b{bim}", caminho)
+    missoes = _modulo(caminho).MISSOES
+    for mid, extras in avancadas(ano, bim).items():
+        assert mid in missoes, f"pergunta avançada sem missão no banco: {mid}"
+        missoes[mid]["exercicios"] = missoes[mid]["exercicios"] + extras
+    return missoes
+
+
+def _modulo(caminho):
+    nome = os.path.splitext(os.path.basename(caminho))[0]
+    spec = importlib.util.spec_from_file_location(nome, caminho)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    return mod.MISSOES
+    return mod
+
+
+def avancadas(ano, bim):
+    """Perguntas de níveis 3 e 4 em tool/perguntas/anoN_bB_avancado.py
+    (AVANCADAS: id da missão -> lista de exercícios marcados com nivel())."""
+    caminho = os.path.join(PERGUNTAS, f"ano{ano}_b{bim}_avancado.py")
+    if not os.path.exists(caminho):
+        return {}
+    extras = _modulo(caminho).AVANCADAS
+    for mid, lista in extras.items():
+        for e in lista:
+            assert e.get("complexidade") in (3, 4), f"{mid}: marque a complexidade com nivel()"
+    return extras
 
 # Planetas das disciplinas da escola, os mesmos da Galáxia do Saber.
 PLANETAS = {
@@ -94,6 +116,7 @@ def planeta_bncc(ano, bim, disc, nomes, perguntas):
 
 def planetas_galaxia(galaxia, ano, bim):
     pre = f"a{ano}b{bim}-"
+    extras = dict(avancadas(ano, bim))
     out = []
     for p in galaxia["planetas"]:
         p = json.loads(json.dumps(p))
@@ -102,7 +125,9 @@ def planetas_galaxia(galaxia, ano, bim):
             s["id"] = pre + s["id"]
             for m in s["missoes"]:
                 m["id"] = pre + m["id"]
+                m["exercicios"] = m.get("exercicios", []) + extras.pop(m["id"], [])
         out.append(p)
+    assert not extras, f"perguntas avançadas sem missão na Galáxia: {sorted(extras)}"
     return out
 
 

@@ -10,6 +10,7 @@ Exercicio _q(String id, int c) =>
     Escolha(pergunta: id, opcoes: const ['a', 'b']).comComplexidade(c);
 
 void main() {
+  testesNiveisAvancados();
   final banco = [
     for (var i = 0; i < 10; i++) _q('c1-$i', 1),
     for (var i = 0; i < 10; i++) _q('c2-$i', 2),
@@ -70,4 +71,28 @@ void main() {
     expect(cs.containsAll([1, 2, 3]), isTrue);
     expect(todas.any((e) => e.medalha != null), isTrue);
   });
+}
+
+void _todasAsMissoesTemNiveis3e4(int anoNumero) {
+  final j = jsonDecode(File('assets/conteudo/ano_$anoNumero.json').readAsStringSync());
+  final ano = ConteudoAno.fromJson(j as Map<String, dynamic>);
+  for (final b in ano.bimestres) {
+    for (final p in b.planetas) {
+      for (final s in p.setores) {
+        for (final m in s.missoes) {
+          final cs = {for (final e in [...m.exercicios, ...m.exerciciosDesafio]) e.complexidade};
+          expect(cs.containsAll([3, 4]), isTrue, reason: m.id);
+        }
+      }
+    }
+  }
+}
+
+// Anos que já têm perguntas de aplicar (3) e analisar e criar (4) em todas as missões.
+const anosComNiveisAvancados = [4];
+
+void testesNiveisAvancados() {
+  for (final a in anosComNiveisAvancados) {
+    test('$aº ano: todas as missões têm perguntas de níveis 3 e 4', () => _todasAsMissoesTemNiveis3e4(a));
+  }
 }
