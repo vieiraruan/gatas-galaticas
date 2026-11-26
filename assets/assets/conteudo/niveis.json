@@ -13,7 +13,24 @@
   "dicas": true,
   "tempoSegundos": 0,
   "multiplicador": 1,
-  "desafio": false
+  "desafio": false,
+  "complexidade": 1,
+  "nomeComplexidade": "Reconhecer",
+  "mistura": {
+   "1": 100
+  },
+  "incentivos": {
+   "acerto": [
+    "Você encontrou!",
+    "Muito bem, olho de águia!",
+    "Isso mesmo!"
+   ],
+   "erro": [
+    "Quase! Olhe de novo com calma.",
+    "Errar faz parte de aprender. Vamos tentar mais uma?"
+   ],
+   "convite": "Você já reconhece tudo isso. Que tal explicar por que é assim no próximo nível?"
+  }
  },
  {
   "id": "d",
@@ -29,7 +46,25 @@
   "dicas": true,
   "tempoSegundos": 0,
   "multiplicador": 1.5,
-  "desafio": false
+  "desafio": false,
+  "complexidade": 2,
+  "nomeComplexidade": "Compreender",
+  "mistura": {
+   "2": 70,
+   "1": 30
+  },
+  "incentivos": {
+   "acerto": [
+    "Você entendeu de verdade!",
+    "Ótima explicação!",
+    "Seu cérebro está crescendo!"
+   ],
+   "erro": [
+    "Boa tentativa! Veja a explicação e tente de novo.",
+    "Pensar é assim mesmo: às vezes a gente erra antes de acertar."
+   ],
+   "convite": "Você entende o conteúdo. Agora vamos usá-lo em situações do dia a dia?"
+  }
  },
  {
   "id": "x",
@@ -45,7 +80,26 @@
   "dicas": false,
   "tempoSegundos": 0,
   "multiplicador": 2,
-  "desafio": true
+  "desafio": true,
+  "complexidade": 3,
+  "nomeComplexidade": "Aplicar",
+  "mistura": {
+   "3": 60,
+   "2": 30,
+   "1": 10
+  },
+  "incentivos": {
+   "acerto": [
+    "Você resolveu um problema de verdade!",
+    "Isso é pensar como um cientista!",
+    "Que estratégia esperta!"
+   ],
+   "erro": [
+    "Esse era desafiador! Qual etapa você quer rever?",
+    "Persistência é um superpoder. Vamos de novo?"
+   ],
+   "convite": "Você aplica o que sabe. Topa o desafio de analisar, justificar e criar?"
+  }
  },
  {
   "id": "g",
@@ -61,6 +115,25 @@
   "dicas": false,
   "tempoSegundos": 30,
   "multiplicador": 3,
-  "desafio": true
+  "desafio": true,
+  "complexidade": 4,
+  "nomeComplexidade": "Analisar e criar",
+  "mistura": {
+   "4": 50,
+   "3": 30,
+   "2": 20
+  },
+  "incentivos": {
+   "acerto": [
+    "Pensamento de gênio!",
+    "Você criou algo que é só seu!",
+    "Argumento brilhante!"
+   ],
+   "erro": [
+    "Perguntas difíceis fazem a mente crescer. O que você descobriu tentando?",
+    "Ótimo esforço! Veja outro jeito de pensar."
+   ],
+   "convite": "Você chegou ao nível mais alto. Que tal ensinar isso a alguém da sua família?"
+  }
  }
 ]
