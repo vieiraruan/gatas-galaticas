@@ -155,7 +155,8 @@ void main() {
 
     // Pausa opcional: o menu lista os 4 minijogos; abre o Labirinto Orbital
     // e pular volta ao mapa.
-    await tester.ensureVisible(find.text('🛋️ HORA DA PAUSA'));
+    await tester.scrollUntilVisible(find.text('🛋️ HORA DA PAUSA'), 200,
+        scrollable: find.byType(Scrollable).first);
     await tester.tap(find.text('🛋️ HORA DA PAUSA'));
     await tester.pumpAndSettle();
     for (final nome in [

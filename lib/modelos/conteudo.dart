@@ -108,6 +108,14 @@ sealed class Exercicio {
   const Exercicio(this.pergunta, this.explicacao);
 
   factory Exercicio.fromJson(Map<String, dynamic> j) {
+    final ex = _criar(j);
+    final c = j['complexidade'] as int?;
+    final m = j['medalha'] as String?;
+    if (c != null || m != null) _info[ex] = (complexidade: c ?? 1, medalha: m);
+    return ex;
+  }
+
+  static Exercicio _criar(Map<String, dynamic> j) {
     final p = j['pergunta'] as String;
     final e = j['explicacao'] as String?;
     switch (j['tipo']) {
@@ -140,6 +148,29 @@ sealed class Exercicio {
         ]);
     }
     throw FormatException('Exercício desconhecido: ${j['tipo']}');
+  }
+}
+
+/// Complexidade cognitiva (1 reconhecer, 2 compreender, 3 aplicar,
+/// 4 analisar e criar) e medalha de cada exercício. Fica fora das classes
+/// para não mudar os construtores; [copiarInfo] leva os dados para a versão
+/// adaptada ao nível.
+final _info = Expando<({int complexidade, String? medalha})>();
+
+extension InfoExercicio on Exercicio {
+  int get complexidade => _info[this]?.complexidade ?? 1;
+  String? get medalha => _info[this]?.medalha;
+
+  /// Marca a complexidade (usado em testes e no conteúdo gerado).
+  Exercicio comComplexidade(int c, {String? medalha}) {
+    _info[this] = (complexidade: c, medalha: medalha ?? this.medalha);
+    return this;
+  }
+
+  Exercicio copiarInfo(Exercicio de) {
+    final i = _info[de];
+    if (i != null) _info[this] = i;
+    return this;
   }
 }
 
@@ -372,6 +403,15 @@ class Nivel {
   final double multiplicador;
   final bool desafio;
 
+  /// Nível de complexidade cognitiva (1 a 4) e mistura de perguntas
+  /// por complexidade, em %: {3: 60, 2: 30, 1: 10}.
+  final int complexidade;
+  final String nomeComplexidade;
+  final Map<int, int> mistura;
+  final List<String> incentivosAcerto;
+  final List<String> incentivosErro;
+  final String? convite;
+
   const Nivel({
     required this.id,
     required this.nome,
@@ -387,6 +427,12 @@ class Nivel {
     required this.tempoSegundos,
     required this.multiplicador,
     required this.desafio,
+    this.complexidade = 1,
+    this.nomeComplexidade = '',
+    this.mistura = const {1: 100},
+    this.incentivosAcerto = const [],
+    this.incentivosErro = const [],
+    this.convite,
   });
 
   factory Nivel.fromJson(Map<String, dynamic> j) => Nivel(
@@ -404,5 +450,14 @@ class Nivel {
         tempoSegundos: j['tempoSegundos'] as int,
         multiplicador: (j['multiplicador'] as num).toDouble(),
         desafio: j['desafio'] as bool,
+        complexidade: (j['complexidade'] as int?) ?? 1,
+        nomeComplexidade: (j['nomeComplexidade'] as String?) ?? '',
+        mistura: {
+          for (final e in ((j['mistura'] as Map?) ?? const {'1': 100}).entries)
+            int.parse(e.key as String): e.value as int
+        },
+        incentivosAcerto: _textos((j['incentivos'] as Map?)?['acerto']),
+        incentivosErro: _textos((j['incentivos'] as Map?)?['erro']),
+        convite: (j['incentivos'] as Map?)?['convite'] as String?,
       );
 }

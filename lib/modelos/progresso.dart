@@ -22,6 +22,12 @@ class Progresso {
   /// "2026-11-24" → provas surpresa oferecidas no dia.
   final Map<String, int> surpresasPorDia;
 
+  /// "nivel:idDaUnidade" → missões seguidas com 80% ou mais de acerto.
+  final Map<String, int> sequencias;
+
+  /// Medalhas por processo: detetive, explicador, inventor → quantidade.
+  final Map<String, int> medalhas;
+
   const Progresso({
     this.xp = 0,
     this.peixinhos = 0,
@@ -35,6 +41,8 @@ class Progresso {
     this.acertosPorMateria = const {},
     this.respostasPorMateria = const {},
     this.surpresasPorDia = const {},
+    this.sequencias = const {},
+    this.medalhas = const {},
   });
 
   static const vazio = Progresso();
@@ -68,6 +76,8 @@ class Progresso {
     Map<String, int>? acertosPorMateria,
     Map<String, int>? respostasPorMateria,
     Map<String, int>? surpresasPorDia,
+    Map<String, int>? sequencias,
+    Map<String, int>? medalhas,
   }) =>
       Progresso(
         xp: xp ?? this.xp,
@@ -82,6 +92,8 @@ class Progresso {
         acertosPorMateria: acertosPorMateria ?? this.acertosPorMateria,
         respostasPorMateria: respostasPorMateria ?? this.respostasPorMateria,
         surpresasPorDia: surpresasPorDia ?? this.surpresasPorDia,
+        sequencias: sequencias ?? this.sequencias,
+        medalhas: medalhas ?? this.medalhas,
       );
 
   static Map<String, int> _mapa(Object? j) =>
@@ -100,6 +112,8 @@ class Progresso {
         acertosPorMateria: _mapa(j['acertosPorMateria']),
         respostasPorMateria: _mapa(j['respostasPorMateria']),
         surpresasPorDia: _mapa(j['surpresasPorDia']),
+        sequencias: _mapa(j['sequencias']),
+        medalhas: _mapa(j['medalhas']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -115,5 +129,7 @@ class Progresso {
         'acertosPorMateria': acertosPorMateria,
         'respostasPorMateria': respostasPorMateria,
         'surpresasPorDia': surpresasPorDia,
+        'sequencias': sequencias,
+        'medalhas': medalhas,
       };
 }
